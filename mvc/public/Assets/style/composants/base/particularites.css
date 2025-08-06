@@ -1,0 +1,114 @@
+.block-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.lien {
+    color: blue;
+    text-decoration: underline;
+}
+
+.lien a:hover {
+    color: var(--vert);
+}
+
+.block-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.block-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.evenly {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: center;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paiement {
+    margin-top: 50px;
+}
+
+.conteneur {
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.conteneur h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.carte-autre {
+    max-width: 350px;
+    margin-top: 30px;
+}
+
+.carte-autre h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.infos {
+    max-width: 300px;
+    margin-top: 30px;
+}
+
+.flex-left {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.input {
+    padding-left: 10px;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.gras {
+    font-weight: 600;
+}
+
+.span {
+    font-weight: 600;
+}

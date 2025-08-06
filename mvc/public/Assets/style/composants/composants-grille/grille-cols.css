@@ -1,0 +1,13 @@
+.grille-2-cols {
+    display: grid;
+    grid-template-columns: 70% 1fr;    
+    margin: auto;
+}
+
+.grille-2-cols-fiche {
+    display: grid;
+    grid-template-columns: 40% 1fr;    
+    margin: auto;
+    gap: 30px;
+}
+

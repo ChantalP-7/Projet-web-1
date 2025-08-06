@@ -1,0 +1,17 @@
+.grille-galerie-fiche {
+    display: flex;    
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.grille-galerie-fiche .miniature {
+    max-width: 100px;
+}
+
+.grille-galerie-fiche .petite-image {
+    min-width: 200px;
+    gap: 20px;
+}

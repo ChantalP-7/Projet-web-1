@@ -1,0 +1,66 @@
+.menu-deroulant{
+    position: relative;
+    z-index: 2;
+}
+
+.menu-deroulant:hover span {
+    background-color:var(--bleuPale);
+    color: var(--blanc)
+} 
+
+.menu-deroulant div{
+    background-color:var(--bleuPale);
+    border-top: 2px solid var(--blanc);
+    padding: 10px;
+    position: absolute;
+    min-width: max-content;   
+    border-radius: 0px 3px 3px 3px; 
+}
+
+.menu-deroulant a{    
+    font-size: var(--p);
+    font-weight: 400;    
+    color: var(--bleuFonce);
+    transition : ease-in-out 0.2s;
+}
+
+.menu-deroulant a:hover{
+    color: var(--blanc);
+}
+
+.menu-deroulant:not(:hover) div{
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 1000px) { 
+    .menu-deroulant:not(:hover)> .sous-menu{
+        display: none;
+        
+    }
+    
+    span >.sous-menu:hover{
+         transition : ease-in-out 2s;
+         background-color: transparent;
+         color: var(--bleuFonce);
+    }
+    
+    .menu-deroulant a:hover {
+        color: white;
+    }
+    
+    .menu-deroulant > div {
+        background-color: transparent;        
+        border-top: none;
+    }
+
+    .menu-deroulant a:hover{
+        transition : ease-in-out 0.2s;
+        color: white;
+    }
+
+    
+    .menu-deroulant div:hover, span:hover, a:hover, span {
+        background-color: transparent;
+    }
+}

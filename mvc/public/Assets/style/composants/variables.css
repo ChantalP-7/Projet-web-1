@@ -1,0 +1,29 @@
+:root {
+    /** Couleurs */
+    --bleuFonce: #020949;
+    --bleuMoyen: #1C458B;
+    --bleuPale:  #99A3FF;
+    --blanc: #FFF;
+    --perle: #e4e4e4;
+    --Noir: #000;
+    --vert: #0cb644;
+
+/* Typographie */
+
+--titre: "Cinzel Decorative";
+--sous-titre : "Cinzel";
+--texte: "Poppins";
+
+
+--h1: clamp(2rem, 3.4795vw + 1.0rem, 3rem);
+--h2: clamp(1.2rem, 2.5vw + 0.5rem, 1.5rem);
+--h3: clamp(1rem, 2.2vw + 0.2rem, 1.2rem);
+
+--h4: clamp(0.8rem, 2vw + 0.1rem, 1.1rem);
+
+--h6: clamp(0.6rem, 1.6vw + -0.05rem, 0.6rem);
+--p-span-a: clamp(0.9rem, 1.3vw + -0.03rem, 1rem);
+--p: clamp(0.9rem, 2vw + 0.4rem, 1rem);
+--boxShadow: 0 0 12px rgba(197, 197, 197, 0.699);
+  
+}

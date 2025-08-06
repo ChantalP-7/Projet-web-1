@@ -1,0 +1,111 @@
+.entete-haut {
+    background-color: var(--bleuFonce);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: white;
+}
+
+.entete-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+
+.entete-logo:hover {
+    cursor: pointer;
+}
+
+/*.entete-logo picture {    
+    border-radius: 50%;
+    background-color: white;
+}*/
+
+.entete-logo img {
+    width: 80px;
+}
+
+.entete-logo h1 {
+    font-family: var(--titre);
+    /*font-size: 50px;*/
+    font-size: var(--h1);
+    font-weight: 400;
+}
+
+.entete-haut a {
+    font-size: var(--h3);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.entete-haut a:hover {
+    color: var(--bleuPale);
+}
+
+.entete-haut  .search {
+    width: 300px;
+    padding: 10px;
+}
+
+
+.entete-haut form {
+    display: flex;
+    align-items: center;
+    gap: 3px
+}
+.entete-haut button {
+    width: 50px;
+    padding: 7px;
+    background-color: var(--bleuPale);
+    border-radius: 2px;
+    border: none;
+}
+
+
+.entete-haut button:hover {
+    background-color: white;
+    cursor: pointer;
+}
+.entete-haut input {
+    border: none;
+    border-radius: 2px;
+}
+
+.entete-haut .icone {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.entete-haut .icone:hover {
+    cursor: pointer;
+}
+
+
+@media (max-width: 1000px) {
+    
+    .entete-haut {
+        gap: 40px;
+    }
+
+    .entete-haut, .principale {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    
+    .entete-haut .icone {
+        display: none;
+    }
+    
+    
+    .nav-bouton{
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        gap: 10px;        
+    }
+}

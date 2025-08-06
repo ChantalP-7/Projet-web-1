@@ -1,0 +1,92 @@
+.principale{
+    z-index: 2;
+    position: relative;
+}    
+
+@media (max-width: 1000px) { 
+    
+    .principale {
+        width: 100%;
+    }
+
+    .principale nav {
+        padding: 20px;
+        flex-flow: column;
+        align-items: end;     
+        background-color: var(--bleuFonce);
+        gap: 20px;
+    }
+    
+    .principale:hover  {
+        transition: ease-in-out 5s;
+    }
+    
+    .principal nav span  {
+        background-color: transparent;
+    }
+    
+    .principale nav a, span {
+        padding: 5px 12px;
+        font-size: var(--p);
+        color: white;
+        text-align: right;
+    }  
+
+    .principale span {
+        font-size: var(--p);
+        color: white;
+        display: block;
+                
+    }  
+
+    .principale nav a:hover{
+        background-color: transparent;
+        color: white;    
+    }
+    
+    .principale nav a:hover {
+        font-size: var(--p);
+        color: var(--blanc);           
+    }
+
+    .principale .sous-menu a {
+        font-size: var(--p);
+    }
+    
+    .principale .active {
+        color: var(--bleuFonce);
+    }
+    
+    .principale nav>div>div{
+        position: static;
+        background-color: transparent; 
+        transition: ease-in 5s; 
+    }
+
+    .principale nav>div>div>a{
+        color: var(--bleuPale);
+        border:0;
+    }
+
+    .principale nav>div>span{
+        color: var(--blanc);
+    }
+
+    .principale nav>div:hover>span{
+        background-color: transparent;
+        color: var(--bleuPale);
+        transition: ease-out 5s;        
+    }
+    
+    .principal nav .sous-menu {
+        display: none;
+    }
+    
+    .principale input[type="checkbox"]{
+        display: block;
+    }
+
+    .principale input[type="checkbox"]:not(:checked)+nav{
+        display: none;
+    }
+}

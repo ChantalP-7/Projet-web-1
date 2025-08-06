@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cours UX/UY session 3 Collège Maisonneuve - Étudiante : Chantal Pépin"
+    />
+    <title>Catalogue Stampee</title>
+    <link rel="stylesheet" href="./Assets/style/style.css" />
+    <script src="./Assets/currentUrl.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="entete-haut">
+        <div class="entete-logo">
+          <a href="index.html">
+            <picture
+              ><img
+                src="Assets/image/img-logo-bg-transparent.png"
+                alt="logo stampee"
+            /></picture>
+            <h1>STAMPEE</h1>
+          </a>
+        </div>
+        <form>
+          <label for="recherche" aria-label="Faire une recherche"></label>
+          <input
+            type="search"
+            class="search"
+            id="recherche"
+            name="recherche"
+            placeholder="Recherche"
+          />
+          <button type="submit">
+            <img
+              src="https://s2.svgbox.net/hero-outline.svg?ic=search&color=000"
+              width="28"
+              height="28"
+              alt="loupe"
+            />
+          </button>
+        </form>
+        <div class="icone">
+          <img
+            src="https://s2.svgbox.net/octicons.svg?ic=sun&color=FFD700"
+            width="28"
+            height="28"
+            alt="soleil"
+          /><img
+            src="https://s2.svgbox.net/octicons.svg?ic=moon&color=FFF"
+            width="28"
+            height="28"
+            alt="lune"
+          />
+        </div>
+        <div class="block-left user">
+          <a href="#"
+            ><img
+              src="https://s2.svgbox.net/hero-outline.svg?ic=mail&color=FFF"
+              width="24"
+              height="24"
+              alt="courriel"
+            />Inscription</a
+          >
+          <a href="#"
+            ><img
+              src="https://s2.svgbox.net/materialui.svg?ic=login&color=FFF"
+              width="24"
+              height="24"
+              alt="se connecter"
+            />
+            Connexion</a
+          >
+        </div>
+      </div>
+      <div class="principale">
+        <input
+          type="checkbox"
+          class="declencheur-menu"
+          aria-label="menu item"
+        />
+        <nav class="navigation-principale">
+          <a href="index.html">Accueil</a>
+          <a href="catalogue.html">Catalogue</a>
+          <a href="#">Timbres</a>
+          <div class="menu-deroulant">
+            <span>Enchères</span>
+            <div class="sous-menu">
+              <a href="#">Actives</a>
+              <a href="#">Archivées</a>
+            </div>
+          </div>
+          <a href="#">Pays</a>
+          <div class="menu-deroulant">
+            <span>À propos de Lord</span>
+            <div class="sous-menu">
+              <a href="#">Lord Réginald Stampee 111</a>
+              <a href="#">La philatélie c'est la vie</a>
+              <a href="#">Historique familial</a>
+            </div>
+          </div>
+          <div class="menu-deroulant">
+            <span>Contactez-nous</span>
+            <div class="sous-menu">
+              <a href="#">Angleterre</a>
+              <a href="#">Canada</a>
+              <a href="#">États-Unis</a>
+              <a href="#">Australie</a>
+              <a href="#">Termes et conditions</a>
+            </div>
+          </div>
+          <div class="nav-bouton">
+            <label for="langues" aria-label="Choisir une langue"></label>
+            <select
+              id="langues"
+              class="bouton-simple bouton-padding"
+              name="langues"
+            >
+              <option value="English">English</option>
+              <option value="French">French</option>
+            </select>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div class="grille">
+      <article class="article-lateral">
+        <h2>Section filtres</h2>
+        <div class="filtre">
+          <h3>Catégorie Pays</h3>
+          <div class="coche">
+            <p>Canada</p>
+            <button>Reset</button>
+          </div>
+        </div>
+        <form>
+          <div class="filtre">
+            <h3>Sous-catégorie</h3>
+            <div class="checkbox block-left">
+              <label for="quebec" aria-label="Québec">
+                <input type="checkbox" id="quebec" />&nbsp;Québec
+              </label>
+              <label for="ontario" aria-label="Ontario">
+                <input type="checkbox" id="ontario" />&nbsp;Ontario
+              </label>
+              <label for="new-brunswick" aria-label="New-Brunswick">
+                <input type="checkbox" id="new-brunswick" />&nbsp;New-Brunswick
+              </label>
+              <label for="Brit-columbia" aria-label="British-Columbia">
+                <input
+                  type="checkbox"
+                  id="Brit-columbia"
+                />&nbsp;British-Columbia
+              </label>
+            </div>
+          </div>
+          <div class="filtre">
+            <h3>Style de timbres</h3>
+            <div class="checkbox block-left">
+              <label for="seul" aria-label="Timbre seul">
+                <input type="checkbox" id="seul" />&nbsp;Timbres seuls (23)
+              </label>
+              <label for="serie" aria-label="Timbres en série">
+                <input type="checkbox" id="serie" />&nbsp;Timbres en série (21)
+              </label>
+              <label for="epoque" aria-label="Timbre d'époque">
+                <input type="checkbox" id="epoque" />&nbsp;Timbre d'époque (34)
+              </label>
+              <label for="postal" aria-label="Timbre postal">
+                <input type="checkbox" id="postal" />&nbsp;Timbres postaux (21)
+              </label>
+              <label for="unique" aria-label="Timbre unique">
+                <input type="checkbox" id="unique" />&nbsp; Timbres uniques
+                (221)
+              </label>
+            </div>
+          </div>
+          <div class="filtre">
+            <h3>Condition</h3>
+            <div class="checkbox block-left">
+              <label for="sans-charniere" aria-label="Timbre sans charnière">
+                <input type="checkbox" id="sans-charniere" />&nbsp; Neuf sans
+                charnière (9)
+              </label>
+              <label for="charniere" aria-label="Timbre avec chanrnière">
+                <input type="checkbox" id="charniere" />&nbsp; Neuf avec
+                charnière (109)
+              </label>
+              <label for="oblitere" aria-label="Timbre oblitéré">
+                <input type="checkbox" id="oblitere" />&nbsp; Oblitéré (35)
+              </label>
+              <label for="un-jour" aria-label="Timbre un jour">
+                <input type="checkbox" id="un-jour" />&nbsp; Enveloppe 1er jour
+                (23)
+              </label>
+              <label for="histoire-postale" aria-label="Histoire postale">
+                <input type="checkbox" id="histoire-postale" />&nbsp;Histoire
+                postale (89)
+              </label>
+              <label for="postal-neuf" aria-label="Timbre postal neuf">
+                <input type="checkbox" id="postal-neuf" />&nbsp;Entier postal
+                neuf (53)
+              </label>
+              <label for="non-specifie" aria-label="Non spécifié">
+                <input type="checkbox" id="non-specifie" />&nbsp;Non spécifié
+                (2)
+              </label>
+            </div>
+          </div>
+          <h3>Années</h3>
+          <div class="filtre block-left">
+            <label for="annee" aria-label="Sélectionnez une période (année)"
+              >Sélectionnez une période</label
+            >
+            <select name="annee" id="annee">
+              <option value="">Fais une sélection</option>
+              <option value="avant1900">Avant 1900</option>
+              <option value="1920">1900 à 1920</option>
+              <option value="1920">1921 à 1940</option>
+              <option value="1920">1941 à 1960</option>
+              <option value="1920">1961 à 1980</option>
+              <option value="1920">1981 à 2000</option>
+              <option value="1920">2001 à 2020</option>
+              <option value="1920">2021 à aujourd'hui</option>
+            </select>
+          </div>
+          <div class="filtre">
+            <h3>A une certification ?</h3>
+            <div class="checkbox">
+              <label for="oui" aria-label="Cocher oui">
+                <input type="checkbox" id="oui" /> &nbsp; Oui
+              </label>
+              <label for="non" aria-label="Cocher non">
+                <input type="checkbox" id="non" /> &nbsp; Non
+              </label>
+            </div>
+          </div>
+          <div class="soumission">
+            <h4>Soumission</h4>
+            <label for="soumettre" aria-label="Soumettre"
+              >Soumettre votre choix</label
+            >
+            <input type="submit" value="Soumettre" id="soumettre" />
+          </div>
+        </form>
+      </article>
+      <article class="article-principal">
+        <div class="space-between">
+          <h2>Parcourir les enchères au Canada</h2>          
+        </div>
+        <div class="evenly">
+          <p><strong>320</strong> enchères trouvées - 1 vue sur 20</p>
+          <p>16 lots par page</p>
+        </div>
+        <div class="grille-cartes">
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-10.PNG"
+                alt="timbre1"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#56 neuf-charnière</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
+                  width="12"
+                  height="12"
+                  alt="coeur1"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix départ</p>
+              <p>30.00 $</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1963</p>
+              <p>Mises (0)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-2.PNG"
+                alt="timbre2"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#188 oblitéré</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur2"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix départ</p>
+              <p>298.00 $</p>
+            </div>
+
+            <div class="space-between">
+              <p>Année : 1982</p>
+              <p>Mises (21)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-15.PNG"
+                alt="timbre3"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#209 neuf</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
+                  width="12"
+                  height="12"
+                  alt="coeur3"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix départ</p>
+              <p>53.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1979</p>
+              <p>Mises (2)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/avant-1900/timbre-centenaire-4.PNG"
+                alt="timbre4"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#319 oblitéré</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur4"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>20.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1924</p>
+              <p>Mises (4)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/avant-1900/timbre-centenaire-3.PNG"
+                alt="timbre5"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#326 neuf</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur5"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>199.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1974</p>
+              <p>Mises (2)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-7.PNG"
+                alt="timbre 6"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#127 usé-charnières</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
+                  width="12"
+                  height="12"
+                  alt="coeur6"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>523.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1947</p>
+              <p>Mises (42)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-11.PNG"
+                alt="timbre7"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#202 neuf</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur7"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>150.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1887</p>
+              <p>Mises (0)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-5.PNG"
+                alt="timbre8"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#289 usé-charnières</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
+                  width="12"
+                  height="12"
+                  alt="coeur8"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>230.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1998</p>
+              <p>Mises (10)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-10.PNG"
+                alt="timbre9"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#321 usé-charnières</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur9"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>23.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1951</p>
+              <p>Mises (2)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-1.PNG"
+                alt="timbre10"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#98 sans-charnière</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur10"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>124.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1957</p>
+              <p>Mises (8)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-24.PNG"
+                alt="timbre11"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#277 neuf</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
+                  width="12"
+                  height="12"
+                  alt="coeur11"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>71.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1963</p>
+              <p>Mises (5)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-3.PNG"
+                alt="timbre12"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#183 oblitéré</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
+                  width="12"
+                  height="12"
+                  alt="coeur12"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>108.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1981</p>
+              <p>Mises (4)</p>
+            </div>
+          </div>
+
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-20.PNG"
+                alt="timbre13"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#92 usé-charnières</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur13"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>20.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1993</p>
+              <p>Mises (1)</p>
+            </div>
+          </div>
+
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/timbre-14.PNG"
+                alt="timbre14"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#229 neuf-charnière</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur14"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>73.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1922</p>
+              <p>Mises (5)</p>
+            </div>
+          </div>
+          <div class="carte">
+            <figure>
+              <img
+                class="timbre zoom"
+                src="./Assets/image/timbres/avant-1900/timbre-centenaire-5.PNG"
+                alt="timbre15"
+              />
+            </figure>
+            <div class="space-between">
+              <p>#214 usé-charnières</p>
+              <p>
+                <img
+                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                  width="12"
+                  height="12"
+                  alt="coeur15"
+                />
+              </p>
+            </div>
+            <div class="space-between">
+              <p>Pays d'origine</p>
+              <p>Canada</p>
+            </div>
+            <div class="space-between">
+              <p>Prix de départ</p>
+              <p>204.00$</p>
+            </div>
+            <div class="space-between">
+              <p>Année : 1915</p>
+              <p>Mises (9)</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <hr />
+    <footer>
+      <div class="piedPage-haut">
+        <h1>Abonnez-vous à notre infolettre</h1>
+        <form method="post">
+          <label for="courriel" aria-label="Entrez votre courriel">
+            <input
+              type="email"
+              class="search"
+              id="courriel"
+              name="courriel"
+              placeholder="courriel"
+            />
+          </label>
+          <input type="submit" class="bouton" value="Soumettre" />
+        </form>
+      </div>
+      <div class="piedPage-centre">
+        <article>
+          <h2 class="h4">Actualités</h2>
+          <div class="block-left">
+            <a href="#">Timbres</a>
+            <a href="#">Enchères</a>
+            <a href="#">Bridge</a>
+          </div>
+        </article>
+        <article>
+          <h2 class="h4">Fonctionnemenet de la plateforme</h2>
+          <div class="block-left">
+            <a href="#">Aide "Profil"</a>
+            <a href="#">Comment placer une offre</a>
+            <a href="#">Suivre une enchère</a>
+            <a href="#">Trouver l'enchère désirée</a>
+            <a href="#">Contacter le webmestre</a>
+          </div>
+        </article>
+        <article class="block-center">
+          <h2 class="h4">Suivez Lord Stampee</h2>
+          <div class="inline">
+            <img
+              src="https://s2.svgbox.net/social.svg?ic=facebook&color=000"
+              width="28"
+              height="28"
+              alt="facebook"
+            />
+            <img
+              src="https://s2.svgbox.net/social.svg?ic=instagram&color=000"
+              width="28"
+              height="28"
+              alt="instagram"
+            />
+            <img
+              src="https://s2.svgbox.net/social.svg?ic=tiktok&color=000"
+              width="28"
+              height="28"
+              alt="tiktok"
+            />
+          </div>
+        </article>
+        <article>
+          <h2 class="h4">Notre blogue</h2>
+          <div class="block-left">
+            <a href="#">Articles</a>
+            <a href="#">Archives</a>
+          </div>
+        </article>
+      </div>
+      <div class="piedPage-bas">
+        <p>Tous droits réservés | Stampee 2025</p>
+        <p class="lien">Nos termes et politique de confidentialité</p>
+        <p class="lien">info@lord.stampee.com</p>
+      </div>
+    </footer>
+  </body>
+</html>

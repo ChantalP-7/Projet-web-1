@@ -1,0 +1,41 @@
+.grille {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 18% 1fr;
+    gap: 60px;
+}
+
+.grille-fiche {
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    padding: 20px;
+    gap: 30px;
+}
+
+
+.grille-fiche figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grille-fiche figcaption {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.grille > div, .grille-fiche > div {
+    margin-top: 20px;
+}
+
+
+@media (max-width: 1000px) { 
+    
+    .grille, .grille-fiche {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 50px;
+    }
+}

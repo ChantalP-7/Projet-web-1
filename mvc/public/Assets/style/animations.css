@@ -1,0 +1,20 @@
+.zoom {
+    cursor: pointer;
+    background-color: var(--bleu);   
+    transition: transform 1s ease-in-out; /* Animation */
+  }
+  
+.zoom:hover {
+transform: scale(1.2); 
+}
+
+/*.grille-fiche .zoom {
+  width: 100%; / L'image prend toute la largeur du conteneur 
+  height: 100%; /* L'image prend toute la hauteur du conteneur 
+  transition: transform 0.3s ease; /* Transition fluide 
+  transform-origin: center; /* Point de transformation au centre 
+}
+
+.grille-fiche:hover .zoom {
+  transform: scale(1.2); /* Zoom de 20% 
+}*/

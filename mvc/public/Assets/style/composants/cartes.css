@@ -1,0 +1,29 @@
+.carte {
+    box-shadow: var(--boxShadow);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px var(--perle) solid;
+}
+
+
+.carte p {
+    font-size: clamp(0.8rem, 2vw + 0.1rem, 0.9rem);
+}
+
+.carte:hover {
+    cursor:pointer;
+}
+
+.carte *+* {
+    margin-top: 5px;
+}
+
+.carte figure {
+    border-radius: 10px;
+}
+
+.carte figcaption {
+    display: flex; 
+    align-items: left;
+    gap: 0px
+}

@@ -1,0 +1,61 @@
+.navigation-principale {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.navigation-principale .ul {
+    display: flex;
+    gap: 20px;
+    align-items:center;
+    list-style:none;
+}
+
+.navigation-principale .sous-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.navigation-principale a, span {
+    padding: 5px 12px;
+    border-radius: 3px;
+    background-color: transparent;
+    font-family: var(--texte);
+    font-size: var(--h3);
+    color: var(--bleuFonce)
+}
+
+.navigation-principale a:hover, span:hover {
+    background-color: var(--bleuPale);
+    color: var(--bleuFonce);
+    transition : ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.navigation-principale li:hover ~  {
+    background-color: var(--bleuPale);
+    transition : ease-in-out 0.2s;
+    color: var(--bleuFonce);
+}
+
+.navigation-principale select {
+    outline: none;
+}
+
+.navigation-principale option {
+    border: none;
+    outline: none;
+}
+.nav-bouton a {
+    border-radius: 50px;
+    color: var(--bleuFonce);
+}
+
+.nav-bouton .bouton {
+    background-color: var(--bleuPale);
+    padding: 8px 18px;
+    font-size: 20px;
+}
+

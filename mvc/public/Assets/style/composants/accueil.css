@@ -1,0 +1,14 @@
+.accueil-titre {
+    font-family: var(--sous-titre);
+    font-weight: 600;
+}
+
+.accueil-div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.accueil-div h1, h2 {
+    margin-bottom: 20px;
+}

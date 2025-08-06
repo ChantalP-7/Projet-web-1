@@ -1,0 +1,71 @@
+.bouton {
+    padding: 15px 28px;
+    background-color: var(--bleuPale);
+    border: 1px solid transparent;
+    border-radius: 50px;
+}
+
+.bouton:hover {
+    background-color: var(--blanc);
+    border-color: var(--bleuPale);
+    color: var(--bleuFonce);
+    cursor: pointer;
+}
+.bouton a {
+    font-family: var(--texte);
+    font-size: 18px;
+}
+
+.bouton-simple {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    gap: 4px;
+    border-radius: 50px;
+    border: 1px solid var(--Noir);    
+    background-color: white;   
+    padding: 2px 3px;
+}
+
+
+.coeur {
+    padding: 7px 14px;
+    font-family: var(--titre);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.bouton-simple:hover {
+    color: var(--bleuFonce);
+    background-color: var(--bleuPale);
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.bouton-padding {
+    padding: 6px 22px;
+    font-size: 20px;    
+}
+
+.bouton-simple svg:hover {
+    color: var(--blanc) !important;    
+}
+
+.bouton-carre {
+    background-color: rgb(255, 225, 52);
+    padding: 8px 15px;
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+.bouton-carre:hover {
+    background-color: var(--bleuPale);
+}
+
+.nav-bouton {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}

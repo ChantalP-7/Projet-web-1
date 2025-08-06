@@ -1,0 +1,29 @@
+.declencheur-menu {
+    text-align: center;
+    width: 100%;
+    appearance: none;
+    display: none;
+    font-size: var(--p);
+    background-color: var(--bleuFonce);
+    color: var(--blanc);
+    padding: 20px;
+    cursor: pointer;
+}
+
+
+.declencheur-menu:not(:checked)::before {
+	content :"Menu ☰";
+    font-size: 26px;
+    color: var(--blanc)
+}
+.declencheur-menu:hover:not(:checked)::before {
+	content :"Ouvrir ☰";
+    color: var(--bleuPale);
+    font-size: 26px;
+}
+
+.declencheur-menu:checked::before {
+	content: "Fermer X";
+    font-size: 26px;
+    color: var(--blanc)
+}

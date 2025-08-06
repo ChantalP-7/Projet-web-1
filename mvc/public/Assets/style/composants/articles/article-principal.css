@@ -1,0 +1,17 @@
+
+.article-principal  {
+    padding: 30px;
+}
+
+.article-principal > *+* {
+    margin-top: 20px;
+}
+
+@media (max-width: 1000px) {
+
+    .article-principal{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+}
