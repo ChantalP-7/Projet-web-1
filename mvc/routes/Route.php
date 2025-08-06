@@ -18,35 +18,34 @@ class Route {
         $urlSegments = explode('?', $url);
         $urlPath = rtrim($urlSegments[0],'/');
 
-
         foreach(self::$routes as $route){
+            // echo BASE.$route['url']." = ".$url."<br/>";
             if(BASE.$route['url'] == $urlPath && $route['method'] == $method){
                 $controllerSegments = explode('@', $route['controller']);
-
+                // print_r($contollerSegments);
+                // die();
                 $controllerName = 'App\\Controllers\\'.$controllerSegments[0];
                 $methodName = $controllerSegments[1];
                 $controllerInstance = new $controllerName;
-
+                // echo $urlSegments[0];
+                // die();
                 if($method == 'GET'){
                     if(isset($urlSegments[1])){
                          parse_str($urlSegments[1], $queryParams);
+                        //  print_r($queryParams);
+                        //  die();
                         $controllerInstance->$methodName($queryParams);
                     }else{
                         $controllerInstance->$methodName();
                     }
-                }elseif($method == 'POST'){
-                     if(isset($urlSegments[1])){
-                         parse_str($urlSegments[1], $queryParams);
-                        $controllerInstance->$methodName($_POST, $queryParams);
-                    }else{
-                         $controllerInstance->$methodName($_POST);
-                    }
+                    
+                } elseif ($method == 'POST') {
+                    $controllerInstance->$methodName($_POST);
                 }
-                
              return;
             }
         }
         http_response_code(404);
-        echo "404 page introuvable ! 🤷🏻‍♂️";
+        echo "404 page not found";
     }
 }
