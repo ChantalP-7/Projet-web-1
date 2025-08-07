@@ -1,0 +1,181 @@
+{{ include('layouts/header.php', {title: 'Fiche enchère'})}}
+
+    <div class="conteneur">
+        <h2>
+            Bonjour Valérie ! C'est le moment de vérifier tes mises ou de miser !
+        </h2>
+        <div class="grille-fiche">
+            <div>
+            <div class="carte">
+                <figure>
+                <img
+                    class="timbre"
+                    src="./Assets/image/timbres/timbre-10.PNG"
+                    alt="timbre5"
+                />
+                <figcaption>
+                    381 Mint NH, VF (CV $200 - ID50632) - Joseph Luft
+                </figcaption>
+                </figure>
+            </div>
+            <div class="grille-galerie-fiche">
+                <figure>
+                <img
+                    class="miniature"
+                    src="./Assets/image/timbres/timbre-9.PNG"
+                    alt="timbre6"
+                />
+                </figure>
+                <figure>
+                <img
+                    class="miniature"
+                    src="./Assets/image/timbres/timbre-3.PNG"
+                    alt="timbre7"
+                />
+                </figure>
+                <figure>
+                <img
+                    class="miniature"
+                    src="./Assets/image/timbres/timbre-14.PNG"
+                    alt="timbre9"
+                />
+                </figure>
+                <div class="infos">
+                <h3>Détails sur l'enchère en cours</h3>
+                <div class="space-between">
+                    <p>Pays</p>
+                    <p>Canada</p>
+                </div>
+                <div class="space-between">
+                    <p>Année</p>
+                    <p>1951</p>
+                </div>
+                <div class="space-between">
+                    <p>Type</p>
+                    <p>Postal</p>
+                </div>
+                <div class="space-between">
+                    <p>Condition</p>
+                    <p>Neuf</p>
+                </div>
+                <div class="space-between">
+                    <p>Format</p>
+                    <p>En série</p>
+                </div>
+                <div class="space-between">
+                    <p>Page Catalogue</p>
+                    <p>23</p>
+                </div>
+                </div>
+            </div>          
+            </div>
+            <article class="article-fiche">
+                <h3>Lot : #381 Mint NH - Joseph Luft</h3>
+                <p>$129.00 - Ouverture : 1er juillet 2025</p>
+                <br>
+                <div class="grille-2-cols-fiche">
+                    <div>
+                        <p>Vendeur : Joseph Luft (10603)</p>
+                        <p>Temps restant : 7 jour, 2h 00m 37s</p>
+                        <br />
+                        <p>Lot : #381 Mint NH, VF (CV $200 - ID50632) - Joseph Luft</p>
+                        <br>
+                        <p>Certifié : Oui</p>
+                        <button class="bouton-simple margin-top">
+                                <a class="coeur" href="#">Suivre ce lot 
+                                <img
+                            src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                            width="18"
+                            height="18"
+                            alt="coeur1"
+                            class=""
+                            /> </a
+                            >                       
+                        </button>
+                    </div>
+                    <div>
+                    <div class="space-between">
+                        <div>
+                            <p>Prix de départ: $129.00</p>
+                            <p>Mise minimum : 5.00$</p>
+                        </div>
+                        <div>
+                            <p>Place une mise</p>
+                            <input 
+                                class="input"
+                                type="number"
+                                min="5.00"
+                                step="05.00"
+                                placeholder="USD"
+                                value="50.00"
+                                aria-label="Placer une mise"
+                            /> $ <br /><br />
+                            <a class="bouton-carre" href="#">Confirme ta mise</a>
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+                    <div class="space-between">
+                        <p>Mise courante: $129.00</p>
+                        <p>Nombre de mises : 1</p>
+                    </div>
+                    Miseur : Jocelyn Patenaude
+                    <div class="paiement">
+                    <p>Paiments sécurisés</p>
+                    <img
+                        src="./Assets/image/moyen-paiements.PNG"
+                        alt="Moyens de paiement"
+                    />
+                    </div>
+                    </div>
+                </div>          
+            </article>
+        </div>
+        <hr />
+        <h2>Plus de timbres de Joseph Luft</h2>
+        <div class="grille-galerie-fiche">
+            <img
+            src="https://s2.svgbox.net/hero-solid.svg?ic=arrow-left&color=000"
+            width="32"
+            height="32"
+            alt="flèche droite"
+            />
+            <figure>
+            <img
+                class="petite-image"
+                src="./Assets/image/timbres/timbre-12.PNG"
+                alt="timbre1"
+            />
+            </figure>
+            <figure>
+            <img
+                class="petite-image"
+                src="./Assets/image/timbres/timbre-16.PNG"
+                alt="timbre2"
+            />
+            </figure>
+            <figure>
+            <img
+                class="petite-image"
+                src="./Assets/image/timbres/timbre-14.PNG"
+                alt="timbre3"
+            />
+            </figure>
+            <figure>
+            <img
+                class="petite-image"
+                src="./Assets/image/timbres/timbre-9.PNG"
+                alt="timbre4"
+            />
+            </figure>
+
+            <img
+            src="https://s2.svgbox.net/hero-solid.svg?ic=arrow-right&color=000"
+            width="32"
+            height="32"
+            alt="flèche gauche"
+            />
+        </div>
+        </div>
+        <hr />
+       {{ include('layouts/footer.php')}}

@@ -1,3 +1,5 @@
+{{ include('layouts/header.php', {title: 'Membres'})}}
+
 <div class="container">
     {% if errors is defined %}
     <div class="error">
@@ -51,3 +53,5 @@
         <input type="submit" class="bouton" value="Soumettre">
     </form>
 </div>
+
+{{ include('layouts/footer.php')}}

@@ -1,3 +1,5 @@
+{{ include('layouts/header.php', {title: 'Membres'})}}
+
 <div class="hero"></div> 
      <h1>Membre</h1>
      <div class="grille">
@@ -24,3 +26,5 @@
     {% if guest is empty %}
     <a class="bouton" href="{{base}}/member/create">Inscription</a>
     {% endif %}
+
+    {{ include('layouts/footer.php')}}
