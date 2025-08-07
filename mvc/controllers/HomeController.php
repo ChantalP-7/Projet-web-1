@@ -1,12 +1,12 @@
-<?php
+<?php 
+
 namespace App\Controllers;
+use App\Providers\View;
+use App\Models\Home;
 
-use App\Models\ExampleModel;
 
-class HomeController{
-    public function index(){
-        $model = new ExampleModel();
-        $data = $model->getData();
-        include('views/home.php');
+class HomeController {
+    public function index() {       
+        return View::render('home/index');
     }
 }

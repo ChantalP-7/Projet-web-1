@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-    class ExampleModel {
+    class Home {
         public function getData() {
             return "Bienvenue chez toi!!! 🌺🌹🌼";
         }

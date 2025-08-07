@@ -8,17 +8,17 @@
       content="Cours UX/UY session 3 Collège Maisonneuve - Étudiante : Chantal Pépin"
     />
     <title>Enchères Stampee</title>
-    <link rel="stylesheet" href="{{ asset }}style/style.php" />
-    <script src="./Assets/currentUrl.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset }}./css/style.php">
+    <script src="../currentUrl.js" defer></script>
   </head>
   <body>
     <header>
       <div class="entete-haut">
         <div class="entete-logo">
-          <a href="index.html">
+          <a href="{{base}}/home">
             <picture
               ><img
-                src="Assets/image/img-logo-bg-transparent.png"
+                src="{{asset}}/image/img-logo-bg-transparent.png"
                 alt="logo stampee"
             /></picture>
             <h1>STAMPEE</h1>
@@ -56,30 +56,15 @@
           />
         </div>
         <div class="block-left user">
-            {% if session.idRole == 1 %}
-          <a href="{{base}}/user/create"
-            ><img
-              src="https://s2.svgbox.net/hero-outline.svg?ic=mail&color=FFF"
-              width="24"
-              height="24"
-              alt="courriel"
-            />Inscription utilisateur</a
-          >
-          {% endif %}
-
-            {% if session.idRole == 2 %}
           <a href="{{base}}/member/create"
             ><img
               src="https://s2.svgbox.net/hero-outline.svg?ic=mail&color=FFF"
               width="24"
               height="24"
               alt="courriel"
-            />Inscription membre</a
+            />Inscription</a
           >
-          {% endif %}
-
-          {% if guest %}
-          <a href="#"
+          <a href="{{base}}/login"
             ><img
               src="https://s2.svgbox.net/materialui.svg?ic=login&color=FFF"
               width="24"
@@ -88,7 +73,15 @@
             />
             Connexion</a
           >
-           {% endif %}
+          <a href="{{base}}/logout"
+            ><img
+              src="https://s2.svgbox.net/materialui.svg?ic=logout&color=FFF"
+              width="24"
+              height="24"
+              alt="se déconnecter"
+            />
+            Déconnexion</a
+          >
         </div>
       </div>
       <div class="principale">
@@ -98,8 +91,8 @@
           aria-label="menu item"
         />
         <nav class="navigation-principale">
-          <a href="index.html">Accueil</a>
-          <a href="catalogue.html">Catalogue</a>
+          <a href="{{base}}/home">Accueil</a>
+          <a href="#">Catalogue</a>
           <a href="#">Timbres</a>
           <div class="menu-deroulant">
             <span>Enchères</span>
@@ -141,3 +134,4 @@
         </nav>
       </div>
     </header>
+  <main>

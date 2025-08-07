@@ -1,7 +1,7 @@
  <footer>
       <div class="piedPage-haut">
         <h1>Abonnez-vous à notre infolettre</h1>
-        <form method="post">
+        <form class="flex" method="post">
           <label for="courriel" aria-label="Entrez votre courriel">
             <input
               type="email"

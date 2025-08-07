@@ -1,0 +1,67 @@
+.form  {
+    border: dotted 1px rgba(1, 47, 107, 0.71);
+    border-radius: 5px;
+    display: block;
+    margin: 50px auto;
+    font-size: 20px;
+    padding: 30px 50px;
+    max-width: 500px;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 20px;
+    color:rgb(44, 44, 44)
+}
+
+select, .input, textarea
+{    
+    border: 1px  solid rgba(1, 47, 107, 0.71);
+    border-left: solid 4px rgba(1, 47, 107, 0.71);    
+    color:rgb(1, 47, 107);
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 3px;
+    display: block;
+}
+
+select {
+    width: 100%;
+}
+
+.input {
+    width: 93%;
+}
+
+textarea {
+    width: 95%;
+}
+
+option {
+    color: black;
+}
+
+.input
+{
+    padding: 15px;
+    font-size: 22px;
+    border-radius: 3px;
+}
+
+.input {
+    margin-top: 50px;  
+    font-size: 16px;     
+}
+
+output {
+    border: none;
+}
+
+::placeholder, textarea {
+    font-size: 20px;
+}
+
+

@@ -64,12 +64,13 @@ CREATE TABLE IF NOT EXISTS `enchere` (
     CONSTRAINT `enchere_ibfk_1` FOREIGN KEY (`idTimbre`) REFERENCES `timbre` (`id`)
 )
 
-CREATE TABLE IF NOT EXISTS `enchereMembre` (
-    `nom` varchar(50) not null,
-    `prixDerniereMise` double NOT NULL,
-    `dateDerniereMise` date NOT NULL,     
-    `id` int NOT NULL,
+CREATE TABLE IF NOT EXISTS `miseEnchere` (
+    `id` int  not null AUTO_INCREMENT,
+    `prixMise` double NOT NULL,
+    `dateMise` date NOT NULL,     
+    `idMembre` int NOT NULL,
     `idEnchere` int NOT NULL,
+    PRIMARY KEY (`id`),
     KEY `idMembre` (`idMembre`),
     KEY `idEnchere` (`idEnchere`),
     CONSTRAINT `enchereMembre_ibfk_1` FOREIGN KEY (`idMembre`) REFERENCES `membre` (`id`),
@@ -88,10 +89,4 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   KEY `idEnchere` (`idEnchere`),
   CONSTRAINT `enchereMembre_ibfk_1` FOREIGN KEY (`idMembre`) REFERENCES `membre` (`id`),
 CONSTRAINT `enchereMembre_ibfk_2` FOREIGN KEY (`idEnchre`) REFERENCES `enchere` (`id`)
-)
-
-CREATE TABLE IF NOT EXISTS `role` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `role` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
 )

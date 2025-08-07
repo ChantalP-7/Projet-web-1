@@ -11,15 +11,7 @@ class Auth {
             return view::redirect('login');
             exit();
         }
-    }
-    static public function role($id){
-        if($_SESSION['idRole'] == $id){
-            return true;
-        }else{
-            return view::redirect('login');
-            exit();
-        }
-    }
+    }    
 }
 
 ?>

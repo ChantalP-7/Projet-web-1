@@ -35,8 +35,9 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .evenly {
@@ -89,6 +90,10 @@
     align-items: left;
 }
 
+.center {
+    text-align: center;
+}
+
 .align-left {
     text-align: left;
 }
@@ -111,4 +116,57 @@
 
 .span {
     font-weight: 600;
+}
+
+
+.les-etoiles {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.etoile {
+    color: rgb(1, 47, 107);
+    font-size: 2em;
+    cursor: pointer; 
+}
+
+input[name="etoiles"]:checked  {
+    color: gold;
+}
+
+.gold {
+    color: gold;
+}
+
+.delete {
+    border: none;
+}
+
+.error{ 
+    
+    border: 1px dotted red;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 1.2rem;
+}
+
+.success {
+    color: green;
+    border: 1px dotted green;
+    padding: 5px 10px;
+    border-radius: 3px;    
+}
+
+.bienvenue {
+    margin-top: 50px;
+    text-align: center;
+    
+}
+
+.bienvenue span {
+    font-weight: 700;
+    font-size: 32px;
+
 }

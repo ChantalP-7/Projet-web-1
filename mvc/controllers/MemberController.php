@@ -4,8 +4,6 @@ use App\Models\Member;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
-use App\Models\User;
-use App\Models\Role;
 
 class MemberController{
 
@@ -14,16 +12,12 @@ class MemberController{
     }   
 
     public function create(){
-        Auth::session();       
-        $user = new user;
-        $idUser = $user->selectId("IdUtilisateur");
-        return View::render('member/create', ['idUtilisateur' => $idUser]);
+        return View::render('member/create');
     }
     
     public function index(){
         $member = new Member;
         $members = $member->select();
-        print_r($_SESSION);
         return View::render('member/index', ['members'=>$members]);
     }
 
@@ -57,42 +51,38 @@ class MemberController{
     }
 
 
-   public function store($data) { 
-        Auth::session();       
-        $validator = new Validator;
-        $validator->field('prenom', $data['prenom'])->min(2)->max(45)->required();
-        $validator->field('nom', $data['nom'])->min(2)->max(45)->required();
-        $validator->field('pseudonyme', $data['pseudonyme'])->max(45);
-        $validator->field('telephone', $data['telephone'])->max(20)->required(); 
-        
-        if($validator->isSuccess()) {
-            $user = new User;
-            
-            $insertUser = $user -> insert($data);
-            $member = new Member;
-            $data['idUtilisateur'] = $insertUser;
-            $insertMember = $member->insert($data);
+   public function store($data){
 
-            if($insertMember) {
-                return View::redirect('member/show?id='.$insertMember);
-            } else {
-                return View::render('error', ['message'=>'404 page pas trouvée!']);
-            }
-        }else {
+        $validator = new Validator;
+        $validator->field('prenom', $data['prenom'])->min(2)->max(45);
+        $validator->field('nom', $data['nom'])->min(2)->max(45);
+        $validator->field('username', $data['username'])->min(6)->max(50)->email()->unique('Member');
+        $validator->field('password', $data['password'])->min(6)->max(20);
+        $validator->field('telephone',$data['telephone'])->max(20);
+        $validator->field('courriel', $data['courriel'])->min(6)->max(50)->email();
+
+        if($validator->isSuccess()){
+            $member = new Member;
+            $data['password'] =  $member->hashPassword($data['password']);
+            $insert = $member->insert($data);
+            return View::redirect('login');
+        }else{
             $errors = $validator->getErrors();
-            print_r($errors);
             return View::render('member/create', ['errors'=>$errors, 'member'=>$data]);
         }
+
     }
 
     function update($data, $get){   
         Auth::session(); 
         if(isset($get['id']) && $get['id']!=null){
             $validator = new Validator;
-            $validator->field('prenom',$data['prenom'])->min(2)->max(45);
-            $validator->field('nom',$data['nom'])->min(2)->max(45);
-            $validator->field('pseudonyme',$data['pseudonyme'])->max(45);
+            $validator->field('prenom', $data['prenom'])->min(2)->max(45);
+            $validator->field('nom', $data['nom'])->min(2)->max(45);
+            $validator->field('username', $data['username'])->min(6)->max(50)->email()->unique('Member');
+            $validator->field('password', $data['password'])->min(6)->max(20);
             $validator->field('telephone',$data['telephone'])->max(20);
+            $validator->field('courriel', $data['courriel'])->min(6)->max(50)->email();
 
             if($validator->isSuccess()){
                 $member = new Member;
@@ -113,7 +103,7 @@ class MemberController{
 
     public function delete($data){
 
-        if(Auth::session() && Auth::role(2)  ) {
+        if(Auth::session()) {
         $member = new Member;
 
     $delete = $member->delete($data['id']);
