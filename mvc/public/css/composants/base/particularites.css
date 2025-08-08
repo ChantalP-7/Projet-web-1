@@ -35,7 +35,6 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
     align-items: center;
 }
@@ -169,4 +168,9 @@ input[name="etoiles"]:checked  {
     font-weight: 700;
     font-size: 32px;
 
+}
+
+.sous-titre {
+    font-family: var(--sous-titre);
+    font-weight: 600;
 }

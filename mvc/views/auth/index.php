@@ -9,15 +9,20 @@
         </ul>
     </div>
     {% endif %}
-    <form class="form" method="post">
-        <h2>Je me connecte</h2>
-        <label for="username">Nom utilisateur (ton courriel)
-            <input type="email" id="username" name="username" class="input" value="{{ member.username }}">
-        </label>
-        <label for="password">Password
-            <input type="password" id="password" class="input" name="password" value="{{ member.password }}">
-        </label>
-        <input type="submit" class="bouton" class="input" value="Login">
+    <h1 class="sous-titre center">Nous sommes contents de te revoir !</h1>
+    <form class="formulaire" method="post">
+        <h2 class="sous-titre">Je me connecte</h2>
+        <div class="space">
+            <div>            
+                <label for="username">Nom utilisateur (ton courriel)</label>
+                <input type="email" id="username" name="username" class="input" value="{{ member.username }}">  
+            </div>
+            <div>          
+                <label for="password">Password</label>
+                <input type="password" id="password" class="input" name="password" value="{{ member.password }}">   
+            </div>         
+        </div>
+        <input type="submit" class="bouton" class="input" value="Connexion">
     </form>
 </div>
 </main>

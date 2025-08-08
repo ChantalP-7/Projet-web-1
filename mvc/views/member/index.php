@@ -1,7 +1,7 @@
 {{ include('layouts/header.php', {title: 'Membres'})}}
 
 <div class="hero"></div> 
-     <h1>Membre</h1>
+     <h1 class="sous-titre">Nos membres</h1>
      <div class="grille">
         <table>        
             <tr>

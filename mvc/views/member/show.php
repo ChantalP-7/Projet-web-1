@@ -1,9 +1,8 @@
 {{ include('layouts/header.php', {title: 'Membres'})}}
 
         <div class="hero"></div>      
-        <h1>Bienvenue {{ member.prenom}} !</h1>
+        <h1 class="sous-titre">Bienvenue {{ member.prenom}} !</h1>
         <div class="div-un-article">
-            <h3>Mon Profil</h3>
             <p><strong>Prenom: </strong >{{ member.prenom}}</p>
             <p><strong>Nom: </strong>{{ member.nom }}</p>
             <p><strong>Courriel: </strong>{{ member.courriel }}</p>
