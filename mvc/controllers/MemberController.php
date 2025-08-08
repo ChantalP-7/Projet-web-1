@@ -8,7 +8,7 @@ use App\Providers\Auth;
 class MemberController{
 
     public function __construct(){
-        Auth::session();
+        
     }   
 
     public function create(){
