@@ -134,4 +134,3 @@
         </nav>
       </div>
     </header>
-  <main>

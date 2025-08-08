@@ -1,4 +1,5 @@
 {{ include('layouts/header.php', {title: 'Connexion'})}}
+<main>
     <div class="accueil-div">
         <h1 class="accueil-titre">Bienvenue aux enchères numérique du Lord Stampee</h1>
         <p>Trouvez l'enchère qui vous fait rêver! Si vous êtes nouvelle ou nouveau, nous espérons que vous aimerez découvrir ce monde de la philatélie et que vous y trouverez une passion. Sinon, n'hésitez pas à revenir. Nos enchères se renouvellent constamment. N'hésitez pas à nous contacter pour toute question. Au plaisir!</p>
@@ -287,7 +288,7 @@
             <a href="#">Enchères</a>
             <a href="#">Bridge</a>
         </div>
-      </div>    
-    </main>
+      </div>
+</main> 
     <hr/>
 {{ include('layouts/footer.php')}}

@@ -1,3 +1,10 @@
+table {
+    /*overflow-x:auto;*/
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
 th {
     background-color: rgb(170, 170, 170);
     font-size: 24px;
@@ -6,6 +13,12 @@ th {
 
 td {
     font-size: 20px;
+    min-width: fit-content;
+}
+
+
+td a:hover {
+    cursor: pointer
 }
 
 th, td {
@@ -18,4 +31,71 @@ th, td {
 td.bleu:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+
+.div-un-article {
+    display: block;
+    margin: auto;
+    justify-content: center;
+    max-width: 1000px;
+    margin-bottom: 60px;    
+}
+
+.div-un-article h2 {
+    /*background-color: tomato;*/
+    font-family: Flamenco;
+    border-radius: 3px 3px 0px 0px;
+    padding: 8px;
+    font-size: 34px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.div-un-article p {
+    font-size: 18px;
+    line-height: 1.4em;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.bouton-profil 
+{   
+    font-size: 20px;
+    padding: 12px 20px;
+    max-width: 200px;
+    border-radius: 25px;
+    display: block;
+    background-color: rgb(1, 47, 107);
+    border: none;
+    color: white;
+    margin: 50px auto 20px auto;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+    background-color: rgba(248, 76, 85, 0.79);
+    color: black;
+    cursor: pointer;
+    }
+}
+
+.deux-boutons {
+    max-width: 400px;
+    margin: -50px auto auto auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.trois-boutons {
+    max-width: 500px;
+    margin: -50px auto auto auto;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
 }

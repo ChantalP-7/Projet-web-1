@@ -1,8 +1,8 @@
 {{ include('layouts/header.php', {title: 'Membres'})}}
-
+<main>
 <div class="hero"></div> 
      <h1>Membre</h1>
-     <div class="grille">
+     <div class="table">
         <table>        
             <tr>
                 <th>Prénom</th>            
@@ -13,7 +13,7 @@
                 <tr>                        
                     <td>{{ member.prenom}} </td>
                     <td>{{ member.nom}}</td>                  
-                <td><a href="{{base}}/member/show?id={{member.id}}">Voir le profil</a></td>                
+                    <td><a href="{{base}}/member/show?id={{member.id}}">Voir le profil</a></td>                
                 </tr>
                 {% endfor %}
             </table>         

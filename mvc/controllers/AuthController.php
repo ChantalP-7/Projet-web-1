@@ -15,9 +15,10 @@ class AuthController{
         $validator->field('password', $data['password'])->min(6)->max(20);
          if($validator->isSuccess()){
             $member = new Member;
+            $members = $member->select();
             $checkMember= $member->checkMember($data['username'], $data['password']);
             if($checkMember){                
-                return View::redirect('member/show');
+                return View::redirect('members');
             }else{
                 $errors['message'] = "Svp, vérifie tes identifiants !";               
                 return View::render('auth/index', ['errors'=>$errors]);
