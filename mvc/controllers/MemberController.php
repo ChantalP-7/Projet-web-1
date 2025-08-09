@@ -7,14 +7,6 @@ use App\Providers\Auth;
 
 class MemberController{
 
-    public function __construct(){
-        
-    }   
-
-    public function create(){
-        return View::render('member/create');
-    }
-    
     public function index(){
         $member = new Member;
         $members = $member->select();
@@ -35,6 +27,14 @@ class MemberController{
         }
     }
 
+
+    public function create(){
+        return View::render('member/create');
+    }
+    
+    
+    
+
     public function edit($data){
         Auth::session();
         if(isset($data['id']) && $data['id']!=null){
@@ -52,7 +52,6 @@ class MemberController{
 
 
    public function store($data){
-
         $validator = new Validator;
         $validator->field('prenom', $data['prenom'])->min(2)->max(45);
         $validator->field('nom', $data['nom'])->min(2)->max(45);

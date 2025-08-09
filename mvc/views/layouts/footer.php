@@ -16,7 +16,7 @@
       </div>
       <div class="piedPage-centre">
         <article>
-          <h2 class="h4">Actualités</h2>
+          <h2 class="h4 sous-titre">Actualités</h2>
           <div class="block-left">
             <a href="#">Timbres</a>
             <a href="#">Enchères</a>
@@ -24,7 +24,7 @@
           </div>
         </article>
         <article>
-          <h2 class="h4">Fonctionnemenet de la plateforme</h2>
+          <h2 class="h4 sous-titre">Fonctionnemenet de la plateforme</h2>
           <div class="block-left">
             <a href="#">Aide "Profil"</a>
             <a href="#">Comment placer une offre</a>
@@ -34,7 +34,7 @@
           </div>
         </article>
         <article class="block-center">
-          <h2 class="h4">Suivez Lord Stampee</h2>
+          <h2 class="h4 sous-titre">Suivez Lord Stampee</h2>
           <div class="inline">
             <img
               src="https://s2.svgbox.net/social.svg?ic=facebook&color=000"
@@ -57,7 +57,7 @@
           </div>
         </article>
         <article>
-          <h2 class="h4">Notre blogue</h2>
+          <h2 class="h4 sous-titre">Notre blogue</h2>
           <div class="block-left">
             <a href="#">Articles</a>
             <a href="#">Archives</a>

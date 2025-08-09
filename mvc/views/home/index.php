@@ -1,7 +1,7 @@
 {{ include('layouts/header.php', {title: 'Connexion'})}}
 <main>
     <div class="accueil-div">
-        <h1 class="accueil-titre">Bienvenue aux enchères numérique du Lord Stampee</h1>
+        <h1 class="sous-titre">Bienvenue aux enchères numérique du Lord Stampee</h1>
         <p>Trouvez l'enchère qui vous fait rêver! Si vous êtes nouvelle ou nouveau, nous espérons que vous aimerez découvrir ce monde de la philatélie et que vous y trouverez une passion. Sinon, n'hésitez pas à revenir. Nos enchères se renouvellent constamment. N'hésitez pas à nous contacter pour toute question. Au plaisir!</p>
         <br>
         <div class="coupCoeur">
@@ -13,7 +13,7 @@
         </div>
     </div>
      <article class="article-principal">        
-          <h2 class="accueil-titre">Nos enchères vedettes</h2>        
+          <h2 class="sous-titre">Nos enchères vedettes</h2>        
         <div class="grille-cartes">
           <div class="carte">
             <figure>
@@ -145,7 +145,7 @@
             </div>
           </div>
         </div>
-        <h2 class="accueil-titre">Enchères en cours</h2>
+        <h2 class="sous-titre">Enchères en cours</h2>
         <div class="grille-cartes">
           <div class="carte">
             <figure>
@@ -278,11 +278,11 @@
         </div>
       </article>
       <div class="accueil-div">
-        <h2 class="accueil-titre">Qui est Lord Stampee ?</h2>
+        <h2 class="sous-titre">Qui est Lord Stampee ?</h2>
         <p>Lord Stampee est un philatéliste passionné depuis son plus jeune âge, une passion qu’il a cultivée avec une dévotion sans faille au fil des années. Dès son enfance, il s’est fasciné par l’histoire et les histoires cachées derrière chaque timbre, explorant avec émerveillement les images, les dates, et les empreintes qui racontent l’évolution des pays et des civilisations. <br><br> Sa collection, aujourd’hui parmi les plus prestigieuses, témoigne de son expertise et de sa persévérance. Lord Stampee ne se contente pas d’acheter des timbres, il les étudie, les restaure et les archive avec une précision presque scientifique, cherchant toujours à approfondir sa connaissance de cet art singulier. Pour lui, la philatélie est bien plus qu'un simple hobby; c'est une véritable quête de l'histoire et un moyen d’immortaliser des fragments du monde entier à travers de petits morceaux de papier.</p>
       </div>
       <div class="accueil-div">
-        <h2 class="accueil-titre">Actualités récentes</h2>
+        <h2 class="sous-titre">Actualités récentes</h2>
         <div class="block-left lien">
             <a href="#">Timbres</a>
             <a href="#">Enchères</a>

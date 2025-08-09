@@ -11,7 +11,6 @@ class Member extends CRUD {
         $options = [
                 'cost' => $cost
         ];
-
         return password_hash($password, PASSWORD_BCRYPT, $options); 
     }
 
@@ -31,5 +30,4 @@ class Member extends CRUD {
             return false;
         }
     }
-
 } 

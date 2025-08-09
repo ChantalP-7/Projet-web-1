@@ -2,23 +2,24 @@
 namespace App\Controllers;
 
 use App\Providers\View;
+use App\Providers\Auth;
 use App\Providers\Validator;
 use App\Models\Member;
 
-class AuthController{    
+class AuthController{ 
     public function index(){
         return View::render('auth/index');
     }
     public function store($data){
+        Auth::session();
         $validator = new Validator;
         $validator->field('username', $data['username'])->min(5)->max(45)->email();
         $validator->field('password', $data['password'])->min(6)->max(20);
          if($validator->isSuccess()){
             $member = new Member;
-            $members = $member->select();
             $checkMember= $member->checkMember($data['username'], $data['password']);
             if($checkMember){                
-                return View::redirect('members');
+                return View::redirect('member/show');
             }else{
                 $errors['message'] = "Svp, vérifie tes identifiants !";               
                 return View::render('auth/index', ['errors'=>$errors]);

@@ -1,7 +1,7 @@
 {{ include('layouts/header.php', {title: 'Membres'})}}
 <main>
         <div class="hero"></div>      
-        <h1 class="titre">Bienvenue {{ member.prenom}} !</h1>
+        <h1>Bienvenue {{ member.prenom}} !</h1>
         <div class="div-un-article">
             <p><strong>Prenom: </strong >{{ member.prenom}}</p>
             <p><strong>Nom: </strong>{{ member.nom }}</p>
@@ -17,6 +17,4 @@
                 </form>
             </div>
         </div>
-</main>
-        <hr/>
 {{ include('layouts/footer.php')}}

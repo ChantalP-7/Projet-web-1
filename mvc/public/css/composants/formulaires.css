@@ -1,23 +1,49 @@
-.form  {
-    border: dotted 1px rgba(1, 47, 107, 0.71);
-    border-radius: 5px;
+.formulaire  {
+    border: solid 4px rgba(1, 47, 107, 0.71);
+    border-radius: 15px;
     display: block;
     margin: 50px auto;
-    font-size: 20px;
-    padding: 30px 50px;
-    max-width: 500px;
+    margin-bottom: 80px;
+    max-width: 600px;
+    padding: 40px;
 }
 
-label {
+
+.formulaire h2 {
+    font-size: 30px;
+}
+
+
+.formulaire .space {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.formulaire .bouton {
+    margin-top: 50px;
+    margin-left: -10px;
+}
+
+
+.formulaire h2 {
+    margin-left: -5px;
+    font-size: 30px;
+    text-align: left;
+}
+
+.formulaire label {
     display: block;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     text-align: left;
-    font-size: 20px;
+    font-size: 16x;
     color:rgb(44, 44, 44)
 }
 
-select, .input, textarea
+.formulaire select, input, textarea
 {    
     border: 1px  solid rgba(1, 47, 107, 0.71);
     border-left: solid 4px rgba(1, 47, 107, 0.71);    
@@ -28,40 +54,61 @@ select, .input, textarea
     display: block;
 }
 
-select {
-    width: 100%;
-}
-
-.input {
-    width: 93%;
-}
-
-textarea {
-    width: 95%;
-}
-
-option {
+.formulaire option {
     color: black;
 }
 
-.input
+.formulaire input
 {
-    padding: 15px;
+    padding: 10px;
     font-size: 22px;
     border-radius: 3px;
 }
 
-.input {
-    margin-top: 50px;  
-    font-size: 16px;     
-}
-
-output {
+.formulaire output {
     border: none;
 }
 
-::placeholder, textarea {
+.formulaire ::placeholder, textarea {
     font-size: 20px;
 }
 
+@media (max-width: 800px) {
+    
+    .formulaire .space {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
 
+
+.formulaire {
+    max-width: 350px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.formulaire .bouton {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.formulaire h1 {
+
+    font-size: 24px;
+
+}
+
+.formulaire h2 {
+    margin-top: 20px;
+    margin-left: 0px;
+    text-align: center;
+    font-size: 18x;
+}
+
+
+
+}

@@ -2,7 +2,7 @@
 <main>
 <div class="hero"></div> 
      <h1>Membre</h1>
-     <div class="table">
+     <div class="grille">
         <table>        
             <tr>
                 <th>Prénom</th>            

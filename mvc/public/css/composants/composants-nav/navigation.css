@@ -1,8 +1,16 @@
 .navigation-principale {
     display: flex;
     justify-content: space-between;
+    align-items: center !important;
+    padding: 10px 20px;
+}
+
+
+.navigation-principale .alignement-menu {
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
-    padding: 20px;
+    gap: 10px;
 }
 
 .navigation-principale .ul {
@@ -48,6 +56,12 @@
     border: none;
     outline: none;
 }
+
+.nav-bouton> label{
+    margin-top: -10px;
+    
+}
+
 .nav-bouton a {
     border-radius: 50px;
     color: var(--bleuFonce);

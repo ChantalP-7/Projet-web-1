@@ -13,15 +13,9 @@
     gap: 20px; 
 }
 
-
 .entete-logo:hover {
     cursor: pointer;
 }
-
-/*.entete-logo picture {    
-    border-radius: 50%;
-    background-color: white;
-}*/
 
 .entete-logo img {
     width: 80px;
@@ -45,17 +39,17 @@
     color: var(--bleuPale);
 }
 
-.entete-haut  .search {
+.entete-haut .search {
     width: 300px;
     padding: 10px;
 }
-
 
 .entete-haut form {
     display: flex;
     align-items: center;
     gap: 3px
 }
+
 .entete-haut button {
     width: 50px;
     padding: 7px;
@@ -64,11 +58,11 @@
     border: none;
 }
 
-
 .entete-haut button:hover {
     background-color: white;
     cursor: pointer;
 }
+
 .entete-haut input {
     border: none;
     border-radius: 2px;
@@ -80,10 +74,18 @@
     gap: 5px;
 }
 
-.entete-haut .icone:hover {
+.entete-haut .icone svg:hover {
     cursor: pointer;
+    color: var(--bleuPale);
 }
 
+.entete-haut .user a {
+    font-size: 16px;
+}
+
+.entete-haut .user svg:hover {
+    color: var(--bleuPale);
+}
 
 @media (max-width: 1000px) {
     
@@ -99,10 +101,9 @@
     
     .entete-haut .icone {
         display: none;
-    }
+    }    
     
-    
-    .nav-bouton{
+   .entete .nav-bouton{
         display: flex;
         flex-direction: column;
         justify-content:flex-start;

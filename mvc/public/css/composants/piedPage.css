@@ -1,4 +1,3 @@
-
 .piedPage-haut {   
     padding: 20px 20px;
     display: flex;
@@ -11,7 +10,6 @@
     font-size: var(--h2);
     color: var(--bleuFonce);
 }
-
 
 .piedPage-haut input[type='email'], input[type='submit'] {
     padding: 5px 10px;
@@ -30,7 +28,6 @@
     color: var(--blanc);
 }
 
-
 .piedPage-centre {
     padding: 20px;
     display: grid;
@@ -38,19 +35,16 @@
     gap: 50px;   
 }
 
-
 .piedPage-centre .h4 {
     font-family: var(--texte) !important;
     font-size: var(--h4);
     margin-bottom: 10px;
 }
 
-
 .piedPage-centre a {
     color: blue;
     text-decoration: underline;
 }
-
 
 .piedPage-centre a:hover {
     color: var(--vert)
@@ -61,7 +55,6 @@
     gap: 15px;
     margin-top: -10px;
 }
-
 
 .piedPage-centre .inline:hover {
     cursor:pointer;
@@ -92,7 +85,6 @@
     font-size: 16px;
 }
 
-
 .piedPage-bas .lien {
     color: white;
     text-decoration: none;
@@ -103,7 +95,6 @@
     color: var(--bleuPale)
 }
 
-
 @media (max-width: 1000px) {
     
     .piedPage-haut {
@@ -111,26 +102,8 @@
         flex-direction: column;
         gap: 10px;
         align-items: left;
-    }
-    
-    /*.piedPage-centre{
-        display: flex;
-        justify-content: space-between;
-        align-items: left;        
-    }
-    
-    .piedPage-centre .media-query {        
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-    }*/
-
-    
-   /* .piedPage-centre .inline {
-        margin-bottom: 20px;
-    }*/
-
-    
+    }    
+   
     .piedPage-centre .block-center {
         display: flex;
         flex-direction: column;
