@@ -12,7 +12,6 @@
     gap: 30px;
 }
 
-
 .grille-fiche figure {
     display: flex;
     flex-direction: column;
@@ -28,7 +27,6 @@
 .grille > div, .grille-fiche > div {
     margin-top: 20px;
 }
-
 
 @media (max-width: 1000px) { 
     

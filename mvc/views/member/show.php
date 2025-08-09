@@ -17,4 +17,7 @@
                 </form>
             </div>
         </div>
+        <div class="separation"><p></p></div>
+</main>
+<hr/>
 {{ include('layouts/footer.php')}}

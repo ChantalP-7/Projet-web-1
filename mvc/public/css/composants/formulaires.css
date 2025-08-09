@@ -1,12 +1,18 @@
 .formulaire  {
-    border: dotted 1px rgba(1, 47, 107, 0.71);
-    border-radius: 5px;
+    border: solid 4px rgba(1, 47, 107, 0.71);
+    border-radius: 15px;
     display: block;
     margin: 50px auto;
     margin-bottom: 80px;
     max-width: 600px;
     padding: 40px;
 }
+
+
+.formulaire h2 {
+    font-size: 30px;
+}
+
 
 .formulaire .space {
     display: flex;
@@ -22,8 +28,10 @@
 }
 
 
-.formulaire h2, .bouton {
+.formulaire h2 {
     margin-left: -5px;
+    font-size: 30px;
+    text-align: left;
 }
 
 .formulaire label {
@@ -46,18 +54,6 @@
     display: block;
 }
 
-/*.formulaire select {
-    width: 100%;
-}
-
-.formulaire input {
-    max-width: 100%;
-}
-
-.formulaire textarea {
-    width: 95%;
-}*/
-
 .formulaire option {
     color: black;
 }
@@ -77,8 +73,8 @@
     font-size: 20px;
 }
 
-
 @media (max-width: 800px) {
+    
     .formulaire .space {
     display: flex;
     flex-direction: column;
@@ -91,6 +87,7 @@
 .formulaire {
     max-width: 350px;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .formulaire .bouton {
@@ -99,11 +96,17 @@
     margin-bottom: 20px;
 }
 
+.formulaire h1 {
+
+    font-size: 24px;
+
+}
 
 .formulaire h2 {
     margin-top: 20px;
     margin-left: 0px;
     text-align: center;
+    font-size: 18x;
 }
 
 
