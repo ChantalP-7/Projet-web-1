@@ -1,12 +1,15 @@
 :root {
 	/** Couleurs */
-	--bleuFonce: #020949;
+	--bleuNoir: #020949;
+	--bleuFonce: #0a167a;
 	--bleuMoyen: #1c458b;
 	--bleuPale: #99a3ff;
 	--blanc: #fff;
 	--perle: #e4e4e4;
 	--Noir: #000;
 	--vert: #0cb644;
+	--tomato: tomato;
+	--cerise: rgb(219, 0, 66);
 
 	/* Typographie */
 

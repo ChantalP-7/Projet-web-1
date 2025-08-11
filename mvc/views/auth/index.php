@@ -1,5 +1,6 @@
 {{ include('layouts/header.php', {title: 'Connexion'})}}
-<div class="container">
+<main>
+<div class="contenu">
     {% if errors is defined %}
     <div>
         <ul>

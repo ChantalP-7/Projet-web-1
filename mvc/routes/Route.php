@@ -39,6 +39,6 @@ class Route {
             }
         }
         http_response_code(404);
-        echo "404 page not found";
+        echo "🤷🏽‍♂️404 page non trouvée";
     }
 }

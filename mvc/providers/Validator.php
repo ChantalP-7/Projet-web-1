@@ -21,28 +21,28 @@ class Validator {
 
     public function required(){
         if(empty($this->value)){
-            $this->errors[$this->key] = "$this->name is required";
+            $this->errors[$this->key] = "Ce $this->name est requis";
         }
         return $this;
     }
 
     public function max($length){
         if(strlen($this->value) > $length ){
-            $this->errors[$this->key] = "$this->name must be less than $length characters";
+            $this->errors[$this->key] = "Ce $this->name doit être moins que $length caractères";
         }
         return $this;
     }
 
     public function min($length){
         if(strlen($this->value) < $length ){
-            $this->errors[$this->key] = "$this->name must be more than $length characters";
+            $this->errors[$this->key] = "Ce $this->name doit être plus de $length caractères";
         }
         return $this;
     }
 
     public function email() {
         if (!empty($this->value) && !filter_var($this->value, FILTER_VALIDATE_EMAIL)) {
-            $this->errors[$this->key]="Invalid $this->name format.";
+            $this->errors[$this->key]="Format du $this->name invalide.";
         }
         return $this;
     }
@@ -52,7 +52,7 @@ class Validator {
         $model = new $model;
         $unique = $model->unique($this->key, $this->value);
         if($unique){
-            $this->errors[$this->key]="$this->name must be unique.";
+            $this->errors[$this->key]=" Ce $this->name doit être unique.";
         }
         return $this;
     }

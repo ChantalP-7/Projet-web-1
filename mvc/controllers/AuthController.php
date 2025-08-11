@@ -19,7 +19,7 @@ class AuthController{
             $member = new Member;
             $checkMember= $member->checkMember($data['username'], $data['password']);
             if($checkMember){                
-                return View::redirect('member/show');
+                return View::redirect('member/show?id='.$_SESSION['id']);
             }else{
                 $errors['message'] = "Svp, vérifie tes identifiants !";               
                 return View::render('auth/index', ['errors'=>$errors]);

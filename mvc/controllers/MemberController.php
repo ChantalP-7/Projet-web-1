@@ -23,7 +23,7 @@ class MemberController{
                 return View::render('error', ['message'=>'Membre pas trouvé!']);
             }
         }else{
-            return View::render('error', ['message'=>'404 not found!']);
+            return View::render('error', ['message'=>'404 pas trouvé!']);
         }
     }
 
@@ -31,9 +31,6 @@ class MemberController{
     public function create(){
         return View::render('member/create');
     }
-    
-    
-    
 
     public function edit($data){
         Auth::session();
@@ -63,7 +60,6 @@ class MemberController{
         if($validator->isSuccess()){
             $member = new Member;
             $data['password'] =  $member->hashPassword($data['password']);
-            $insert = $member->insert($data);
             return View::redirect('login');
         }else{
             $errors = $validator->getErrors();
@@ -96,7 +92,7 @@ class MemberController{
                 return View::render('member/edit', ['errors'=>$errors, 'member'=>$data]);
             }
         }else{
-            return View::render('error', ['message'=>'404 not found!']);
+            return View::render('error', ['message'=>'404 non trouvé!']);
         }
     }
 
@@ -109,7 +105,7 @@ class MemberController{
     if($delete){
         return View::redirect('members');
     }else{
-        return View::render('error', ['message'=>'404 page introuvable !']);
+        return View::render('error', ['message'=>'404 non trouvé !']);
     }
     }
 }

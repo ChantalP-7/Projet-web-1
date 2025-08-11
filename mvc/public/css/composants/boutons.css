@@ -69,3 +69,25 @@
     justify-content: flex-start;
     gap: 20px;
 }
+
+.bouton-profil 
+{   
+    font-size: 20px;
+    padding: 12px 20px;
+    max-width: 200px;
+    border-radius: 25px;
+    display: block;
+    background-color: rgb(1, 47, 107);
+    border: none;
+    color: white;
+    margin: 50px auto 20px auto;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+    background-color: rgba(248, 76, 85, 0.79);
+    color: black;
+    cursor: pointer;
+    }
+}
+

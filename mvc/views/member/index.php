@@ -1,7 +1,6 @@
 {{ include('layouts/header.php', {title: 'Membres'})}}
 <main>
-<div class="hero"></div> 
-     <h1>Membre</h1>
+     <h1>Membres</h1>
      <div class="grille">
         <table>        
             <tr>
@@ -21,5 +20,4 @@
     </div>    
     <a class="bouton" href="{{base}}/member/create">Inscription</a>
 </main>
-<hr/>
     {{ include('layouts/footer.php')}}

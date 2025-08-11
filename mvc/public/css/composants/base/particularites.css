@@ -5,6 +5,10 @@
     gap: 10px;
 }
 
+.block-left a {
+    margin-left : 10px;
+}
+
 .lien {
     color: blue;
     text-decoration: underline;

@@ -6,7 +6,7 @@
 }
 
 
-.navigation-principale .alignement-menu {
+.navigation-principale .menu-alignement {
     display: flex;
     justify-content: flex-start;
     align-items: center;

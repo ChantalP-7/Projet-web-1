@@ -1,101 +1,101 @@
 table {
-    /*overflow-x:auto;*/
-    margin: 50px auto;
-    padding: 20px;
-    max-width: 800px;
+	/*overflow-x:auto;*/
+	margin: 50px auto;
+	padding: 20px;
+	max-width: 800px;
 }
 
 th {
-    background-color: rgb(170, 170, 170);
-    font-size: 24px;
-    font-weight: 600;
+	background-color: rgb(170, 170, 170);
+	font-size: 24px;
+	font-weight: 600;
 }
 
 td {
-    font-size: 20px;
-    min-width: fit-content;
+	font-size: 20px;
+	min-width: fit-content;
 }
-
 
 td a:hover {
-    cursor: pointer
+	cursor: pointer;
 }
 
-th, td {
-    border: dotted 1px rgb(170, 170, 170);
-    border-radius: 5px;
-    gap: 10px;
-    padding: 10px;
+th,
+td {
+	border: dotted 1px rgb(170, 170, 170);
+	border-radius: 5px;
+	gap: 10px;
+	padding: 10px;
 }
 
 td.bleu:hover {
-    cursor: pointer;
-    text-decoration: underline;
+	cursor: pointer;
+	text-decoration: underline;
 }
 
-
 .div-un-article {
-    display: block;
-    margin: auto;
-    justify-content: center;
-    max-width: 1000px;
-    margin-bottom: 60px;    
+	display: block;
+	margin: auto;
+	justify-content: center;
+	max-width: 1000px;
+	margin-bottom: 60px;
+	padding-left: 15px;
+}
+
+.div-un-article h1 {
+	border-bottom: 5px solid var(--bleuPale);
+	padding-bottom: 15px;
+	font-size: 28px;
+	font-weight: 400;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 20px;
 }
 
 .div-un-article h2 {
-    /*background-color: tomato;*/
-    font-family: Flamenco;
-    border-radius: 3px 3px 0px 0px;
-    padding: 8px;
-    font-size: 34px;
-    font-weight: 400;
-    text-align: center;
-    margin-top: 60px;
+	font-weight: 400;
 }
 
 .div-un-article p {
-    font-size: 18px;
-    line-height: 1.4em;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: justify;
-    margin-top: 10px;
+	font-size: 18px;
+	text-align: justify;
+	margin-top: 10px;
 }
 
-.bouton-profil 
-{   
-    font-size: 20px;
-    padding: 12px 20px;
-    max-width: 200px;
-    border-radius: 25px;
-    display: block;
-    background-color: rgb(1, 47, 107);
-    border: none;
-    color: white;
-    margin: 50px auto 20px auto;
-    text-decoration: none;
-    text-align: center;
-
-    &:hover {
-    background-color: rgba(248, 76, 85, 0.79);
-    color: black;
-    cursor: pointer;
-    }
+.div-un-article p,
+h2 {
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 1.5em;
 }
 
 .deux-boutons {
-    max-width: 400px;
-    margin: -50px auto auto auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+	margin: 50px auto;
+	padding-left: 15px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 50px;
+}
+
+.deux-boutons a {
+	font-size: 18px;
+	&.cerise {
+		background-color: var(--cerise);
+		color: var(--blanc);
+		border: 1px solid var(--blanc);
+		box-shadow: var(--boxShadow);
+	}
+	&.cerise:hover {
+		background-color: var(--bleuPale);
+		color: var(--bleuFonce);
+	}
 }
 
 .trois-boutons {
-    max-width: 500px;
-    margin: -50px auto auto auto;
-    display: flex;    
-    justify-content: center;
-    align-items: center;
+	max-width: 500px;
+	margin: -50px auto auto auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
