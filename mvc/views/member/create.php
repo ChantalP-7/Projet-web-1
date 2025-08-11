@@ -33,17 +33,17 @@
             <div>      
                 <label for="telephone">Téléphone</label>
                     <input type="text" id="telephone" name="telephone" class="input" value="{{ member.telephone }}"> 
-                    {% if errors.telephone is defined %}
+                {% if errors.telephone is defined %}
                     <span class="error">{{errors.telephone}}</span>
                 {% endif %}
-                </div>
-                <div>
+            </div>
+            <div>
                 <label for="username">Nom utilisateur (ton courriel)</label>
                     <input type="email" id="username" name="username" class="input" value="{{ member.username }}">            
                 {% if errors.username is defined %}
                     <span class="error">{{errors.username}}</span>
                 {% endif %}
-                </div> 
+            </div> 
         </div>
         <div class="space">
             <div>

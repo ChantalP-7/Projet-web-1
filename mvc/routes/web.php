@@ -14,6 +14,9 @@ Route::get('/members', 'MemberController@index');
 Route::get('/member/show', 'MemberController@show');
 Route::get('/member/create', 'MemberController@create');
 Route::post('/member/create', 'MemberController@store');
+Route::get('/member/edit', 'MemberController@edit');
+Route::post('/member/edit', 'MemberController@update');
+Route::post('/member/delete', 'MemberController@delete');
 
 Route::get('/login', 'AuthController@index');
 Route::post('/login', 'AuthController@store');

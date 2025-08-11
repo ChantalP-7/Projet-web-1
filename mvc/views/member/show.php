@@ -6,8 +6,7 @@
         <p><strong>Prenom: </strong >{{ member.prenom}}</p>
         <p><strong>Nom: </strong>{{ member.nom }}</p>
         <p><strong>Courriel: </strong>{{ member.courriel }}</p>
-        <p><strong>Telephone: </strong>{{ member.telephone }}</p>
-        <p><strong>Username: </strong>{{ member.username }}</p>
+        <p><strong>Telephone: </strong>{{ member.telephone }}</p>        
         <div class="deux-boutons">
             <a href="{{base}}/member/edit?id={{ member.id }}" class="bouton-simple bouton-padding">Éditer</a>                
             <form class="no-border" action="{{ base }}/member/delete" method="post">                    

@@ -54,7 +54,7 @@ class MemberController{
         $validator->field('nom', $data['nom'])->min(2)->max(45);
         $validator->field('username', $data['username'])->min(6)->max(50)->email()->unique('Member');
         $validator->field('password', $data['password'])->min(6)->max(20);
-        $validator->field('telephone',$data['telephone'])->max(20);
+        $validator->field('telephone',$data['telephone'])->min(12)->max(14);
         $validator->field('courriel', $data['courriel'])->min(6)->max(50)->email();
 
         if($validator->isSuccess()){
