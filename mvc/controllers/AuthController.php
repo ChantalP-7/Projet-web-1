@@ -10,10 +10,11 @@ class AuthController{
     public function index(){
         return View::render('auth/index');
     }
+    
     public function store($data){
         Auth::session();
         $validator = new Validator;
-        $validator->field('username', $data['username'])->min(5)->max(45)->email();
+        $validator->field('username', $data['username'])->min(5)->max(45)->email()->unique('member');
         $validator->field('password', $data['password'])->min(6)->max(20);
          if($validator->isSuccess()){
             $member = new Member;
