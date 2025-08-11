@@ -14,7 +14,7 @@ class AuthController{
     public function store($data){
         Auth::session();
         $validator = new Validator;
-        $validator->field('username', $data['username'])->min(5)->max(45)->email()->unique('member');
+        $validator->field('username', $data['username'])->min(5)->max(45)->email()->unique('Member');
         $validator->field('password', $data['password'])->min(6)->max(20);
          if($validator->isSuccess()){
             $member = new Member;
