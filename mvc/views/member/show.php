@@ -8,10 +8,10 @@
         <p><strong>Courriel: </strong>{{ member.courriel }}</p>
         <p><strong>Telephone: </strong>{{ member.telephone }}</p>        
         <div class="deux-boutons">
-            <a href="{{base}}/member/edit?id={{ member.id }}" class="bouton-simple bouton-padding">Éditer</a>                
+            <a href="{{base}}/member/edit?id={{ member.id }}" class="bouton-simple bouton-padding">Modifier</a>                
             <form class="no-border" action="{{ base }}/member/delete" method="post">                    
                 <input type="hidden" name="id" value="{{ member.id }}">
-                <button type="submit" class="bouton-simple bouton-padding cerise">Supprimer</button>
+                <button type="submit" class="bouton-simple bouton-padding delete">Supprimer</button>
             </form>
         </div>
     </div>

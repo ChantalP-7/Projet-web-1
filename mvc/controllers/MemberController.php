@@ -83,9 +83,9 @@ class MemberController{
                 $member = new Member;
                 $update = $member->update($data, $get['id']);                
                 if($update){
-                    $selectId = $member->selectId($data['id']);
-                    //return View::redirect('members');
-                    return View::redirect('member/show', ['member' =>$selectId]);
+                    //$selectId = $member->selectId($update, $data['id']);
+                    return View::redirect('members');
+                    //return View::redirect('member/show', ['member'=>[$update, $get['id']]]);
                 }else{
                     return View::render('error', ['message'=>'Ne peux pas mettre à jour!']);
                 }

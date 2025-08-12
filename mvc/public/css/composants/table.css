@@ -80,16 +80,17 @@ h2 {
 
 .deux-boutons a {
 	font-size: 18px;
-	&.cerise {
+	&.delete {
 		background-color: var(--cerise);
 		color: var(--blanc);
 		border: 1px solid var(--blanc);
 		box-shadow: var(--boxShadow);
-	}
-	&.cerise:hover {
+		&.delete:hover {
 		background-color: var(--bleuPale);
 		color: var(--bleuFonce);
 	}
+	}
+	
 }
 
 .trois-boutons {
