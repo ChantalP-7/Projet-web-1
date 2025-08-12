@@ -10,6 +10,7 @@
 	--vert: #0cb644;
 	--tomato: tomato;
 	--cerise: rgb(219, 0, 66);
+	--gold: gold;
 
 	/* Typographie */
 
@@ -25,6 +26,6 @@
 
 	--h6: clamp(0.6rem, 1.6vw + -0.05rem, 0.6rem);
 	--p-span-a: clamp(0.9rem, 1.3vw + -0.03rem, 1rem);
-	--p: clamp(0.9rem, 2vw + 0.4rem, 1rem);
+	--p: clamp(1rem, 2vw + 0.4rem, 1.2rem);
 	--boxShadow: 0 0 12px rgba(197, 197, 197, 0.699);
 }

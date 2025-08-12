@@ -5,8 +5,13 @@
 
 html {
     font-family: Poppins;
+    color: var(--bleuNoir);
 }
 
+
+p {
+    font-size: var(--p)
+}
 
 main {
     width: 1200px;

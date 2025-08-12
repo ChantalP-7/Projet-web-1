@@ -10,9 +10,9 @@
         </ul>
     </div>
     {% endif %}
-    <h1 class="sous-titre center">Bienvenue sur notre site !</h1>
+    <h1 class="sous-titre center">Bienvenue parmis nous !</h1>
     <form class="formulaire" action="" method="post">
-        <h2 class="sous-titre">Je m'inscris</h2>
+        <h2 class="sous-titre fonce">Je m'inscris</h2>
         <div class="space">
             <div>
                 <label for="prenom">Prénom</label>

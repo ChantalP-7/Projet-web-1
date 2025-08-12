@@ -289,6 +289,5 @@
             <a href="#">Bridge</a>
         </div>
       </div>
-</main> 
-    <hr/>
+</main>
 {{ include('layouts/footer.php')}}

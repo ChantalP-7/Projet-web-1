@@ -49,18 +49,21 @@ class MemberController{
 
 
    public function store($data){
+
         $validator = new Validator;
         $validator->field('prenom', $data['prenom'])->min(2)->max(45);
-        $validator->field('nom', $data['nom'])->min(2)->max(45);
-        $validator->field('username', $data['username'])->min(6)->max(50)->email()->unique('Member');
-        $validator->field('password', $data['password'])->min(6)->max(20);
+        $validator->field('nom', $data['nom'])->min(2)->max(45);        
         $validator->field('telephone',$data['telephone'])->min(12)->max(14);
         $validator->field('courriel', $data['courriel'])->min(6)->max(50)->email();
+        $validator->field('username', $data['username'])->min(6)->max(50)->email();
+        $validator->field('password', $data['password'])->min(6)->max(20);
 
         if($validator->isSuccess()){
+           
             $member = new Member;
             $data['password'] =  $member->hashPassword($data['password']);
-            return View::redirect('login');
+            $insertMember = $member -> insert($data);            
+            return View::redirect('login', ['member', $insertMember]);
         }else{
             $errors = $validator->getErrors();
             return View::render('member/create', ['errors'=>$errors, 'member'=>$data]);
@@ -74,16 +77,15 @@ class MemberController{
             $validator = new Validator;
             $validator->field('prenom', $data['prenom'])->min(2)->max(45);
             $validator->field('nom', $data['nom'])->min(2)->max(45);
-            $validator->field('username', $data['username'])->min(6)->max(50)->email()->unique('Member');
-            $validator->field('password', $data['password'])->min(6)->max(20);
             $validator->field('telephone',$data['telephone'])->max(20);
             $validator->field('courriel', $data['courriel'])->min(6)->max(50)->email();
-
             if($validator->isSuccess()){
                 $member = new Member;
-                $update = $member->update($data, $get['id']);
+                $update = $member->update($data, $get['id']);                
                 if($update){
-                    return View::redirect('members');
+                    $selectId = $member->selectId($data['id']);
+                    //return View::redirect('members');
+                    return View::redirect('member/show', ['member' =>$selectId]);
                 }else{
                     return View::render('error', ['message'=>'Ne peux pas mettre à jour!']);
                 }
@@ -97,16 +99,14 @@ class MemberController{
     }
 
     public function delete($data){
-
         if(Auth::session()) {
         $member = new Member;
-
-    $delete = $member->delete($data['id']);
-    if($delete){
-        return View::redirect('members');
-    }else{
-        return View::render('error', ['message'=>'404 non trouvé !']);
-    }
+        $delete = $member->delete($data['id']);
+        if($delete){
+            return View::redirect('members');
+        }else{
+            return View::render('error', ['message'=>'404 non trouvé !']);
+        }
     }
 }
 

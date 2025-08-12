@@ -62,6 +62,7 @@
           >
         </div>
       </div>
+      <div class="hero"></div>
       <div class="principale">
         <input
           type="checkbox"

@@ -1,7 +1,7 @@
 {{ include('layouts/header.php', {title: 'Membres'})}}
 <main>
-     <h1>Membres</h1>
-     <div class="grille">
+     <h1 class="sous-titre center">Membres</h1>
+     <div class="grille-table">
         <table>        
             <tr>
                 <th>Prénom</th>            
@@ -17,7 +17,6 @@
                 {% endfor %}
             </table>         
         <br><br>
-    </div>    
-    <a class="bouton" href="{{base}}/member/create">Inscription</a>
+    </div> 
 </main>
     {{ include('layouts/footer.php')}}

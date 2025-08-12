@@ -32,6 +32,8 @@
     margin-left: -5px;
     font-size: 30px;
     text-align: left;
+    color: var(--bleuNoir)
+
 }
 
 .formulaire label {
@@ -40,13 +42,13 @@
     margin-bottom: 5px;
     text-align: left;
     font-size: 16x;
-    color:rgb(44, 44, 44)
+    color:var(--bleuNoir)
 }
 
 .formulaire select, input, textarea
 {    
     border: 1px  solid rgba(1, 47, 107, 0.71);
-    border-left: solid 4px rgba(1, 47, 107, 0.71);    
+    border-left: solid 4px var(--bleuPale);    
     color:rgb(1, 47, 107);
     font-size: 18px;
     padding: 10px;

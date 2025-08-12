@@ -11,7 +11,7 @@
             <a href="{{base}}/member/edit?id={{ member.id }}" class="bouton-simple bouton-padding">Éditer</a>                
             <form class="no-border" action="{{ base }}/member/delete" method="post">                    
                 <input type="hidden" name="id" value="{{ member.id }}">
-                <a type="submit" class="bouton-simple bouton-padding cerise">Supprimer</a>
+                <button type="submit" class="bouton-simple bouton-padding cerise">Supprimer</button>
             </form>
         </div>
     </div>

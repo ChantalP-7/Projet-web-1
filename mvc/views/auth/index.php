@@ -10,7 +10,7 @@
         </ul>
     </div>
     {% endif %}
-    <h1 class="sous-titre center">Nous sommes contents de te revoir !</h1>
+    <h1 class="sous-titre center">Rebonjour !</h1>
     <form class="formulaire" method="post">
         <h2 class="sous-titre">Je me connecte</h2>
         <div class="space">
@@ -27,5 +27,4 @@
     </form>
 </div>
 </main>
-<hr/>
 {{ include('layouts/footer.php')}}

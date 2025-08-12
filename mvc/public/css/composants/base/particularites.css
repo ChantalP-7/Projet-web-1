@@ -147,6 +147,10 @@ input[name="etoiles"]:checked  {
     border: none;
 }
 
+.fonce {
+    color: var(--bleuNoir);
+}
+
 .error{ 
     
     border: 1px dotted red;

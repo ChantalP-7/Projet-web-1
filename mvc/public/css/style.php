@@ -32,3 +32,4 @@
 @import './composants/composants-grille/grille-cartes.css';
 @import './composants/composants-grille/grille-cols.css';
 @import './composants/composants-grille/grille-galerie.css';
+@import './composants/composants-grille/grille-table.css';
