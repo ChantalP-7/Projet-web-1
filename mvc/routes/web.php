@@ -5,6 +5,8 @@ use App\Controllers\MemberController;
 use App\Controllers\UserController;
 use App\Controllers\UserIndexController;  
 use App\Controllers\AuthController; 
+use App\Controllers\StampController;
+
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
@@ -21,5 +23,13 @@ Route::post('/member/delete', 'MemberController@delete');
 Route::get('/login', 'AuthController@index');
 Route::post('/login', 'AuthController@store');
 Route::get('/logout', 'AuthController@delete');
+
+Route::get('/stamps', 'StampController@index');
+Route::get('/stamp/show', 'StampController@show');
+Route::get('/stamp/create', 'StampController@create');
+Route::post('/stamp/create', 'StampController@store');
+
+
+/* Autres route stamp à venir */ 
 
 Route::dispatch();

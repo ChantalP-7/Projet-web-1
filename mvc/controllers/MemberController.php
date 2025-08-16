@@ -49,7 +49,6 @@ class MemberController{
 
 
    public function store($data){
-
         $validator = new Validator;
         $validator->field('prenom', $data['prenom'])->min(2)->max(45);
         $validator->field('nom', $data['nom'])->min(2)->max(45);        
@@ -83,9 +82,9 @@ class MemberController{
                 $member = new Member;
                 $update = $member->update($data, $get['id']);                
                 if($update){
-                    //$selectId = $member->selectId($update, $data['id']);
+                    //$selectId = $member->selectId($_SESSION['id']);
                     return View::redirect('members');
-                    //return View::redirect('member/show', ['member'=>[$update, $get['id']]]);
+                    //return View::redirect('member/show', ['member'=>$_SESSION['id']]);
                 }else{
                     return View::render('error', ['message'=>'Ne peux pas mettre à jour!']);
                 }

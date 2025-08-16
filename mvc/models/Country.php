@@ -4,7 +4,7 @@ use App\Models\CRUD;
 
 
 class Country extends CRUD {
-    protected $table = "paysorigine";
+    protected $table = "pays";
     protected $primaryKey = "id";
     protected $fillable = ['pays'];
 }

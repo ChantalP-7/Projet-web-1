@@ -12,6 +12,7 @@
                 <tr>                        
                     <td>{{ stamp.lot}} </td>
                     <td>{{ stamp.nom}}</td>                  
+                    <td>{{ stamp.datePublication}}</td>                  
                     <td><a href="{{base}}/stamp/show?id={{stamp.id}}">Voir l'enchère'</a></td>                
                 </tr>
                 {% endfor %}
