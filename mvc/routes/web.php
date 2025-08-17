@@ -29,6 +29,11 @@ Route::get('/stamp/show', 'StampController@show');
 Route::get('/stamp/create', 'StampController@create');
 Route::post('/stamp/create', 'StampController@store');
 
+Route::get('/images', 'ImageController@index');
+Route::get('/image/show', 'ImageController@show');
+Route::get('/image/create', 'StampController@create');
+Route::post('/stamp/create', 'StampController@store');
+
 
 /* Autres route stamp à venir */ 
 

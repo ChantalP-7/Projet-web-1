@@ -71,8 +71,9 @@ class MemberController{
     }
 
     function update($data, $get){   
-        Auth::session(); 
+        Auth::session();         
         if(isset($get['id']) && $get['id']!=null){
+            $id = $_SESSION['id'];
             $validator = new Validator;
             $validator->field('prenom', $data['prenom'])->min(2)->max(45);
             $validator->field('nom', $data['nom'])->min(2)->max(45);
@@ -81,10 +82,14 @@ class MemberController{
             if($validator->isSuccess()){
                 $member = new Member;
                 $update = $member->update($data, $get['id']);                
-                if($update){
+                if($update){                    
+                $selectedMember = $member->selectId($id);
+                /**Sélection du membre auteur */
+                //$idMember = $selectId['id'];
                     //$selectId = $member->selectId($_SESSION['id']);
-                    return View::redirect('members');
-                    //return View::redirect('member/show', ['member'=>$_SESSION['id']]);
+                    //return View::redirect('members');
+                    //return View::redirect('member/show', ['selectedMember' => $selectedMember]);
+                    return View::redirect('member/show', ['id' => $id]);
                 }else{
                     return View::render('error', ['message'=>'Ne peux pas mettre à jour!']);
                 }

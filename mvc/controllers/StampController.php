@@ -49,10 +49,7 @@ class StampController {
                 $colors = $color->select();
                 $member = new Member;
                 $members = $member->select();
-
-                /**Sélection du membre auteur */
                 $idMembre = $selectId['idMembre'];
-                $member = new Member;
                 $selectedMember = $member->selectId($idMembre);
                 $prenom =  $selectedMember['prenom'];
                 $nom =  $selectedMember['nom'];
@@ -83,18 +80,13 @@ class StampController {
         $validator->field('idCouleur', $data['idCouleur'])->required(); 
         $validator->field('idFormat', $data['idFormat'])->required(); 
         $validator->field('idMembre', $data['idMembre'])->required(); 
-        
-
-        /** Problème à régler ici au niveau de l'idMembre */
-        
+                
         if($validator->isSuccess()) {
-            //$member = new Member; 
-            //$insertMember = $member -> insert($data);
-            //$data['idMembre'] = $insertMember;
             $stamp = new Stamp;            
             $insertStamp = $stamp->insert($data);
             if($insertStamp) {
-                return View::redirect('stamp/show?id='.$insertStamp);
+                return View::redirect('image/create', 'idTimbre='.$insertStamp);
+                //return View::redirect('stamp/show?id='.$insertStamp);
             } else {
                 return View::render('error', ['message'=>'404 page pas trouvée!']);
             }
@@ -120,6 +112,20 @@ class StampController {
         }
     }
 
-    /* Autres fonctions à venir */
+    
+    public function edit() {
+
+    }
+
+    
+    public function update() {
+
+    }
+
+
+    
+    public function delete() {
+
+    }
 
 }
