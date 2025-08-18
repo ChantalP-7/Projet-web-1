@@ -11,7 +11,7 @@
     </div>
     {% endif %}
     <h1 class="sous-titre center">Enregistre un timbre</h1>
-    <form class="formulaire" action="" method="post">        
+    <form class="formulaire" action="" method="post" enctype="multipart/form-data">>        
         <div class="space">
             <div>
                 <label for="nom">Nom</label>
@@ -19,16 +19,9 @@
                 {% if errors.nom is defined %}
                     <span class="error">{{errors.nom}}</span>
                 {% endif %}
-            </div>
-            <div>
-                <label for="lot">Lot</label>                
-                    <input type="text" id="lot" name="lot" class="input"  value="{{ stamp.lot }}">            
-                {% if errors.lot is defined %}
-                    <span class="error">{{errors.lot}}</span>
-                {% endif %} 
-            </div> 
+            </div>           
         </div>
-        <div class="space">
+        
             <div>      
                 <label for="date">Date de publiation</label>
                     <input type="date" id="date" name="date" class="input" value="{{ stamp.date }}"> 
@@ -36,6 +29,14 @@
                     <span class="error">{{errors.date}}</span>
                 {% endif %}
             </div>
+            <div>
+                <label for="date">Image du timbre</label>
+                    <input type="file" id="image" name="image" class="input" value="{{ image.image }}"> 
+                {% if errors.image is defined %}
+                    <span class="error">{{errors.image}}</span>
+                {% endif %}
+            </div>
+            <div class="space">
             <div>
                 <label for="idPays">Pays</label>
                 <select name="idPays">
@@ -45,8 +46,7 @@
                     {% endfor %}
                 </select>
             </div> 
-        </div>
-        <div class="space">
+        </div>        
             <div>
                 <label>État</label>
                 <select name="idEtat">
@@ -64,9 +64,8 @@
                     <option value="{{ color.id }}" {% if color.id  == timbre.idCouleur %} selected {% endif %}>{{ color.couleur }}</option>
                     {% endfor %}
                 </select>
-            </div> 
             </div>
-            <div class="space">
+            <div class="space">             
             <div>
                 <label>Format</label>
                 <select name="idFormat">

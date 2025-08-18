@@ -15,16 +15,28 @@
      <article class="article-principal">        
           <h2 class="sous-titre">Nos enchères vedettes</h2>        
         <div class="grille-cartes">
+          {% for stamp in stamps %}
+              {% for image in images %}
+              {% if stamp.id == image.idTimbre %} 
+              {% for country in countries %}
+              {% if stamp.id == country.idTimbre %} 
+              {% for etat in etats %}
+              {% if stamp.id == etat.idTimbre %} 
+
+               
+                
           <div class="carte">
-            <figure>
+            <figure>             
               <img
                 class="timbre zoom"
-                src="./Assets/image/timbres/timbre-10.PNG"
+                src="{{asset}}{{image.image}}"
                 alt="timbre1"
-              />
+              />             
+              
             </figure>
             <div class="space-between">
-              <p>#56 neuf-charnière</p>
+              
+              <p>{{ stamp.nom}}</p>
               <p>
                 <img
                   src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
@@ -35,115 +47,31 @@
               </p>
             </div>
             <div class="space-between">
-              <p>Pays d'origine</p>
-              <p>Canada</p>
+              <p>Pays</p>
+              <p>{{ country.pays }}</p>
             </div>
             <div class="space-between">
               <p>Prix départ</p>
               <p>30.00 $</p>
             </div>
             <div class="space-between">
-              <p>Année : 1963</p>
+              <p>Année : {{ stamp.date}}</p>
               <p>Mises (0)</p>
             </div>
+            
           </div>
-          <div class="carte">
-            <figure>
-              <img
-                class="timbre zoom"
-                src="./Assets/image/timbres/timbre-2.PNG"
-                alt="timbre2"
-              />
-            </figure>
-            <div class="space-between">
-              <p>#188 oblitéré</p>
-              <p>
-                <img
-                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
-                  width="12"
-                  height="12"
-                  alt="coeur2"
-                />
-              </p>
-            </div>
-            <div class="space-between">
-              <p>Pays d'origine</p>
-              <p>Canada</p>
-            </div>
-            <div class="space-between">
-              <p>Prix départ</p>
-              <p>298.00 $</p>
-            </div>
+         
+           {% endif %}
+            {% endfor %}
+            {% endif %}
 
-            <div class="space-between">
-              <p>Année : 1982</p>
-              <p>Mises (21)</p>
-            </div>
-          </div>
-          <div class="carte">
-            <figure>
-              <img
-                class="timbre zoom"
-                src="./Assets/image/timbres/timbre-15.PNG"
-                alt="timbre3"
-              />
-            </figure>
-            <div class="space-between">
-              <p>#209 neuf</p>
-              <p>
-                <img
-                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
-                  width="12"
-                  height="12"
-                  alt="coeur3"
-                />
-              </p>
-            </div>
-            <div class="space-between">
-              <p>Pays d'origine</p>
-              <p>Canada</p>
-            </div>
-            <div class="space-between">
-              <p>Prix départ</p>
-              <p>53.00$</p>
-            </div>
-            <div class="space-between">
-              <p>Année : 1979</p>
-              <p>Mises (2)</p>
-            </div>
-          </div>
-          <div class="carte">
-            <figure>
-              <img
-                class="timbre zoom"
-                src="./Assets/image/timbres/avant-1900/timbre-centenaire-4.PNG"
-                alt="timbre4"
-              />
-            </figure>
-            <div class="space-between">
-              <p>#319 oblitéré</p>
-              <p>
-                <img
-                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
-                  width="12"
-                  height="12"
-                  alt="coeur4"
-                />
-              </p>
-            </div>
-            <div class="space-between">
-              <p>Pays d'origine</p>
-              <p>Canada</p>
-            </div>
-            <div class="space-between">
-              <p>Prix de départ</p>
-              <p>20.00$</p>
-            </div>
-            <div class="space-between">
-              <p>Année : 1924</p>
-              <p>Mises (4)</p>
-            </div>
-          </div>
+            {% endfor %}
+             {% endif %}
+            {% endfor %}
+            
+            {% endfor %}
+           
+          
         </div>
         <h2 class="sous-titre">Enchères en cours</h2>
         <div class="grille-cartes">

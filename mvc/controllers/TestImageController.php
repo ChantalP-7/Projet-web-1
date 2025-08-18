@@ -39,7 +39,8 @@ class ImageController {
 
         }else{
                 return View::render('error', ['message'=>'Image pas trouvée!']);
-            }            
+            }
+            
         }
         else{
             return View::render('error', ['message'=>'404 not found!']);
