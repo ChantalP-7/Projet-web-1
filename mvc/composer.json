@@ -8,6 +8,7 @@
 		}
 	},
 	"require": {
-		"twig/twig": "^3.19"
+		"twig/twig": "^3.19",
+		"vich/uploader-bundle": "^1.23"
 	}
 }
