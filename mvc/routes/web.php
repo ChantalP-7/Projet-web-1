@@ -6,6 +6,7 @@ use App\Controllers\UserController;
 use App\Controllers\UserIndexController;  
 use App\Controllers\AuthController; 
 use App\Controllers\StampController;
+use App\Controllers\ImageController;
 
 
 Route::get('/', 'HomeController@index');

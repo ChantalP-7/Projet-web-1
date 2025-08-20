@@ -9,7 +9,7 @@
     />
     <title>Enchères Stampee</title>
     <link rel="stylesheet" type="text/css" href="{{ asset }}./css/style.php">
-    <script src="{{ asset }}./currentUrl.js" defer></script>
+    <script src="{{ asset }}../currentUrl.js" defer></script>
   </head>
   <body>
     <header>
@@ -18,7 +18,7 @@
           <a href="{{base}}/home">
             <picture
               ><img
-                src="{{asset}}/image/img-logo-bg-transparent.png"
+                src="{{asset}}/images/img-logo-bg-transparent.png"
                 alt="logo stampee"
             /></picture>
             <h1>STAMPEE</h1>

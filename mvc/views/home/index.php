@@ -15,27 +15,20 @@
      <article class="article-principal">        
           <h2 class="sous-titre">Nos enchères vedettes</h2>        
         <div class="grille-cartes">
-          {% for stamp in stamps %}
-              {% for image in images %}
-              {% if stamp.id == image.idTimbre %} 
-              {% for country in countries %}
-              {% if stamp.id == country.idTimbre %} 
-              {% for etat in etats %}
-              {% if stamp.id == etat.idTimbre %} 
-
-               
-                
+        {% for image in images %}   
+        {% for stamp in stamps %}      
+        {% if image.idTimbre == stamp.id %}        
+        {% for country in countries %} 
+        {% if stamp.idPays == country.id %}        
           <div class="carte">
             <figure>             
               <img
                 class="timbre zoom"
                 src="{{asset}}{{image.image}}"
                 alt="timbre1"
-              />             
-              
-            </figure>
-            <div class="space-between">
-              
+              /> 
+            </figure> 
+            <div class="space-between">              
               <p>{{ stamp.nom}}</p>
               <p>
                 <img
@@ -47,7 +40,7 @@
               </p>
             </div>
             <div class="space-between">
-              <p>Pays</p>
+              <p>Pays</p>              
               <p>{{ country.pays }}</p>
             </div>
             <div class="space-between">
@@ -57,21 +50,13 @@
             <div class="space-between">
               <p>Année : {{ stamp.date}}</p>
               <p>Mises (0)</p>
-            </div>
-            
+            </div> 
           </div>
-         
-           {% endif %}
-            {% endfor %}
-            {% endif %}
-
-            {% endfor %}
-             {% endif %}
-            {% endfor %}
-            
-            {% endfor %}
-           
-          
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
         </div>
         <h2 class="sous-titre">Enchères en cours</h2>
         <div class="grille-cartes">
@@ -79,7 +64,7 @@
             <figure>
               <img
                 class="timbre zoom"
-                src="./Assets/image/timbres/avant-1900/timbre-centenaire-3.PNG"
+                src="{{asset}}./images/timbres/avant-1900/timbre-centenaire-3.PNG"
                 alt="timbre5"
               />
             </figure>
@@ -111,7 +96,7 @@
             <figure>
               <img
                 class="timbre zoom"
-                src="./Assets/image/timbres/timbre-7.PNG"
+                src="{{asset}}./images/timbres/timbre-7.PNG"
                 alt="timbre 6"
               />
             </figure>
@@ -143,7 +128,7 @@
             <figure>
               <img
                 class="timbre zoom"
-                src="./Assets/image/timbres/timbre-11.PNG"
+                src="{{asset}}./images/timbres/timbre-11.PNG"
                 alt="timbre7"
               />
             </figure>
@@ -175,7 +160,7 @@
             <figure>
               <img
                 class="timbre zoom"
-                src="./Assets/image/timbres/timbre-5.PNG"
+                src="{{asset}}./images/timbres/timbre-5.PNG"
                 alt="timbre8"
               />
             </figure>

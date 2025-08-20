@@ -118,7 +118,7 @@
 }
 
 .span {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 
@@ -153,12 +153,17 @@ input[name="etoiles"]:checked  {
 
 .error{ 
     
-    border: 1px dotted red;
+    
     padding: 5px 10px;
     border-radius: 3px;
-    font-size: 1.2rem;
+    
     color: red;
-    font-weight: 700;
+    font-weight: 400;
+}
+
+.error p, span {
+    font-size: 0.8rem;
+    
 }
 
 .success {

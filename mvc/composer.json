@@ -9,6 +9,6 @@
 	},
 	"require": {
 		"twig/twig": "^3.19",
-		"vich/uploader-bundle": "^1.23"
+		"imagine/imagine": "^1.2"
 	}
 }

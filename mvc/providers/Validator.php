@@ -7,6 +7,8 @@ class Validator {
     private $key;
     private $value;
     private $name;
+    private $imageSize;
+    private $imageExtension;
 
     public function field($key, $value, $name = null){
         $this->key = $key;
@@ -56,6 +58,25 @@ class Validator {
         }
         return $this;
     }
+
+    
+    /*public function imageSizeType() {
+        $maxSizeImage = 2;
+        $jpg = ".jpg";
+        $jpeg = ".jpeg";
+        $svg = ".svg";
+        $png = ".png";
+        $webp = ".webp";
+        
+        if ($maxSizeImage > 2) {
+            return $this->errors;
+        }
+        
+        if(!$jpg || !$jpeg || !$svg || !$png ||$webp) {
+            return $this->errors;
+        }
+    }*/
+    
 
     public function isSuccess(){
         if(empty($this->errors)) return true;

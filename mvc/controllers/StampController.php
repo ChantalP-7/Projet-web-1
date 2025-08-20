@@ -9,6 +9,7 @@ use App\Models\Etat;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
+use App\Models\Image;
 
 
 class StampController {
@@ -16,7 +17,9 @@ class StampController {
     public function index(){
         $stamp = new Stamp;
         $stamps = $stamp->select();
-        return View::render('stamp/index', ['stamps'=>$stamps]);
+        $image = new Image;
+        $images = $image->select();
+        return View::render('stamp/index', ['stamps'=>$stamps, 'images'=>$images]);
     }
 
 
@@ -31,14 +34,20 @@ class StampController {
         $etats = $etat->select(); 
         $country = new country;
         $countries = $country->select(); 
-        return View::render('stamp/create', ['idMembre' => $idMembre, 'formats' => $formats, 'colors'=> $colors, 'etats' => $etats, 'countries' => $countries]);
+        $image = new Image;
+        $images = $image->select();
+        return View::render('stamp/create', ['idMembre' => $idMembre, 'formats' => $formats, 'colors'=> $colors, 'etats' => $etats, 'countries' => $countries, 'images', $images]);
     }
 
      public function show($data){
         if(isset($data['id']) && $data['id']!=null){
             $stamp = new Stamp;
             $selectId = $stamp->selectId($data['id']);
-            if($selectId){   
+            if($selectId){  
+                $idImage = $selectId($data['id']);
+                $image = new Image;
+                $selectedImage = $image->selectId($idImage);
+                $imageTimbre = $selectedImage['image'];
                 $country = new Country;   
                 $countries = $country->select();
                 $format = new Format;   
@@ -54,7 +63,7 @@ class StampController {
                 $prenom =  $selectedMember['prenom'];
                 $nom =  $selectedMember['nom'];
 
-                return View::render('stamp/show', ['stamp'=>$selectId, 'countries'=> $countries, 'formats'=> $formats, 'etats'=> $etats, 'colors' => $colors, 'prenom' => $prenom, 'nom' => $nom, 'members' => $members ]);
+                return View::render('stamp/show', ['stamp'=>$selectId, 'imageTimbre'=>$imageTimbre, 'countries'=> $countries, 'formats'=> $formats, 'etats'=> $etats, 'colors' => $colors, 'prenom' => $prenom, 'nom' => $nom, 'members' => $members ]);
             }else{
                 return View::render('error', ['message'=>'Timbre pas trouvé!']);
             }
@@ -72,8 +81,7 @@ class StampController {
         $color = new Color;
         $country = new Country;
 
-        $validator->field('nom', $data['nom'])->min(5)->max(45)->required();
-        $validator->field('lot', $data['lot'])->min(5)->max(45)->required();
+        $validator->field('nom', $data['nom'])->min(5)->max(45)->required();        
         $validator->field('date', $data['date'])->required();
         $validator->field('idPays', $data['idPays'])->required(); 
         $validator->field('idEtat', $data['idEtat'])->required(); 

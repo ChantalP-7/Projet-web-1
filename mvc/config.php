@@ -1,4 +1,7 @@
 <?php
-define('BASE', '/STAMPEE-AOUT-2025/mvc');
-define('ASSET', '/STAMPEE-AOUT-2025/mvc/public');
+define('BASE', '/Stampee-aout-2025/mvc');
+define('ASSET', '/Stampee-aout-2025/mvc/public');
+define('UPLOAD', '/Stampee-aout-2025/mvc/public/images/uploads');
+
+
 ?>

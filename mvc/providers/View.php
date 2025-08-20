@@ -10,6 +10,7 @@ class View {
         $twig = new Environment($loader);
         $twig->addGlobal('asset', ASSET);
         $twig->addGlobal('base', BASE);
+        $twig->addGlobal('upload', UPLOAD);
         echo $twig->render($template.'.php', $data);
     }
     static public function redirect($url){

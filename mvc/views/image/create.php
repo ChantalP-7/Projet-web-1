@@ -11,13 +11,21 @@
     </div>
     {% endif %}
     <h1 class="sous-titre center">Enregistre une image</h1>
-    <form class="formulaire" action="" method="post">        
+    <form class="formulaire" action="" method="post" enctype="multipart/form-data">        
         <div class="space">
+            <?php
+
+                var_dump($_POST);
+                var_dump($_FILES);
+            ?>
             <div>
                 <label for="image">Nom de l'image</label>
-                <input type="text" id="image" name="image" class="input"  value="{{ image.image }}">            
-                {% if errors.image is defined %}
-                    <span class="error">{{errors.image}}</span>
+                <input type="file" name="image" class="input" accept="image/*"  value="{{ file.image }}">            
+                {% if errors.file is defined %}
+                    <span class="error">{{errors.file}}</span>
+                {% endif %}
+                {% if message is defined %}
+                    <p>{{ message }}</p>
                 {% endif %}
             </div>
             <div>
@@ -29,21 +37,11 @@
             </div> 
         </div>
         <div>
-            <label for="idTimbre">Timbre</label>
-            <select name="idTimbre">
-                <option value="">Choisi un timbre</option>
-                {% for stamp in stamps %}
-                {% for member in members %}
-                {% if stamp.idMember == member.id %}
-
-
-                <option value="{{ stamp.id }}" {% if stamp.id  == stamp.idTimbre %} selected {% endif %}>{{ stamp.nom }}</option>
-                {% endif %}
-                {% endfor %}
-                {% endfor %}
-            </select>
-        </div>        
-
+                <div>
+                <input type="hidden" name="idTimbre" value="{{ idTimbre }}">
+            </div> 
+            </div>
+        <input type="submit" class="bouton" class="input" value="Soumettre">
     </form>
 </div>
 </main>

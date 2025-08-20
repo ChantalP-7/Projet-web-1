@@ -11,7 +11,7 @@
     </div>
     {% endif %}
     <h1 class="sous-titre center">Enregistre un timbre</h1>
-    <form class="formulaire" action="" method="post" enctype="multipart/form-data">>        
+    <form class="formulaire" action="" method="post" enctype="multipart/form-data">
         <div class="space">
             <div>
                 <label for="nom">Nom</label>
@@ -19,24 +19,16 @@
                 {% if errors.nom is defined %}
                     <span class="error">{{errors.nom}}</span>
                 {% endif %}
-            </div>           
-        </div>
-        
+            </div>        
             <div>      
-                <label for="date">Date de publiation</label>
+                <label for="date">Date de publication</label>
                     <input type="date" id="date" name="date" class="input" value="{{ stamp.date }}"> 
                 {% if errors.date is defined %}
                     <span class="error">{{errors.date}}</span>
                 {% endif %}
             </div>
-            <div>
-                <label for="date">Image du timbre</label>
-                    <input type="file" id="image" name="image" class="input" value="{{ image.image }}"> 
-                {% if errors.image is defined %}
-                    <span class="error">{{errors.image}}</span>
-                {% endif %}
-            </div>
-            <div class="space">
+        </div>
+        <div class="space">            
             <div>
                 <label for="idPays">Pays</label>
                 <select name="idPays">
@@ -45,8 +37,7 @@
                     <option value="{{ country.id }}" {% if country.id  == stamp.idPays %} selected {% endif %}>{{ country.pays }}</option>
                     {% endfor %}
                 </select>
-            </div> 
-        </div>        
+            </div>
             <div>
                 <label>État</label>
                 <select name="idEtat">
@@ -56,6 +47,8 @@
                     {% endfor %}
                 </select>
             </div>
+        </div>
+        <div class="space">
             <div>
                 <label>Couleur</label>
                 <select name="idCouleur">
@@ -64,8 +57,7 @@
                     <option value="{{ color.id }}" {% if color.id  == timbre.idCouleur %} selected {% endif %}>{{ color.couleur }}</option>
                     {% endfor %}
                 </select>
-            </div>
-            <div class="space">             
+            </div> 
             <div>
                 <label>Format</label>
                 <select name="idFormat">
@@ -75,14 +67,12 @@
                     {% endfor %}
                 </select>
             </div>
+        </div>        
             <div>
                 <input type="hidden" name="idMembre" value="{{ idMembre }}">
-            </div>            
-                       
-        </div>
+            </div> 
             <input type="submit" class="bouton" class="input" value="Soumettre">
         </form>
-        
-</div>
+    </div>
 </main>
 {{ include('layouts/footer.php')}}

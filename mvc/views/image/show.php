@@ -10,7 +10,8 @@
                 <p><strong>Timbre: </strong>{{ image.image }}</p>                      
                 <p><strong>Ordre: </strong>{{ image.ordre }}</p>                      
                 <div class="deux-boutons">
-                    <a href="{{base}}/image/edit?id={{ image.id }}" class="bouton-simple bouton-padding">Modifier</a>                
+                    <a href="{{base}}/stamp/create" class="bouton">Ajouter un timbre</a>
+                    <a href="{{asset}}/image/edit?id={{ image.id }}" class="bouton-simple bouton-padding">Modifier</a>                
                     <form class="no-border" action="{{ base }}/image/delete" method="post">                    
                         <input type="hidden" name="id" value="{{ member.id }}">
                         <button type="submit" class="bouton-simple bouton-padding delete">Supprimer</button>

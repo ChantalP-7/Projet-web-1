@@ -16,22 +16,22 @@ use App\Providers\Auth;
 class HomeController { 
        
     public function index(){
-    $country = new Country; 
-                $stamp = new Stamp;
-                $stamps = $stamp->select();
-                $countries = $country->select();
-                $format = new Format;   
-                $formats = $format->select();
-                $etat = new Etat;   
-                $etats = $etat->select();
-                $color = new Color;   
-                $colors = $color->select();
-                $image = new Image;
-                $images = $image->select();
-                $member = new Member;
-                $members = $member->select();
-                //$idMembre = $selectId['idMembre'];
-                //$selectedMember = $member->selectId($idMembre);
+        $country = new Country; 
+        $stamp = new Stamp;
+        $stamps = $stamp->select();
+        $countries = $country->select();
+        $format = new Format;   
+        $formats = $format->select();
+        $etat = new Etat;   
+        $etats = $etat->select();
+        $color = new Color;   
+        $colors = $color->select();
+        $image = new Image;
+        $images = $image->select();
+        $member = new Member;
+        $members = $member->select();
+        //$idMembre = $selectId['idMembre'];
+        //$selectedMember = $member->selectId($idMembre);
     return View::render('home/index', ['stamps'=>$stamps, 'members'=>$members, 'images'=>$images, 'countries'=>$countries, 'etats'=>$etats]);
     }
     

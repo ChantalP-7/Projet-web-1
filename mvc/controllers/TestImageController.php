@@ -10,7 +10,7 @@ use App\Providers\Validator;
 
 
 
-class ImageController { 
+class TestImageController { 
     
     public function index() {
         $image = new Image;
@@ -63,7 +63,7 @@ class ImageController {
     public function store($data) {
         $validator = new Validator;
         $stamp = new Stamp;
-        $validator->field('nom', $data['nom'])->min(15)->max(255)->required();
+        $validator->field('image', $data['image'])->min(5)->max(255)->required();
         $validator->field('ordre', $data['ordre'])->min(1)->max(5)->required();
         $validator->field('idTimbre', $data['idTimbre'])->required();
         if($validator->isSuccess()) {
