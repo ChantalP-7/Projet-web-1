@@ -14,9 +14,11 @@ class Validator {
         $this->key = $key;
         $this->value = $value;
         if($name == null){
-            $this->name = ucfirst($key);
+            //$this->name = ucfirst($key);
+            strtolower($key);
         }else{
-            $this->name = ucfirst($name);
+            $this->name = strtolower($name);
+            //$this->name = ucfirst($name);
         }
         return $this;
     } 

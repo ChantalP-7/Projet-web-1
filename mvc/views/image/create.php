@@ -11,16 +11,12 @@
     </div>
     {% endif %}
     <h1 class="sous-titre center">Enregistre une image</h1>
-    <form class="formulaire" action="" method="post" enctype="multipart/form-data">        
+    <form class="formulaire" action="{{base}}/models/Image.php" method="post" enctype="multipart/form-data">        
         <div class="space">
-            <?php
-
-                var_dump($_POST);
-                var_dump($_FILES);
-            ?>
+            
             <div>
-                <label for="image">Nom de l'image</label>
-                <input type="file" name="image" class="input" accept="image/*"  value="{{ file.image }}">            
+                <label for="file">Nom de l'image</label>
+                <input type="file" name="file" class="input" accept="image/*"  value="{{ file.image }}">            
                 {% if errors.file is defined %}
                     <span class="error">{{errors.file}}</span>
                 {% endif %}
@@ -38,7 +34,9 @@
         </div>
         <div>
                 <div>
-                <input type="hidden" name="idTimbre" value="{{ idTimbre }}">
+                    
+                <label for="idTimbre"></label>
+                <input type="number" name="idTimbre" value="{{ stamp.id }}">
             </div> 
             </div>
         <input type="submit" class="bouton" class="input" value="Soumettre">

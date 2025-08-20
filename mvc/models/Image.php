@@ -11,14 +11,14 @@ class Image extends CRUD {
     
     public function uploadMyImage() {
 
-        $target_dir = "/images/uploads/";
-        $target_file = $target_dir . basename($_FILES["imageToUpload"]["name"]);
+        $target_dir = "../images/uploads/";
+        $target_file = $target_dir . basename($_FILES["file"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
         // Check if image file is a actual image or fake image
         if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["imageToUpload"]["tmp_name"]);
+        $check = getimagesize($_FILES["file"]["tmp_name"]);
         if($check !== false) {
             echo "Le fichier est bien une image - " . $check["mime"] . ".";
             $uploadOk = 1;
@@ -35,7 +35,7 @@ class Image extends CRUD {
         }
 
         // Check file size
-        if ($_FILES["imageToUpload"]["size"] > 500000) {
+        if ($_FILES["file"]["size"] > 500000) {
         echo "Désolé, cette image est trop grande. Elle ne doit pas dépasser 2MO.";
         $uploadOk = 0;
         }
@@ -52,8 +52,8 @@ class Image extends CRUD {
         echo "Désolée, le fichier n'a pu être téléchargé.";
         // if everything is ok, try to upload file
         } else {
-        if (move_uploaded_file($_FILES["imageToUpload"]["tmp_name"], $target_file)) {
-            echo "L'image ". htmlspecialchars( basename( $_FILES["imageToUpload"]["name"])). " a bien été téléchargée.";
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+            echo "L'image ". htmlspecialchars( basename( $_FILES["file"]["name"])). " a bien été téléchargée.";
         } else {
             echo "Désolée, il y a une erreur de téléchargement avec ton fichier.";
         }

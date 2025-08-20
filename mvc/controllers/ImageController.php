@@ -60,12 +60,23 @@ class ImageController {
     
     public function store($data) {
         Auth::session();
+        if(isset($_FILES["file"]) ) {
+        $tmpName = $_FILES['file']['tmp_name'];
+        $name = $_FILES['file']['name'];
+        $size = $_FILES['file']['size'];
+        $error = $_FILES['file']['error'];
+        $type = $_FILES['file']['type'];
+
+        move_uploaded_file($tmpName, './images/uploads/'.$name);
+        
+
+        }
+
         $image = new Image; 
         $validator = new Validator;
-        $validator->field('image', $data['image'])->min(5)->max(100)->required();
+        $validator->field('file', $data['file'])->min(5)->max(100)->required();
         $validator->field('ordre', $data['ordre'])->min(1)->max(5)->required();
         $validator->field('idTimbre', $data['idTimbre'])->required();
-
         if($validator->isSuccess()) {
             $stamp = new Stamp;
             $idStamp = $stamp->selectId('idTimbre');           
@@ -74,8 +85,8 @@ class ImageController {
             $insertImage = $image->insert($data);
             $insertIdTimbre = $image->insert($idStamp);
             if($insertImage) { 
-                //return View::redirect('image/show?id='.$insertImage, ['insertIdTimbre'=> $insertIdTimbre]);
-                return View::redirect('images/index', ['images'=> $images]);
+                return View::redirect('image/show?id='.$insertImage, ['insertIdTimbre'=> $insertIdTimbre]);
+                //return View::redirect('images/index', ['images'=> $images]);
             }
             else {
                 return View::render('error', ['message'=>'404 page pas trouvée!']);
