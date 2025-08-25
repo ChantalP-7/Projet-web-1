@@ -71,7 +71,7 @@
             <div>
                 <input type="hidden" name="idMembre" value="{{ idMembre }}">
             </div> 
-            <input type="submit" class="bouton" class="input" value="Soumettre">
+            <input type="submit" class="bouton" class="input" value="+ Images">
         </form>
     </div>
 </main>

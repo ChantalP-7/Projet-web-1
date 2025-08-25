@@ -18,6 +18,7 @@
 @import './composants/accueil.css';
 @import './composants/formulaires.css';
 @import './composants/table.css';
+@import './composants/table.css';
 
 @import './composants/articles/article-principal.css';
 @import './composants/articles/article-lateral.css';
@@ -33,3 +34,6 @@
 @import './composants/composants-grille/grille-cols.css';
 @import './composants/composants-grille/grille-galerie.css';
 @import './composants/composants-grille/grille-table.css';
+
+@import './composants/composants-enchere/enchere.css';
+@import './composants/composants-enchere/timbre.css';

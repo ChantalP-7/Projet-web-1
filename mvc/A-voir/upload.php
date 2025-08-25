@@ -2,7 +2,7 @@
 <?php
 
 
-                var_dump($_POST);
+                /*var_dump($_POST);
                 var_dump($_FILES);
 
                 if(isset($_FILES["file"]) ) {
@@ -13,7 +13,7 @@
                 $error = $_FILES['file']['error'];
                 $type = $_FILES['file']['type'];
 
-                move_uploaded_file($tmpName, './images/uploads/'.$name);
+                move_uploaded_file($tmpName, './uploads/'.$name);
 
-                }
+                }*/
             ?>

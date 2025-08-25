@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use App\Models\Member;
 use App\Models\Stamp;
+use App\Models\Auction;
 use App\Models\Format;
 use App\Models\Color;
 use App\Models\Country;
@@ -19,6 +20,8 @@ class StampController {
         $stamps = $stamp->select();
         $image = new Image;
         $images = $image->select();
+        $auction = new Auction;
+        $auctions = $auction->select();
         return View::render('stamp/index', ['stamps'=>$stamps, 'images'=>$images]);
     }
 
@@ -47,7 +50,7 @@ class StampController {
                 $idImage = $selectId($data['id']);
                 $image = new Image;
                 $selectedImage = $image->selectId($idImage);
-                $imageTimbre = $selectedImage['image'];
+                $imageTimbre = $selectedImage['file'];
                 $country = new Country;   
                 $countries = $country->select();
                 $format = new Format;   
@@ -73,27 +76,33 @@ class StampController {
     }
 
 
-    public function store($data) {
+    public function store($data) {        
         $validator = new Validator;
-        $member = new Member;
+        /*$member = new Member;
         $format = new Format;
         $etat = new Etat;
         $color = new Color;
-        $country = new Country;
+        $country = new Country;*/
 
-        $validator->field('nom', $data['nom'])->min(5)->max(45)->required();        
+       /* $validator->field('nom', $data['nom'])->min(5)->max(45)->required();        
         $validator->field('date', $data['date'])->required();
         $validator->field('idPays', $data['idPays'])->required(); 
         $validator->field('idEtat', $data['idEtat'])->required(); 
         $validator->field('idCouleur', $data['idCouleur'])->required(); 
         $validator->field('idFormat', $data['idFormat'])->required(); 
-        $validator->field('idMembre', $data['idMembre'])->required(); 
-                
+        $validator->field('idMembre', $data['idMembre'])->required(); */
+        //print_r($data);
+        //die();
+        
         if($validator->isSuccess()) {
-            $stamp = new Stamp;            
+            $stamp = new Stamp;      
             $insertStamp = $stamp->insert($data);
-            if($insertStamp) {
-                return View::redirect('image/create', 'idTimbre='.$insertStamp);
+            $_SESSION['idTimbre'] = $insertStamp; // Ne pas enlever cette ligne!
+            //echo $insertStamp;
+            //die();
+
+            if($insertStamp) {                
+                return View::redirect('image/create');
                 //return View::redirect('stamp/show?id='.$insertStamp);
             } else {
                 return View::render('error', ['message'=>'404 page pas trouvée!']);

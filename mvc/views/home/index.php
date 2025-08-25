@@ -24,7 +24,7 @@
             <figure>             
               <img
                 class="timbre zoom"
-                src="{{asset}}{{image.image}}"
+                src="{{asset}}./images/timbres/avant-1900/timbre-centenaire-2.PNG"
                 alt="timbre1"
               /> 
             </figure> 

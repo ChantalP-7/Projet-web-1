@@ -6,8 +6,7 @@
     <div class="div-un-article">
         <div class="grille-2-cols">
             <article>                
-                <h2 class="sous-titre">Voici le timbre enregistré</h2>
-                <p><strong>Lot: </strong >{{ stamp.lot}}</p>
+                <h2 class="sous-titre">Voici le timbre enregistré</h2>                
                 <p><strong>Nom: </strong>{{stamp.nom }}</p>
                 <p><strong>Date de publicaion: </strong>{{ stamp.date }}</p>
         {% for country in countries %}

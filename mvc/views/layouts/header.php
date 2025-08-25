@@ -72,12 +72,12 @@
         <nav class="navigation-principale">
           <div class="menu-alignement">
               <a href="{{base}}/home">Accueil</a>
-              <a href="#">Catalogue</a>
+              <a href="{{base}}/auctions">Catalogue</a>
               <a href="#">Timbres</a>
               <div class="menu-deroulant">
                 <span>Enchères</span>
                 <div class="sous-menu">
-                  <a href="#">Actives</a>
+                  <a href="{{base}}/auctions">Actives</a>
                   <a href="#">Archivées</a>
                 </div>
               </div>

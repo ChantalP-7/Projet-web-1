@@ -4,20 +4,20 @@
      <div class="grille-table">
         <table>        
             <tr>
-                <th>Nom</th> 
+                <th>Légende</th> 
                 <th>Image</th>           
-                <th>Ordre</th>           
-                <th>Auteur</th>           
-                <th>Profil</th>           
+                <th>Ordre</th>         
+                 <th>idTimbre</th>      
+                <th>Image</th>           
                             
             </tr>
             {% for image in images %}                      
                 <tr>                        
-                    <td>{{ image.nom}}</td>              
-                    <td><img src="{{asset}}/{{image.image}}"> </td>              
+                    <td>{{ image.legende}}</td>              
+                    <td><img src="{{upload}}/{{image.file}}"> </td>              
                     <td>{{ image.ordre}}</td> 
                     <td>{{ image.idTimbre}}</td>
-                    <td><a href="{{asset}}/image/show?id={{image.id}}">Voir l'image'</a></td>                
+                    <td><a href="image/show?id={{image.id}}">Voir l'image'</a></td>                
                 </tr>
                 {% endfor %}
             </table>         

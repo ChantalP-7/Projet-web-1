@@ -35,6 +35,9 @@ Route::get('/image/show', 'ImageController@show');
 Route::get('/image/create', 'ImageController@create');
 Route::post('/image/create', 'ImageController@store');
 
+Route::get('/auctions', 'AuctionController@index');
+Route::get('/auction/show', 'AuctionController@show');
+
 
 /* Autres route stamp à venir */ 
 

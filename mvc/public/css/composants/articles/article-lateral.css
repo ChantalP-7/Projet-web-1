@@ -52,8 +52,9 @@
 }
 
 
-.article-lateral select {
+.article-lateral select, p {
     padding: 10px;
+    font-size: 16px;
 }
 
 .article-lateral .filtre {
@@ -94,6 +95,12 @@
 
 .article-lateral .checkbox {
     padding-left: 20px;
+}
+
+.article-lateral .checkbox label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
 }
 
 @media (max-width: 1000px) { 

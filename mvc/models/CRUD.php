@@ -8,7 +8,7 @@ abstract class CRUD extends \PDO {
         parent::__construct('mysql:host=localhost;dbname=lordstampee;port=3306;charset=utf8', 'root', '');
     }
 
-    final public function select($field = null, $order='desc'){
+    final public function select($field = null, $order='asc'){
         if($field == null){
             $field = $this->primaryKey;
         }

@@ -62,24 +62,6 @@ class Validator {
     }
 
     
-    /*public function imageSizeType() {
-        $maxSizeImage = 2;
-        $jpg = ".jpg";
-        $jpeg = ".jpeg";
-        $svg = ".svg";
-        $png = ".png";
-        $webp = ".webp";
-        
-        if ($maxSizeImage > 2) {
-            return $this->errors;
-        }
-        
-        if(!$jpg || !$jpeg || !$svg || !$png ||$webp) {
-            return $this->errors;
-        }
-    }*/
-    
-
     public function isSuccess(){
         if(empty($this->errors)) return true;
     }

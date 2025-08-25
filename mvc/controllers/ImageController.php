@@ -4,8 +4,10 @@ use App\Models\Image;
 use App\Models\Member;
 use App\Models\Stamp;
 use App\Providers\View;
+use App\Providers\ImageUpload;
 use App\Providers\Auth;
 use App\Providers\Validator;
+use App\Providers\Timbre;
 
 class ImageController { 
     
@@ -19,20 +21,18 @@ class ImageController {
     public function show($data) {        
         if(isset($data['id']) && $data['id'] != null) {
             $image = new Image;
-            $selectId = $image -> selectId($data['id']);
+             //$idTimbre = $_SESSION['idTimbre'];
+            $selectId = $image->selectId($data['id']);
+            //$images = $image->select();
 
         if($selectId) {
-            $idStamp = $selectId['idTimbre'];
-            $stamp = new Stamp;
-            $selectStamp = $stamp -> selectId($idStamp);
-            $idTimbre = $selectStamp['idTimbre'];
-            
-           /* $idMembre = $selectId['idMembre'];
-            $member = new Member;
-            $selectMember = $member -> selectId($idMembre);*/
-            //$prenom = $selectMember['prenom'];
+            //$image = new Image;
+            $legende = $selectId['legende'];
+            $file = $selectId['file'];
+            $idTimbre = $selectId['idTimbre'];
+            $ordre = $selectId['ordre'];
 
-            return View::render('image/show', ['image' => $selectId/*, 'idTimbre' => $idTimbre, 'prenom' => $prenom*/]);
+            return View::render('image/show', ['selectId'=>$selectId, 'idTimbre' => $idTimbre,'legende'=>$legende,  'file' => $file, 'ordre'=> $ordre]);
 
         }else{
                 return View::render('error', ['message'=>'Image pas trouvée!']);
@@ -44,64 +44,86 @@ class ImageController {
     }
 
     
-    public function create() {
-        Auth::session();
-        
-        $image = new Image;
-        $images = $image->select();
-        $stamp = new Stamp;
-        $stamps = $stamp->select();
-        //$idTimbre = $stamp->selectId('id');
-        $member = new Member;
-        $members = $member->select();
-        return View::render('image/create', [/*'idTimbre' => $idTimbre,*/'stamps' => $stamps, 'members'=>$members]);
+    public function create() { 
+        //Auth::session();
+        $timbre = new stamp;
+        //$idTimbre = $timbre->selectId("IdTimbre");
+        //$idStamp = $stamp->selectId($idTimbre);
+        //$idTimbre = $stamp->selectId('id');        
+        return View::render('image/create'/*, ['idTimbre' => $idTimbre'stamps' => $stamps, 'members'=>$members]*/);
     }
 
     
     public function store($data) {
-        Auth::session();
+        /* Références : https://www.youtube.com/watch?v=JxgulzYe5W0&t=448s */
+        //$timbre = new Timbre;
+        //$t = $timbre->
+        $data['idTimbre'] = $_SESSION['idTimbre']; 
         if(isset($_FILES["file"]) ) {
-        $tmpName = $_FILES['file']['tmp_name'];
-        $name = $_FILES['file']['name'];
-        $size = $_FILES['file']['size'];
-        $error = $_FILES['file']['error'];
-        $type = $_FILES['file']['type'];
+            $file = $_FILES['file'];
+            //if ($file['error'] === UPLOAD_ERR_OK) {            
+            $tmpName = $file['tmp_name'];
+            $name = $file['name'];
+            $size = $file['size'];
+            $error = $file['error'];
+            $type = $file['type'];
 
-        move_uploaded_file($tmpName, './images/uploads/'.$name);
-        
+            $tabExtensions = explode('.', $name);
+            $extensions = strtolower(end($tabExtensions));
+            $extensionsValides = ['jpg', 'jpeg', 'png', 'svg', 'gif', 'webp'];
+            $tailleMax = "40000";
+            var_dump($size);
+           // die();
+            //if(in_array($extensions, $extensionsValides) && $size <= $tailleMax && !$error ) {                
+                move_uploaded_file($tmpName, './upload/uploads/'.$name);                 
+            /*} else {
+                echo 'Mauvaise extension de fichier ou taille trop lourde de fichier.';
+            }*/        
+            //$data = file_get_contents($_FILES['file']['tmp_name']);                    
+            //$fileString = get_
+            //$image = new Image; 
+            $validator = new Validator;
+            //$imageUpload = new ImageUpload;            
+            $validator->field('legende', $data['legende'])->min(5)->max(45)->required();
+            $validator->field('ordre', $data['ordre'])->min(1)->max(5)->required();
+            //$validator->field('idTimbre', $data['idTimbre']);
+            $data['file'] = $name;
+            //$data['idTimbre'] = $_SESSION['idTimbre'];
+            //$data['idTimbre'] = $_SESSION['idTimbre'];
 
+           // $idTimbre = $data['idTimbre'];
+            if($validator->isSuccess() && $data['file']) {
+                
+                /*$timbre = new Stamp;
+                $idTimbre = $timbre -> selectId('id');
+                $insertTimbre = $idTimbre -> insert('id');*/
+                //$selectedTimbre = $timbre->selectId("idTimbre");
+                $image = new Image;
+                //$data['idTimbre'] = $insertTimbre;
+                $insertImage = $image->insert($data);            
+                if($insertImage) { 
+                    echo "Oui, image insérée!";
+                    return View::redirect('image/show?id='.$insertImage/*, ['idTimbre'=>$idTimbre]*/);
+                    //return View::redirect('image/index', ['images'=> $images/*, 'insertIdTimbre'=> $insertIdTimbre*/]);
+                }
+                else {
+                    return View::render('error', ['message'=>'404 page pas trouvée!']);
+                }        
+                
+            } else {
+                $errors = $validator->getErrors();
+                $stamp = new Stamp;
+                $idStamp = $stamp->selectId("idTimbre");
+                return View::render('image/create', ['errors'=>$errors,'idStamp' => $idStamp]);
+                $errors = $validator->getErrors();
+                print_r($errors);
+            }
         }
 
-        $image = new Image; 
-        $validator = new Validator;
-        $validator->field('file', $data['file'])->min(5)->max(100)->required();
-        $validator->field('ordre', $data['ordre'])->min(1)->max(5)->required();
-        $validator->field('idTimbre', $data['idTimbre'])->required();
-        if($validator->isSuccess()) {
-            $stamp = new Stamp;
-            $idStamp = $stamp->selectId('idTimbre');           
-            $image = new Image;  
-            $images = $image->select();  
-            $insertImage = $image->insert($data);
-            $insertIdTimbre = $image->insert($idStamp);
-            if($insertImage) { 
-                return View::redirect('image/show?id='.$insertImage, ['insertIdTimbre'=> $insertIdTimbre]);
-                //return View::redirect('images/index', ['images'=> $images]);
-            }
-            else {
-                return View::render('error', ['message'=>'404 page pas trouvée!']);
-            }
-            
-        } else {
-            $errors = $validator->getErrors();
-            $stamp = new Stamp;
-            $idStamp = $stamp->selectId("idTimbre");
-
-            return View::render('image/create', ['errors'=>$errors,'idStamp' => $idStamp]);
-            $errors = $validator->getErrors();
-            print_r($errors);
+        else {
+            echo "Non, il n'y a pas d'image téléchargée!";
         }
-        
+
     }
 
     

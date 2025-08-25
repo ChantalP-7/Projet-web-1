@@ -42,13 +42,13 @@ class ImageOptimizer
 
 class uploadImg {
     
-    public function imgUpload() {
+    public function UploadImg() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
-            if (isset($_FILES['imageToUpload']) && $_FILES['imageToUpload']['error'] == 0) {
-            $dossierUpload = '/images/uploads/';
-            $fichierTemporaire = $_FILES['imageToUpload']['tmp_name'];
-            $nomFichier = $_FILES['imageToUpload']['image'];
+            if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
+            $dossierUpload = './uploads/';
+            $fichierTemporaire = $_FILES['file']['tmp_name'];
+            $nomFichier = $_FILES['file']['nomFichier'];
             $cheminDestination = $dossierUpload . $nomFichier;
 
             // Vérifier si le dossier existe, le créer si nécessaire
