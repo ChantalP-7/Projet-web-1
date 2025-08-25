@@ -37,11 +37,41 @@ class AuctionController {
         if(isset($data['id']) && $data['id']!=null){
             $auction = new Auction;
             $selectId = $auction->selectId($data['id']);
-            if($selectId){                 
+            if($selectId){  
+                $stamp = new Stamp; 
+                $stamps = $stamp->select(); 
+                $image = new Image;
+                $images = $image->select();
+                $member = new Member;
+                $members = $member->select();
+                $country = new Country;
+                $countries = $country->select();
+                $format = new Format;   
+                $formats = $format->select();
+                $etat = new Etat;   
+                $etats = $etat->select();
+                $color = new Color;   
+                $colors = $color->select();
+
+
+                // Sélection pour les enchères                
+                
                 $idTimbre = $selectId['idTimbre'];
-                $timbre = new Stamp;;
-                $selectedTimbre = $timbre->selectId($idTimbre);
+                $id = $selectId['id'];
+                
+                $selectedTimbre = $stamp->selectId($idTimbre);
+                $selectedIdTimbre = $stamp->selectId($id);
                 $nomTimbre = $selectedTimbre['nom'];
+
+                $idMember = $selectId['idTimbre'];
+                $selectedMember = $member->selectId($idMember);
+                $prenom = $selectedMember['prenom'];
+                $nom = $selectedMember['nom'];
+
+                /*$idImage = $selectId['idTimbre'];
+                $selectedImage = $image->selectId($idImage);
+                $file = $selectedImage['file'];*/
+
                 $lot = $selectId['lot'];
                 $dateDebut = $selectId['dateDebut'];
                 $dateFin = $selectId['dateFin'];
@@ -50,13 +80,12 @@ class AuctionController {
                 
                 
                 //$idImage = $selectId['idTimbre'];
-                $image = new Image;
-                $images = $image->select();
-                $idImage = $image->selectId($idTimbre);
+                
+                //$idImage = $image->selectId($idTimbre);
                 //$selectedImage = $image->selectId($idImage);
                 //$file = $selectedImage['file'];
 
-                return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, 'idImage'=>$idImage, 'lot' => $lot, /*'file'=>$file,*/ 'images' =>$images, 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'CoupDeCoeurLord' =>$CoupDeCoeurLord]);
+                return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, /*'idImage'=>$idImage,*/ 'lot' => $lot, /*'file'=>$file, 'selectedIdTimbre'=> $selectedIdTimbre, 'images' =>$images,*/ 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'CoupDeCoeurLord' =>$CoupDeCoeurLord, 'prenom'=> $prenom, 'nom'=>$nom, 'stamps'=>$stamps, 'images'=>$images, 'members'=>$members ]);
             }else{
                 return View::render('error', ['message'=>'Timbre pas trouvé!']);
             }

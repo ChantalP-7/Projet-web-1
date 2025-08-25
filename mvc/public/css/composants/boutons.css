@@ -29,10 +29,9 @@
 
 
 .coeur {
-    padding: 7px 14px;
-    font-family: var(--titre);
+    color: red;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 600;    
 }
 
 .bouton-simple:hover {

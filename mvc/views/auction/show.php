@@ -1,6 +1,6 @@
 {{ include('layouts/header.php', {title: 'Catalogue'})}}
     
-    
+  
     <div class="grille">
         <article class="article-lateral">
             <h2>Section filtres</h2>
@@ -119,30 +119,178 @@
             </div>
             </form>
         </article>
-        <article class="article-principal">        
-            <h2 class="sous-titre">Enchère : {{ nomTimbre }}</h2>
-            <div class="div-un-article">
+       <div >
+        <h3>
+            Inscrivez-vous ou connectez-vous pour miser
+        </h3>
+        <div class="grille-fiche">
+            <div>
+                
+            <div class="carte">
                 {% for stamp in stamps %}
+                {% if(stamp.id == auction.idTimbre) %}
                 {% for image in images %}
-                {% if(stamp.id == idTimbre) %}
-                <img src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                {% if(stamp.id == image.idTimbre) %}
+                {% if(image.ordre == 1) %}
+                <figure>
+                <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                <figcaption>
+                    {{lot}} - {{prenom}} {{nom}}
+                </figcaption>
+                </figure>
+                {% endif %}
                 {% endif %}
                 {% endfor %}
-                {% endfor %}
-
-                <p><strong>lot : </strong >{{ lot }}</p>
-                <p><strong>Date de début : </strong>{{ dateDebut }}</p>
-                <p><strong>Date de fin : </strong>{{ dateFin }}</p>
-                <p><strong>Prix de départ :  </strong>{{ prixPlancher }} $</p>                               
-                <div class="deux-boutons">
-                    <a href="{{base}}/auction/edit?id={{ auction.id }}" class="bouton-simple bouton-padding">Miser</a>
-                    <form class="no-border" action="{{ base }}/comment/delete" method="post">
-                        <input type="hidden" name="id" value="{{ comment.id }}">
-                        <button type="submit" class="bouton-simple bouton-padding">Favori</button>
-                    </form>
-                </div>    
             </div>
-        </article>
-    </div>
+            {% endif %}
+                {% endfor %}
+            <div class="grille-galerie-fiche">
+                {% for image in images %}
+                {% if(stamp.id == image.idTimbre) %}
+                {% if(image.ordre > 1) %}
+                <figure>
+                <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                </figure>
+                <figure>
+                 {% endif %}
+                {% endif %}
+                {% endfor %}   
+                
+                <div class="infos">
+                <h3>Détails sur l'enchère en cours</h3>
+                <div class="space-between">                
+                    <p>Pays</p>
+                    <p>{{country.pays}}</p>
+                </div>
+                <div class="space-between">
+                    <p>Année</p>
+                    <p>{{stamp.date}}</p>
+                </div>
+                <div class="space-between">
+                    <p>Type</p>
+                    <p>{{stamp.format}}</p>
+                </div>
+                <div class="space-between">
+                    <p>Condition</p>
+                    <p>{{stamp.etat}}</p>
+                </div>
+                <div class="space-between">
+                    <p>Couleur</p>
+                    <p>{{stamp.couleur}}</p>
+                </div>
+                </div>
+            </div>          
+            </div>
+            <article class="article-fiche">
+                
+                <h3>{{lot}} - {{prenom}} {{nom}}</h3>
+                <p>{{auction.prixPlancher}} $ - Ouverture : {{auction.dateDebut}}</p>                    
+                <br>
+                <div class="grille-2-cols-fiche">
+                    <div>                       
+                        <p>Vendeur : {{prenom}} {{nom}}</p>
+                        <p>Temps restant : 7 jour, 2h 00m 37s</p>
+                        <br />                    
+                        <p>Lot : {{lot}} - {{prenom}} {{nom}}</p>
+                        <br>
+                        <p>Certifié : Oui</p>
+                        <button class="favori-clic bouton-simple bouton-padding">
+                                <a class="coeur" href="#">Suivre</a> 
+                                <img
+                            src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                            width="18"
+                            height="18"
+                            alt="coeur1"
+                            class=""
+                            />
+                    </button> 
+                    </div>
+                    <div>
+                    <div class="space-between">
+                        <div>
+                            <p>Prix départ  {{auction.prixDepart}}</p>
+                            <p>Mise minimum  5.00$</p>
+                        </div>
+                        <div>
+                            <p>Place une mise</p>
+                            <input 
+                                class="input"
+                                type="number"
+                                min="5.00"
+                                step="05.00"
+                                placeholder="USD"
+                                value="50.00"
+                                aria-label="Placer une mise"
+                            /> <br /><br />
+                            <a class="bouton-carre" href="#">Confirme ta mise</a>
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+                    <div class="space-between">
+                        <p>Mise courante: $129.00</p>
+                        <p>Nombre de mises : 1</p>
+                    </div>
+                    <br>
+                    <h4 class="thin">Historique des mises pour cette enchère</h4>
+                    <button class="bouton-simple bouton-padding thin">Cliquer</button>                    
+                    <div class="paiement">
+                    <p>Paiements sécurisés</p>
+                    <img
+                        src="{{asset}}./images/moyen-paiements.PNG"
+                        alt="Moyens de paiement"
+                    />
+                    </div>
+                    </div>
+                </div>          
+            </article>
+        </div>
+        <hr />
+        <h2>Plus de timbres de {{prenom}} {{nom}}</h2>
+        <div class="grille-galerie-fiche">
+            <img
+            src="https://s2.svgbox.net/hero-solid.svg?ic=arrow-left&color=000"
+            width="32"
+            height="32"
+            alt="flèche droite"
+            />
+            <figure>
+            <img
+                class="petite-image"
+                src="./Assets/image/timbres/timbre-12.PNG"
+                alt="timbre1"
+            />
+            </figure>
+            <figure>
+            <img
+                class="petite-image"
+                src="./Assets/image/timbres/timbre-16.PNG"
+                alt="timbre2"
+            />
+            </figure>
+            <figure>
+            <img
+                class="petite-image"
+                src="./Assets/image/timbres/timbre-14.PNG"
+                alt="timbre3"
+            />
+            </figure>
+            <figure>
+            <img
+                class="petite-image"
+                src="./Assets/image/timbres/timbre-9.PNG"
+                alt="timbre4"
+            />
+            </figure>
 
-    {{ include('layouts/footer.php')}}
+            <img
+            src="https://s2.svgbox.net/hero-solid.svg?ic=arrow-right&color=000"
+            width="32"
+            height="32"
+            alt="flèche gauche"
+            />
+        </div>
+    </div>
+</div>
+
+{{ include('layouts/footer.php')}}

@@ -18,7 +18,7 @@
 @import './composants/accueil.css';
 @import './composants/formulaires.css';
 @import './composants/table.css';
-@import './composants/table.css';
+@import './composants/images.css';
 
 @import './composants/articles/article-principal.css';
 @import './composants/articles/article-lateral.css';

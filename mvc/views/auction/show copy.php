@@ -1,7 +1,7 @@
 {{ include('layouts/header.php', {title: 'Catalogue'})}}
     
-        <!-- Section filtres -->
-        <div class="grille">
+    
+    <div class="grille">
         <article class="article-lateral">
             <h2>Section filtres</h2>
             <div class="filtre">
@@ -36,20 +36,19 @@
                 <h3>Style de timbres</h3>
                 <div class="checkbox block-left">
                 <label for="seul" aria-label="Timbre seul">
-                    <input type="checkbox" id="seul" />&nbsp;Timbres seuls (23)
+                    <input type="checkbox" id="seul" />&nbsp;Timbres seuls
                 </label>
                 <label for="serie" aria-label="Timbres en série">
-                    <input type="checkbox" id="serie" />&nbsp;Timbres en série (21)
+                    <input type="checkbox" id="serie" />&nbsp;Timbres en série
                 </label>
                 <label for="epoque" aria-label="Timbre d'époque">
-                    <input type="checkbox" id="epoque" />&nbsp;Timbre d'époque (34)
+                    <input type="checkbox" id="epoque" />&nbsp;Timbre d'époque
                 </label>
                 <label for="postal" aria-label="Timbre postal">
-                    <input type="checkbox" id="postal" />&nbsp;Timbres postaux (21)
+                    <input type="checkbox" id="postal" />&nbsp;Timbres postaux
                 </label>
                 <label for="unique" aria-label="Timbre unique">
                     <input type="checkbox" id="unique" />&nbsp; Timbres uniques
-                    (221)
                 </label>
                 </div>
             </div>
@@ -58,30 +57,28 @@
                 <div class="checkbox block-left">
                 <label for="sans-charniere" aria-label="Timbre sans charnière">
                     <input type="checkbox" id="sans-charniere" />&nbsp; Neuf sans
-                    charnière (9)
+                    charnière
                 </label>
                 <label for="charniere" aria-label="Timbre avec chanrnière">
                     <input type="checkbox" id="charniere" />&nbsp; Neuf avec
-                    charnière (109)
+                    charnière
                 </label>
                 <label for="oblitere" aria-label="Timbre oblitéré">
-                    <input type="checkbox" id="oblitere" />&nbsp; Oblitéré (35)
+                    <input type="checkbox" id="oblitere" />&nbsp; Oblitéré
                 </label>
                 <label for="un-jour" aria-label="Timbre un jour">
                     <input type="checkbox" id="un-jour" />&nbsp; Enveloppe 1er jour
-                    (23)
+                    
                 </label>
                 <label for="histoire-postale" aria-label="Histoire postale">
                     <input type="checkbox" id="histoire-postale" />&nbsp;Histoire
-                    postale (89)
-                </label>
+                    postale                </label>
                 <label for="postal-neuf" aria-label="Timbre postal neuf">
                     <input type="checkbox" id="postal-neuf" />&nbsp;Entier postal
-                    neuf (53)
+                    neuf
                 </label>
                 <label for="non-specifie" aria-label="Non spécifié">
                     <input type="checkbox" id="non-specifie" />&nbsp;Non spécifié
-                    (2)
                 </label>
                 </div>
             </div>
@@ -122,40 +119,40 @@
             </div>
             </form>
         </article>
-
-      <!-- Section enchères en vedette -->
         <article class="article-principal">        
-            <h2 class="sous-titre">Nos enchères vedettes</h2>        
-            <div class="grille-cartes">
-        {% for auction in auctions %}
-                              
-            <article class="carte">
-                
-        {% for stamp in stamps %}  
-            {% if auction.idTimbre == stamp.id %} 
-        {% for image in images %}      
-            {% if image.idTimbre == stamp.id %} 
-            {% if image.ordre == 1 %} 
-            <img src="{{ upload }}/{{ image.file }}" alt="{{stamp.nom}}">
-            {% endif %}
-            {% endif %}
-        {% endfor %} 
-            <div class="info-carte">              
-                <p> {{stamp.nom}} </p>
-                {% for country in countries %}
-                     {% if stamp.idPays == country.id %} 
-                    <p>Pays : {{country.pays}}</p> 
-                    {% endif %}
+            <h2 class="sous-titre">Enchère : {{ nomTimbre }}</h2>
+            <div class="div-un-article">
+                {% for stamp in stamps %}
+                {% if(stamp.id == auction.idTimbre) %}
+                {% for image in images %}
+                {% if(stamp.id == image.idTimbre) %}
+                <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                {% endif %}
                 {% endfor %}
-                <em><p>Date: {{stamp.date}}</p></em>                
-                <p><a href="{{base}}/auction/show?id={{auction.id}}">Voir l'enchère</a></p>                              
-            </div> 
-            {% endif %}
-            {% endfor %} 
-        </article>  
-          {% endfor %}   
-            
-            </div>       
+                {% endif %}
+                {% endfor %}
+                <p><strong>lot : </strong >{{ lot }}</p>
+                <p><strong>Date de début : </strong>{{ dateDebut }}</p>
+                <p><strong>Date de fin : </strong>{{ dateFin }}</p>
+                <p><strong>Prix de départ :  </strong>{{ prixPlancher }} $</p>
+                {% for stamp in stamps %}
+                {% if(stamp.id == auction.idTimbre) %}
+                {% for member in members %}
+                {% if(member.id == stamp.idMembre) %}
+                <p><strong>Propriétaire : </strong>{{ member.prenom }} {{ member.nom }}</p>  
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                             
+                <div class="deux-boutons">
+                    <a href="{{base}}/auction/edit?id={{ auction.id }}" class="bouton-simple bouton-padding">Miser</a>
+                    <form class="no-border" action="{{ base }}/comment/delete" method="post">
+                        <input type="hidden" name="id" value="{{ comment.id }}">
+                        <button type="submit" class="bouton-simple bouton-padding">Favori</button>
+                    </form>
+                </div>    
+            </div>
         </article>
     </div>
 

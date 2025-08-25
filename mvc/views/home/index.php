@@ -11,184 +11,64 @@
                 </a>
             </button>
         </div>
+        <div class="favori invisible">
+
+        </div>
     </div>
-     <article class="article-principal">        
-          <h2 class="sous-titre">Nos enchères vedettes</h2>        
-        <div class="grille-cartes">
-        {% for image in images %}   
-        {% for stamp in stamps %}      
-        {% if image.idTimbre == stamp.id %}        
-        {% for country in countries %} 
-        {% if stamp.idPays == country.id %}        
-          <div class="carte">
-            <figure>             
-              <img
-                class="timbre zoom"
-                src="{{asset}}./images/timbres/avant-1900/timbre-centenaire-2.PNG"
-                alt="timbre1"
-              /> 
-            </figure> 
-            <div class="space-between">              
-              <p>{{ stamp.nom}}</p>
-              <p>
-                <img
-                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
-                  width="12"
-                  height="12"
-                  alt="coeur1"
-                />
-              </p>
-            </div>
-            <div class="space-between">
-              <p>Pays</p>              
-              <p>{{ country.pays }}</p>
-            </div>
-            <div class="space-between">
-              <p>Prix départ</p>
-              <p>30.00 $</p>
-            </div>
-            <div class="space-between">
-              <p>Année : {{ stamp.date}}</p>
-              <p>Mises (0)</p>
-            </div> 
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
+        <article class="article-principal">        
+            <h2 class="sous-titre">Nos enchères vedettes</h2>        
+            <div class="grille-cartes">
+            {% for auction in auctions %} 
+            
+                    
+                
+            <div class="carte grille-cartes-330px">
+                {% for stamp in stamps %}  
+            {% if auction.idTimbre == stamp.id %} 
+                {% for image in images %}
+                {% if image.idTimbre == stamp.id %}
+                {% if image.ordre == 1 %}
+                    <figure>             
+                    <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                </figure> 
+                {% endif %}
+                {% endif %}
+            {% endfor %}
+                <div class="space-between">              
+                <p>{{ stamp.nom}}</p>
+                <p>
+                    <img
+                    src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
+                    width="12"
+                    height="12"
+                    alt="coeur1"
+                    />
+                </p>
+                </div>
+                <div class="space-between">
+                <p>Pays</p>  
+                {% for country in countries %} 
+                {% if stamp.idPays == country.id %}              
+                <p>{{ country.pays }}</p>
+                {% endif %}
+                {% endfor %}
+                </div>
+                <div class="space-between">
+                <p>Prix départ</p>
+                <p>30.00 $</p>
+                </div>
+                <div class="space-between">
+                <p>An :                    
+                {{stamp.date}}</p>
+                <p>Mises (0)</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+            </div>    
+            {% endfor %}
         </div>
         <h2 class="sous-titre">Enchères en cours</h2>
-        <div class="grille-cartes">
-          <div class="carte">
-            <figure>
-              <img
-                class="timbre zoom"
-                src="{{asset}}./images/timbres/avant-1900/timbre-centenaire-3.PNG"
-                alt="timbre5"
-              />
-            </figure>
-            <div class="space-between">
-              <p>#326 neuf</p>
-              <p>
-                <img
-                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
-                  width="12"
-                  height="12"
-                  alt="coeur5"
-                />
-              </p>
-            </div>
-            <div class="space-between">
-              <p>Pays d'origine</p>
-              <p>Canada</p>
-            </div>
-            <div class="space-between">
-              <p>Prix de départ</p>
-              <p>199.00$</p>
-            </div>
-            <div class="space-between">
-              <p>Année : 1974</p>
-              <p>Mises (2)</p>
-            </div>
-          </div>
-          <div class="carte">
-            <figure>
-              <img
-                class="timbre zoom"
-                src="{{asset}}./images/timbres/timbre-7.PNG"
-                alt="timbre 6"
-              />
-            </figure>
-            <div class="space-between">
-              <p>#127 usé-charnières</p>
-              <p>
-                <img
-                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
-                  width="12"
-                  height="12"
-                  alt="coeur6"
-                />
-              </p>
-            </div>
-            <div class="space-between">
-              <p>Pays d'origine</p>
-              <p>Canada</p>
-            </div>
-            <div class="space-between">
-              <p>Prix de départ</p>
-              <p>523.00$</p>
-            </div>
-            <div class="space-between">
-              <p>Année : 1947</p>
-              <p>Mises (42)</p>
-            </div>
-          </div>
-          <div class="carte">
-            <figure>
-              <img
-                class="timbre zoom"
-                src="{{asset}}./images/timbres/timbre-11.PNG"
-                alt="timbre7"
-              />
-            </figure>
-            <div class="space-between">
-              <p>#202 neuf</p>
-              <p>
-                <img
-                  src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
-                  width="12"
-                  height="12"
-                  alt="coeur7"
-                />
-              </p>
-            </div>
-            <div class="space-between">
-              <p>Pays d'origine</p>
-              <p>Canada</p>
-            </div>
-            <div class="space-between">
-              <p>Prix de départ</p>
-              <p>150.00$</p>
-            </div>
-            <div class="space-between">
-              <p>Année : 1887</p>
-              <p>Mises (0)</p>
-            </div>
-          </div>
-          <div class="carte">
-            <figure>
-              <img
-                class="timbre zoom"
-                src="{{asset}}./images/timbres/timbre-5.PNG"
-                alt="timbre8"
-              />
-            </figure>
-            <div class="space-between">
-              <p>#289 usé-charnières</p>
-              <p>
-                <img
-                  src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
-                  width="12"
-                  height="12"
-                  alt="coeur8"
-                />
-              </p>
-            </div>
-            <div class="space-between">
-              <p>Pays d'origine</p>
-              <p>Canada</p>
-            </div>
-            <div class="space-between">
-              <p>Prix de départ</p>
-              <p>230.00$</p>
-            </div>
-            <div class="space-between">
-              <p>Année : 1998</p>
-              <p>Mises (10)</p>
-            </div>
-          </div>
-        </div>
+        
       </article>
       <div class="accueil-div">
         <h2 class="sous-titre">Qui est Lord Stampee ?</h2>

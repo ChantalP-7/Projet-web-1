@@ -143,6 +143,10 @@ input[name="etoiles"]:checked  {
     color: gold;
 }
 
+.thin {
+    font-weight: 400;
+}
+
 .delete {
     border: none;
 }
@@ -188,4 +192,12 @@ input[name="etoiles"]:checked  {
 .sous-titre {
     font-family: var(--sous-titre);
     font-weight: 600;
+}
+
+.favori-clic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    border: 1px solid red !important;
 }
