@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'Membres'})}}
+{{ include('layouts/header.php', {title: 'Mon profil'})}}
 <main> 
     <div class="div-un-article">
         <div class=".grille-2-cols">
@@ -19,6 +19,42 @@
             </article>
             <article>
                 <h1>Tes enchères</h1>
+                <article class="article-principal">  
+                    <div class="grille-cartes">
+                        
+                         {% for stamp in stamps %}
+                        {% if member.id == stamp.idMembre%}
+                        {% for auction in auctions %} 
+                            {% if auction.idTimbre == stamp.id %}                                   
+                                     
+                                        {% for image in images %}
+                                            {% if image.idTimbre == stamp.id %}
+                                                {% if image.ordre == 1 %}
+
+                        <div class="carte grille-cartes-330px">
+                    
+                       
+                                    <figure>             
+                                    <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                                </figure> 
+                                    
+                            <div class="space-between">              
+                                <p>{{ stamp.nom}}</p>
+                                <p>Mises (0)</p>
+                            </div>                            
+                            <p><a href="{{base}}/auction/show?id={{auction.id}}">Voir l'enchère</a></p>
+                            
+                        </div>   
+                        {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                    </div>
+                    
+                </article>
                 <h3>Ajoute un timbre</h3>
                 <div class="deux-boutons">
                     <a href="{{base}}/stamp/create" class="bouton-simple bouton-padding">Ajoute un timbre</a> 

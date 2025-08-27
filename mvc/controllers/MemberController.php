@@ -1,6 +1,13 @@
 <?php
 namespace App\Controllers;
+use App\Models\Auction;
 use App\Models\Member;
+use App\Models\Stamp;
+use App\Models\Image;
+use App\Models\Format;
+use App\Models\Color;
+use App\Models\Country;
+use App\Models\Etat;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
@@ -15,10 +22,16 @@ class MemberController{
 
     public function show($data){
         if(isset($data['id']) && $data['id']!=null){
+            $image = new Image;
+            $images = $image->select();
+            $stamp = new Stamp;
+            $stamps = $stamp->select();
+            $auction = new Auction;
+            $auctions = $auction->select();
             $member = new Member;
             $selectId = $member->selectId($data['id']);
             if($selectId){
-                return View::render('member/show', ['member'=>$selectId ]);
+                return View::render('member/show', ['member'=>$selectId, 'images'=> $images, 'stamps'=> $stamps, 'auctions' => $auctions ]);
             }else{
                 return View::render('error', ['message'=>'Membre pas trouvé!']);
             }
@@ -82,13 +95,7 @@ class MemberController{
             if($validator->isSuccess()){
                 $member = new Member;
                 $update = $member->update($data, $get['id']);                
-                if($update){                    
-                $selectedMember = $member->selectId($id);
-                /**Sélection du membre auteur */
-                //$idMember = $selectId['id'];
-                    //$selectId = $member->selectId($_SESSION['id']);
-                    //return View::redirect('members');
-                    //return View::redirect('member/show', ['selectedMember' => $selectedMember]);
+                if($update){ 
                     return View::redirect('member/show', ['id' => $id]);
                 }else{
                     return View::render('error', ['message'=>'Ne peux pas mettre à jour!']);

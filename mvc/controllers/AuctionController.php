@@ -27,12 +27,6 @@ class AuctionController {
         return View::render('auction/index', ['auctions'=>$auctions, 'stamps'=>$stamps, 'images'=>$images]);
     }
 
-
-    /*public function create(){       
-        $idTimbre = $_SESSION['idTimbre'];       
-        return View::render('stamp/create', ['idTimbre' => $idTimbre]);
-    }*/
-
     public function show($data){        
         if(isset($data['id']) && $data['id']!=null){
             $auction = new Auction;
@@ -65,25 +59,12 @@ class AuctionController {
 
                 $idMember = $selectId['idTimbre'];
                 $selectedMember = $member->selectId($idMember);
-                //$prenom = $selectedMember['prenom'];
-                //$nom = $selectedMember['nom'];
-
-                /*$idImage = $selectId['idTimbre'];
-                $selectedImage = $image->selectId($idImage);
-                $file = $selectedImage['file'];*/
 
                 $lot = $selectId['lot'];
                 $dateDebut = $selectId['dateDebut'];
                 $dateFin = $selectId['dateFin'];
                 $prixPlancher = $selectId['prixPlancher'];
                 $CoupDeCoeurLord = $selectId['CoupDeCoeurLord'];
-                
-                
-                //$idImage = $selectId['idTimbre'];
-                
-                //$idImage = $image->selectId($idTimbre);
-                //$selectedImage = $image->selectId($idImage);
-                //$file = $selectedImage['file'];
 
                 return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, /*'idImage'=>$idImage,*/ 'lot' => $lot, 'members'=>$members, 'formats'=>$formats , 'etats'=>$etats, 'countries'=> $countries, 'colors'=>$colors, 'selectedIdTimbre'=> $selectedIdTimbre, 'images' =>$images, 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'CoupDeCoeurLord' =>$CoupDeCoeurLord, /*'prenom'=> $prenom, 'nom'=>$nom,*/ 'stamps'=>$stamps, 'images'=>$images, 'members'=>$members ]);
             }else{
@@ -142,17 +123,6 @@ class AuctionController {
         }
     }*/
     
-    public function edit() {
-
-    }
-
-    
-    public function update() {
-
-    }
-    
-    public function delete() {
-
-    }
+   
 
 }

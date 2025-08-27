@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'Timbres'})}}
+{{ include('layouts/header.php', {title: 'Ajouter un timbre'})}}
 <main>
 <div class="contenu">
     {% if errors is defined %}

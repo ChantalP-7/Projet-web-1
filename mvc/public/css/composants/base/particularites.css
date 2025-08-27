@@ -212,3 +212,7 @@ input[name="etoiles"]:checked  {
 .simple {
     font-family: 'Belleza'; font-size: 20px; font-weight: 300;
 }
+
+.top {
+    margin-top: 20px;
+}

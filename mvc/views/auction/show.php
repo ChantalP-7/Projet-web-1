@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'Catalogue'})}}
+{{ include('layouts/header.php', {title: 'Page d'enchère'})}}
     
   
     <div class="conteneur">
@@ -49,9 +49,9 @@
                         <div class="space-between">                
                             <p>Pays</p>
                             {% for stamp in stamps %}
-                    {% if(stamp.id == auction.idTimbre) %}
-                            {% for country in countries %}
-                        {% if(country.id == stamp.idPays) %}
+                            {% if(stamp.id == auction.idTimbre) %}
+                                {% for country in countries %}
+                            {% if(country.id == stamp.idPays) %}
                             <p>{{country.pays}}</p>
                             {% endif %}
                         {% endfor %} 
@@ -158,13 +158,15 @@
                     </button> 
                     </div>
                     <div>
-                    <div class="space-between">
-                        <div>
+                    <div class="space-between ">
+                        <div class="top">
                             <p>Prix départ  {{auction.prixDepart}}</p>
+                            <br>
                             <p>Mise minimum  5.00$</p>
                         </div>
                         <div>
                             <p>Place une mise</p>
+                            <br>
                             <input 
                                 class="input"
                                 type="number"

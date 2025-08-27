@@ -56,20 +56,16 @@ class ImageController {
     
     public function store($data) {
         /* Références : https://www.youtube.com/watch?v=JxgulzYe5W0&t=448s */
+
         //$timbre = new Timbre;
         //$t = $timbre->
         $data['idTimbre'] = $_SESSION['idTimbre']; 
         if(isset($_FILES["file"]) ) {
-
             $uploadedFiles = $_FILES['file'];
-
-
             //for ($i = 0; $i < count($uploadedFiles['name']); $i++) {
             $name = $uploadedFiles['name']/*[$i]*/;
             $tmpName = $uploadedFiles['tmp_name']/*[$i]*/;
             ///$fileType = $uploadedFiles['type'][$i];
-
-
              /*foreach ($_FILES['file']['name'] as $key => $name) {
                 $tmpName = $_FILES['file']['tmp_name'][$key];
                 //$fileName = basename($name); // Nom du fichier*/
@@ -144,21 +140,59 @@ class ImageController {
     }
 
     
-    public function edit() {
-
+    public function edit($data){
+        Auth::session();
+        if(isset($data['id']) && $data['id']!=null){
+            $image = new Image;
+            $selectId = $image->selectId($data['id']);
+            if($selectId){
+                return View::render('image/edit', ['image'=>$selectId]);
+            }else{
+                return View::render('error', ['message'=>'Image non trouvée!']);
+            }
+        }else{
+            return View::render('error', ['message'=>'404 page introuvable!']);
+        }
     }
     
     
-    public function update() {
+    function update($data, $get){   
+        Auth::session();         
+        if(isset($get['id']) && $get['id']!=null){
+            $id = $_SESSION['id'];
+            $validator = new Validator;
+            $validator->field('legende', $data['legende'])->min(2)->max(45);
+            $validator->field('ordre', $data['ordre'])->min(1)->max(5)->required();           
+            if($validator->isSuccess()){
+                $image = new Image;
+                $update = $image->update($data, $get['id']);                
+                if($update){ 
+                    return View::redirect('image/show', ['id' => $id]);
+                }else{
+                    return View::render('error', ['message'=>'Ne peux pas mettre à jour!']);
+                }
+            }else{
+                $errors = $validator->getErrors();
+                return View::render('image/edit', ['errors'=>$errors, 'image'=>$data]);
+            }
+        }else{
+            return View::render('error', ['message'=>'404 non trouvé!']);
+        }
+    }
 
+    public function delete($data){
+        if(Auth::session()) {
+        $image = new Image;
+        $delete = $image->delete($data['id']);
+        if($delete){
+            return View::redirect('images');
+        }else{
+            return View::render('error', ['message'=>'404 non trouvé !']);
+        }
     }
 
 
-    
-    public function delete() {
-
-    }
-
+}
 
 }
     

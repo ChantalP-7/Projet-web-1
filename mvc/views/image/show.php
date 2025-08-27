@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'Membres'})}}
+{{ include('layouts/header.php', {title: 'Une image'})}}
 <main> 
     <div class="div-un-article image">
         <div class="grille-2-cols">

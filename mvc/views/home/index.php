@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'Connexion'})}}
+{{ include('layouts/header.php', {title: 'Accueil'})}}
 <main>
     <div class="accueil-div">
         <h1 class="sous-titre">Bienvenue aux enchères numérique du Lord Stampee</h1>
@@ -92,7 +92,7 @@
             <h2 class="sous-titre">Actualités récentes</h2>
             <div class="block-left lien">
                 <a href="#">Timbres</a>
-                <a href="#">Enchères</a>
+                <a href="{{base}}/auctions">Enchères</a>
                 <a href="#">Bridge</a>
             </div>
         </div>

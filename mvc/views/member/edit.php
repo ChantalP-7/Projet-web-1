@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'Membres'})}}
+{{ include('layouts/header.php', {title: 'Modifier mon profil'})}}
 <main>
     <div class="contenu">
         

@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'Timbres'})}}
+{{ include('layouts/header.php', {title: 'Un timbre'})}}
 
 {% set prenom = member.prenom %}
     {% set nom = member.nom %}

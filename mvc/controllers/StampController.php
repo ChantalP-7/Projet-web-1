@@ -77,23 +77,7 @@ class StampController {
 
 
     public function store($data) {        
-        $validator = new Validator;
-        /*$member = new Member;
-        $format = new Format;
-        $etat = new Etat;
-        $color = new Color;
-        $country = new Country;*/
-
-       /* $validator->field('nom', $data['nom'])->min(5)->max(45)->required();        
-        $validator->field('date', $data['date'])->required();
-        $validator->field('idPays', $data['idPays'])->required(); 
-        $validator->field('idEtat', $data['idEtat'])->required(); 
-        $validator->field('idCouleur', $data['idCouleur'])->required(); 
-        $validator->field('idFormat', $data['idFormat'])->required(); 
-        $validator->field('idMembre', $data['idMembre'])->required(); */
-        //print_r($data);
-        //die();
-        
+        $validator = new Validator;        
         if($validator->isSuccess()) {
             $stamp = new Stamp;      
             $insertStamp = $stamp->insert($data);
@@ -130,19 +114,57 @@ class StampController {
     }
 
     
-    public function edit() {
-
+    public function edit($data){
+        Auth::session();
+        if(isset($data['id']) && $data['id']!=null){
+            $stamp = new Stamp;
+            $selectId = $stamp->selectId($data['id']);
+            if($selectId){
+                return View::render('stamp/edit', ['stamp'=>$selectId]);
+            }else{
+                return View::render('error', ['message'=>'Timbre non trouvé!']);
+            }
+        }else{
+            return View::render('error', ['message'=>'404 page introuvable!']);
+        }
     }
 
     
-    public function update() {
-
+   function update($data, $get){   
+        Auth::session();         
+        if(isset($get['id']) && $get['id']!=null){
+            $id = $_SESSION['id'];
+            $validator = new Validator;
+            $validator->field('nom', $data['nom'])->min(2)->max(45);
+            $validator->field('date', $data['date'])->required();
+            if($validator->isSuccess()){
+                $stamp = new Stamp;
+                $update = $stamp->update($data, $get['id']);                
+                if($update){                    
+                $selectedStamp = $stamp->selectId($id);                
+                    return View::redirect('stamp/show', ['id' => $id]);
+                }else{
+                    return View::render('error', ['message'=>'Ne peux pas mettre à jour!']);
+                }
+            }else{
+                $errors = $validator->getErrors();
+                return View::render('stamp/edit', ['errors'=>$errors, 'stamp'=>$data]);
+            }
+        }else{
+            return View::render('error', ['message'=>'404 non trouvé!']);
+        }
     }
 
-
-    
-    public function delete() {
-
+    public function delete($data){
+        if(Auth::session()) {
+        $stamp = new Stamp;
+        $delete = $stamp->delete($data['id']);
+        if($delete){
+            return View::redirect('stamps');
+        }else{
+            return View::render('error', ['message'=>'404 non trouvé !']);
+        }
     }
+}
 
 }
