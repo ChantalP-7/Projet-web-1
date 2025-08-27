@@ -1,3 +1,23 @@
 .timbre {
     max-width: 300px;
 }
+
+.timbre-fiche {
+    min-width: 100%;
+    object-fit: cover;
+}
+
+.galerie-mini  {
+    display: flex;    
+    flex: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.galerie-mini img {
+    max-width: 150px;
+
+}
+.galerie-mini img:hover {
+    cursor: pointer;    
+}

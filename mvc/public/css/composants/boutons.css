@@ -46,6 +46,19 @@
     font-size: 20px;    
 }
 
+.bouton-thin {
+    padding: 5px 18px;
+    background-color: var(--bleuPale);
+    border-color: transparent;
+    color: var(--bleuFonce);
+    font-size: 16px;
+}
+
+.bouton-thin:hover {
+    background-color: var(--blanc);
+    border-color: var(--bleuFonce);
+}
+
 .bouton-simple svg:hover {
     color: var(--blanc) !important;    
 }

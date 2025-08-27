@@ -54,6 +54,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+}
+.space-between p {
+    margin-bottom: -20px;
 }
 
 .paiement {
@@ -147,6 +151,8 @@ input[name="etoiles"]:checked  {
     font-weight: 400;
 }
 
+
+
 .delete {
     border: none;
 }
@@ -156,8 +162,6 @@ input[name="etoiles"]:checked  {
 }
 
 .error{ 
-    
-    
     padding: 5px 10px;
     border-radius: 3px;
     
@@ -186,7 +190,6 @@ input[name="etoiles"]:checked  {
 .bienvenue span {
     font-weight: 700;
     font-size: 32px;
-
 }
 
 .sous-titre {
@@ -200,4 +203,12 @@ input[name="etoiles"]:checked  {
     align-items: center;
     font-size: 14px;
     border: 1px solid red !important;
+}
+
+.invisible {
+    display: none;
+}
+
+.simple {
+    font-family: 'Belleza'; font-size: 20px; font-weight: 300;
 }

@@ -5,9 +5,17 @@
     gap: 60px;
 }
 
+.grille-fiche-demie {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    padding: 20px;
+    gap: 30px;
+    
+}
+
 .grille-fiche {
     display: grid;
-    grid-template-columns: 35% 1fr;
+    grid-template-columns: 45% 1fr;
     padding: 20px;
     gap: 30px;
 }

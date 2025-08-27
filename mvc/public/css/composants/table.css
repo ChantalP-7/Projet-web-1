@@ -42,6 +42,10 @@ td.bleu:hover {
 	padding-left: 15px;
 }
 
+.div-un-article > *+* {
+	margin-top: 20px;
+}
+
 .div-un-article h1 {
 	border-bottom: 5px solid var(--bleuPale);
 	padding-bottom: 15px;
@@ -50,6 +54,12 @@ td.bleu:hover {
 	text-align: center;
 	margin-top: 60px;
 	margin-bottom: 20px;
+
+}
+.div-un-article .image {
+	font-weight: 400;
+	text-align: center;
+	margin-top: -60px;
 }
 
 .div-un-article h2 {

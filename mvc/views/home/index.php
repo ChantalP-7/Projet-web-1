@@ -11,76 +11,90 @@
                 </a>
             </button>
         </div>
-        <div class="favori invisible">
-
+        <div class="favori">
+            <br>
+            <h3>Cliquer pour voir les enchères</h3>
+            <div class="grille-galerie-fiche ">
+                {% for auction in auctions %}
+                    {% for stamp in stamps %}
+                        {% for image in images %}  
+                            {% if (auction.idTimbre == stamp.id and (image.idTimbre == stamp.id)) %}
+                            {% if (auction.CoupDeCoeurLord == 1) %}                                                
+                            <figure class="galerie-mini">
+                                <img class="miniature" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                            </figure>                    
+                            {% endif %}                        
+                            {% endif %}                        
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
-        <article class="article-principal">        
-            <h2 class="sous-titre">Nos enchères vedettes</h2>        
-            <div class="grille-cartes">
-            {% for auction in auctions %} 
-            
-                    
-                
-            <div class="carte grille-cartes-330px">
-                {% for stamp in stamps %}  
-            {% if auction.idTimbre == stamp.id %} 
-                {% for image in images %}
+    <article class="article-principal">        
+        <h2 class="sous-titre">Nos enchères vedettes</h2>        
+        <div class="grille-cartes">
+        {% for auction in auctions %}                
+        <div class="carte grille-cartes-330px">
+    {% for stamp in stamps %}  
+        {% if auction.idTimbre == stamp.id %} 
+            {% for image in images %}
                 {% if image.idTimbre == stamp.id %}
-                {% if image.ordre == 1 %}
-                    <figure>             
-                    <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
-                </figure> 
+                    {% if image.ordre == 1 %}
+                <figure>             
+                <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+            </figure> 
                 {% endif %}
-                {% endif %}
+            {% endif %}
+        {% endfor %}
+            <div class="space-between">              
+            <p>{{ stamp.nom}}</p>
+            <p>
+                <img
+                src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
+                width="12"
+                height="12"
+                alt="coeur1"
+                />
+            </p>
+            </div>
+            <div class="space-between">
+            <p>Pays</p>  
+            {% for country in countries %} 
+            {% if stamp.idPays == country.id %}              
+            <p>{{ country.pays }}</p>
+            {% endif %}
             {% endfor %}
-                <div class="space-between">              
-                <p>{{ stamp.nom}}</p>
-                <p>
-                    <img
-                    src="https://s2.svgbox.net/octicons.svg?ic=heart-bold&color=000"
-                    width="12"
-                    height="12"
-                    alt="coeur1"
-                    />
-                </p>
-                </div>
-                <div class="space-between">
-                <p>Pays</p>  
-                {% for country in countries %} 
-                {% if stamp.idPays == country.id %}              
-                <p>{{ country.pays }}</p>
-                {% endif %}
-                {% endfor %}
-                </div>
-                <div class="space-between">
-                <p>Prix départ</p>
-                <p>30.00 $</p>
-                </div>
-                <div class="space-between">
-                <p>An :                    
-                {{stamp.date}}</p>
-                <p>Mises (0)</p>
-                </div>
-                {% endif %}
-            {% endfor %}
-            </div>    
-            {% endfor %}
+            </div>
+            <div class="space-between">
+            <p>Prix départ</p>
+            <p>30.00 $</p>
+            </div>
+            <div class="space-between">
+            <p>An :                    
+            {{stamp.date}}</p>
+            <p>Mises (0)</p>            
+            </div>
+            <p><a href="{{base}}/auction/show?id={{auction.id}}">Voir l'enchère</a></p>
+            {% endif %}
+        {% endfor %}
+        </div>    
+        {% endfor %}
+    </div>
+    <h2 class="sous-titre">Enchères en cours</h2>
+    
+        </article>
+        <div class="accueil-div">
+            <h2 class="sous-titre">Qui est Lord Stampee ?</h2>
+            <p>Lord Stampee est un philatéliste passionné depuis son plus jeune âge, une passion qu’il a cultivée avec une dévotion sans faille au fil des années. Dès son enfance, il s’est fasciné par l’histoire et les histoires cachées derrière chaque timbre, explorant avec émerveillement les images, les dates, et les empreintes qui racontent l’évolution des pays et des civilisations. <br><br> Sa collection, aujourd’hui parmi les plus prestigieuses, témoigne de son expertise et de sa persévérance. Lord Stampee ne se contente pas d’acheter des timbres, il les étudie, les restaure et les archive avec une précision presque scientifique, cherchant toujours à approfondir sa connaissance de cet art singulier. Pour lui, la philatélie est bien plus qu'un simple hobby; c'est une véritable quête de l'histoire et un moyen d’immortaliser des fragments du monde entier à travers de petits morceaux de papier.</p>
         </div>
-        <h2 class="sous-titre">Enchères en cours</h2>
-        
-      </article>
-      <div class="accueil-div">
-        <h2 class="sous-titre">Qui est Lord Stampee ?</h2>
-        <p>Lord Stampee est un philatéliste passionné depuis son plus jeune âge, une passion qu’il a cultivée avec une dévotion sans faille au fil des années. Dès son enfance, il s’est fasciné par l’histoire et les histoires cachées derrière chaque timbre, explorant avec émerveillement les images, les dates, et les empreintes qui racontent l’évolution des pays et des civilisations. <br><br> Sa collection, aujourd’hui parmi les plus prestigieuses, témoigne de son expertise et de sa persévérance. Lord Stampee ne se contente pas d’acheter des timbres, il les étudie, les restaure et les archive avec une précision presque scientifique, cherchant toujours à approfondir sa connaissance de cet art singulier. Pour lui, la philatélie est bien plus qu'un simple hobby; c'est une véritable quête de l'histoire et un moyen d’immortaliser des fragments du monde entier à travers de petits morceaux de papier.</p>
-      </div>
-      <div class="accueil-div">
-        <h2 class="sous-titre">Actualités récentes</h2>
-        <div class="block-left lien">
-            <a href="#">Timbres</a>
-            <a href="#">Enchères</a>
-            <a href="#">Bridge</a>
+        <div class="accueil-div">
+            <h2 class="sous-titre">Actualités récentes</h2>
+            <div class="block-left lien">
+                <a href="#">Timbres</a>
+                <a href="#">Enchères</a>
+                <a href="#">Bridge</a>
+            </div>
         </div>
-      </div>
-</main>
+    </main>
 {{ include('layouts/footer.php')}}

@@ -32,7 +32,7 @@ class ImageController {
             $idTimbre = $selectId['idTimbre'];
             $ordre = $selectId['ordre'];
 
-            return View::render('image/show', ['selectId'=>$selectId, 'idTimbre' => $idTimbre,'legende'=>$legende,  'file' => $file, 'ordre'=> $ordre]);
+            //return View::render('image/create', ['selectId'=>$selectId, 'idTimbre' => $idTimbre,'legende'=>$legende,  'file' => $file, 'ordre'=> $ordre]);
 
         }else{
                 return View::render('error', ['message'=>'Image pas trouvée!']);
@@ -60,22 +60,37 @@ class ImageController {
         //$t = $timbre->
         $data['idTimbre'] = $_SESSION['idTimbre']; 
         if(isset($_FILES["file"]) ) {
-            $file = $_FILES['file'];
+
+            $uploadedFiles = $_FILES['file'];
+
+
+            //for ($i = 0; $i < count($uploadedFiles['name']); $i++) {
+            $name = $uploadedFiles['name']/*[$i]*/;
+            $tmpName = $uploadedFiles['tmp_name']/*[$i]*/;
+            ///$fileType = $uploadedFiles['type'][$i];
+
+
+             /*foreach ($_FILES['file']['name'] as $key => $name) {
+                $tmpName = $_FILES['file']['tmp_name'][$key];
+                //$fileName = basename($name); // Nom du fichier*/
+            $data['file'] = $name;
+
+            //$file = $_FILES['file'];
             //if ($file['error'] === UPLOAD_ERR_OK) {            
-            $tmpName = $file['tmp_name'];
-            $name = $file['name'];
-            $size = $file['size'];
-            $error = $file['error'];
-            $type = $file['type'];
+            
+            //$name = $file['name'];
+            //$size = $fileName['size'];
+            //$error = $fileName['error'];
+            //$type = $fileName['type'];
 
             $tabExtensions = explode('.', $name);
             $extensions = strtolower(end($tabExtensions));
             $extensionsValides = ['jpg', 'jpeg', 'png', 'svg', 'gif', 'webp'];
             $tailleMax = "40000";
-            var_dump($size);
+            //var_dump($size);
            // die();
             //if(in_array($extensions, $extensionsValides) && $size <= $tailleMax && !$error ) {                
-                move_uploaded_file($tmpName, './upload/uploads/'.$name);                 
+            move_uploaded_file($tmpName, './upload/uploads/'.$name);                 
             /*} else {
                 echo 'Mauvaise extension de fichier ou taille trop lourde de fichier.';
             }*/        
@@ -87,7 +102,7 @@ class ImageController {
             $validator->field('legende', $data['legende'])->min(5)->max(45)->required();
             $validator->field('ordre', $data['ordre'])->min(1)->max(5)->required();
             //$validator->field('idTimbre', $data['idTimbre']);
-            $data['file'] = $name;
+            
             //$data['idTimbre'] = $_SESSION['idTimbre'];
             //$data['idTimbre'] = $_SESSION['idTimbre'];
 
@@ -119,6 +134,8 @@ class ImageController {
                 print_r($errors);
             }
         }
+
+    //}
 
         else {
             echo "Non, il n'y a pas d'image téléchargée!";

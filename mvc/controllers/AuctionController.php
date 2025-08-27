@@ -65,8 +65,8 @@ class AuctionController {
 
                 $idMember = $selectId['idTimbre'];
                 $selectedMember = $member->selectId($idMember);
-                $prenom = $selectedMember['prenom'];
-                $nom = $selectedMember['nom'];
+                //$prenom = $selectedMember['prenom'];
+                //$nom = $selectedMember['nom'];
 
                 /*$idImage = $selectId['idTimbre'];
                 $selectedImage = $image->selectId($idImage);
@@ -85,7 +85,7 @@ class AuctionController {
                 //$selectedImage = $image->selectId($idImage);
                 //$file = $selectedImage['file'];
 
-                return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, /*'idImage'=>$idImage,*/ 'lot' => $lot, /*'file'=>$file, 'selectedIdTimbre'=> $selectedIdTimbre, 'images' =>$images,*/ 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'CoupDeCoeurLord' =>$CoupDeCoeurLord, 'prenom'=> $prenom, 'nom'=>$nom, 'stamps'=>$stamps, 'images'=>$images, 'members'=>$members ]);
+                return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, /*'idImage'=>$idImage,*/ 'lot' => $lot, 'members'=>$members, 'formats'=>$formats , 'etats'=>$etats, 'countries'=> $countries, 'colors'=>$colors, 'selectedIdTimbre'=> $selectedIdTimbre, 'images' =>$images, 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'CoupDeCoeurLord' =>$CoupDeCoeurLord, /*'prenom'=> $prenom, 'nom'=>$nom,*/ 'stamps'=>$stamps, 'images'=>$images, 'members'=>$members ]);
             }else{
                 return View::render('error', ['message'=>'Timbre pas trouvé!']);
             }

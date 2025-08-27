@@ -36,20 +36,19 @@
                 <h3>Style de timbres</h3>
                 <div class="checkbox block-left">
                 <label for="seul" aria-label="Timbre seul">
-                    <input type="checkbox" id="seul" />&nbsp;Timbres seuls (23)
+                    <input type="checkbox" id="seul" />&nbsp;Timbres seuls
                 </label>
                 <label for="serie" aria-label="Timbres en série">
-                    <input type="checkbox" id="serie" />&nbsp;Timbres en série (21)
+                    <input type="checkbox" id="serie" />&nbsp;Timbres en série
                 </label>
                 <label for="epoque" aria-label="Timbre d'époque">
-                    <input type="checkbox" id="epoque" />&nbsp;Timbre d'époque (34)
+                    <input type="checkbox" id="epoque" />&nbsp;Timbre d'époque
                 </label>
                 <label for="postal" aria-label="Timbre postal">
-                    <input type="checkbox" id="postal" />&nbsp;Timbres postaux (21)
+                    <input type="checkbox" id="postal" />&nbsp;Timbres postaux
                 </label>
                 <label for="unique" aria-label="Timbre unique">
                     <input type="checkbox" id="unique" />&nbsp; Timbres uniques
-                    (221)
                 </label>
                 </div>
             </div>
@@ -58,30 +57,28 @@
                 <div class="checkbox block-left">
                 <label for="sans-charniere" aria-label="Timbre sans charnière">
                     <input type="checkbox" id="sans-charniere" />&nbsp; Neuf sans
-                    charnière (9)
+                    charnière
                 </label>
                 <label for="charniere" aria-label="Timbre avec chanrnière">
                     <input type="checkbox" id="charniere" />&nbsp; Neuf avec
-                    charnière (109)
+                    charnière
                 </label>
                 <label for="oblitere" aria-label="Timbre oblitéré">
-                    <input type="checkbox" id="oblitere" />&nbsp; Oblitéré (35)
+                    <input type="checkbox" id="oblitere" />&nbsp; Oblitéré
                 </label>
                 <label for="un-jour" aria-label="Timbre un jour">
                     <input type="checkbox" id="un-jour" />&nbsp; Enveloppe 1er jour
-                    (23)
+                    
                 </label>
                 <label for="histoire-postale" aria-label="Histoire postale">
                     <input type="checkbox" id="histoire-postale" />&nbsp;Histoire
-                    postale (89)
-                </label>
+                    postale                </label>
                 <label for="postal-neuf" aria-label="Timbre postal neuf">
                     <input type="checkbox" id="postal-neuf" />&nbsp;Entier postal
-                    neuf (53)
+                    neuf
                 </label>
                 <label for="non-specifie" aria-label="Non spécifié">
                     <input type="checkbox" id="non-specifie" />&nbsp;Non spécifié
-                    (2)
                 </label>
                 </div>
             </div>
@@ -122,15 +119,12 @@
             </div>
             </form>
         </article>
-
       <!-- Section enchères en vedette -->
         <article class="article-principal">        
-            <h2 class="sous-titre">Nos enchères vedettes</h2>        
+            <h2 class="sous-titre">Nos enchères en cours</h2>        
             <div class="grille-cartes">
-        {% for auction in auctions %}
-                              
-            <article class="carte">
-                
+        {% for auction in auctions %}                              
+            <article class="carte">                
         {% for stamp in stamps %}  
             {% if auction.idTimbre == stamp.id %} 
         {% for image in images %}      
@@ -153,8 +147,7 @@
             {% endif %}
             {% endfor %} 
         </article>  
-          {% endfor %}   
-            
+          {% endfor %}  
             </div>       
         </article>
     </div>

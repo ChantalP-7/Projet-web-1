@@ -9,7 +9,8 @@
     />
     <title>Enchères Stampee</title>
     <link rel="stylesheet" type="text/css" href="{{ asset }}./css/style.php">
-    <script src="{{ asset }}../currentUrl.js" defer></script>
+    <script src="{{ asset }}../script/currentUrl.js" defer></script>
+    <script src="{{ asset }}../script/uploadImages.js" defer></script>
   </head>
   <body>
     <header>
