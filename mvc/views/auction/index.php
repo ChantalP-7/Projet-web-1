@@ -120,9 +120,9 @@
             </form>
         </article>
       <!-- Section enchères en vedette -->
-        <article class="article-principal">        
+        <article class="article-principal grid-images" id="grid-images">        
             <h2 class="sous-titre">Nos enchères en cours</h2>        
-            <div class="grille-cartes">
+            <div class="grille-cartes " id="grilleImages">
         {% for auction in auctions %}                              
             <article class="carte">                
         {% for stamp in stamps %}  
@@ -130,7 +130,7 @@
         {% for image in images %}      
             {% if image.idTimbre == stamp.id %} 
             {% if image.ordre == 1 %} 
-            <img src="{{ upload }}/{{ image.file }}" alt="{{stamp.nom}}">
+            <img class="grid-images" id="grid-images" src="{{ upload }}/{{ image.file }}" alt="{{stamp.nom}}">
             {% endif %}
             {% endif %}
         {% endfor %} 

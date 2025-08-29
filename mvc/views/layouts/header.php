@@ -8,9 +8,13 @@
       content="Cours UX/UY session 3 Collège Maisonneuve - Étudiante : Chantal Pépin"
     />
     <title>Enchères Stampee</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset }}./css/style.php">
+    <link rel="stylesheet" type="text/css" href="{{ asset }}./css/style.php">  
+    {% block javascripts %}
     <script src="{{ asset }}../script/currentUrl.js" defer></script>
-    <script src="{{ asset }}../script/uploadImages.js" defer></script>
+    <script src="{{ asset }}../script/boiteModale.js" defer></script>
+    <script src="{{ asset }}../script/main.js" defer></script>
+    
+    {% endblock %}  
   </head>
   <body>
     <header>

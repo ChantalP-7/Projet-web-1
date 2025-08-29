@@ -5,6 +5,12 @@ table {
 	max-width: 800px;
 }
 
+.table-enchere {
+	margin: 50px auto;
+	padding: 20px;
+	max-width: 1200px !important;
+}
+
 th {
 	background-color: rgb(170, 170, 170);
 	font-size: 24px;

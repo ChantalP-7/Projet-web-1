@@ -1,22 +1,22 @@
-{{ include('layouts/header.php', {title: 'Page d'enchère'})}}
+{{ include('layouts/header.php', {title: 'Page Enchères'})}}
     
   
     <div class="conteneur">
         <h2 class="center thin">Inscrivez-vous ou connectez-vous pour miser</h2>          
-        <div class="grille-fiche"> 
+        <div class="grille-fiche grid-images" id="grid-images"> 
             <div>             
-            <div class="carte">                                
+            <div class="carte ">                                
                     {% for stamp in stamps %}
                     {% if(stamp.id == auction.idTimbre) %}
                     {% for image in images %}
                     {% if(stamp.id == image.idTimbre) %}
                     {% if(image.ordre == 1) %}
                     <figure>
-                    <img class="timbre-fiche" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                    <img class="timbre-fiche img" src="{{upload}}/{{image.file}}" alt="{{upload}}">
                     <figcaption>
                         {% for member in members %}
                     {% if(member.id == stamp.idMembre) %}
-                        {{lot}} - {{member.prenom}} {{member.nom}}
+                        {{stamp.nom}} - {{member.prenom}} {{member.nom}}
                         {% endif %}
                     {% endfor %}
                     </figcaption>
@@ -34,8 +34,8 @@
                 {% for image in images %}
                     {% if(stamp.id == image.idTimbre) %}
                         {% if(image.ordre > 1) %}
-                        <figure class="galerie-mini">
-                        <img class="miniature" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                        <figure class="galerie-mini left">
+                        <img class="miniature grid-images" id="grid-images" src="{{upload}}/{{image.file}}" alt="{{upload}}">
                         </figure>
                         {% endif %}
                     {% endif %}
@@ -65,7 +65,6 @@
                             <p>{{stamp.date}}</p>
                             {% endif %} 
                         {% endfor %}
-
                         </div>
                         <div class="space-between">
                             {% for stamp in stamps %}
@@ -130,11 +129,9 @@
                           {% endif %}
                         {% endfor %}
                     {% endif %}   
-                {% endfor %}   
-                            
+                {% endfor %}
                         <p>Temps restant : 7 jour, 2h 00m 37s</p>
                         <br />
-                       
             {% for stamp in stamps %}
                 {% if(stamp.id == auction.idTimbre) %}
                     {% for member in members %}
@@ -145,7 +142,6 @@
                 {% endif %}   
             {% endfor %} 
                         <br>
-                        <p>Certifié : Oui</p>
                         <button class="favori-clic bouton-simple bouton-padding">
                                 <a class="coeur" href="#">Suivre</a> 
                                 <img
@@ -160,35 +156,28 @@
                     <div>
                     <div class="space-between ">
                         <div class="top">
-                            <p>Prix départ  {{auction.prixDepart}}</p>
+                            <p>Prix départ : {{auction.prixPlancher}}</p>
                             <br>
-                            <p>Mise minimum  5.00$</p>
+                            <p>Mise minimum  50.00$</p>
                         </div>
                         <div>
-                            <p>Place une mise</p>
-                            <br>
-                            <input 
-                                class="input"
-                                type="number"
-                                min="5.00"
-                                step="05.00"
-                                placeholder="USD"
-                                value="50.00"
-                                aria-label="Placer une mise"
-                            /> <br /><br />
-                            <a class="bouton-carre" href="#">Confirme ta mise</a>
+                            <button class="bouton-carre"><a href="{{base}}/bid/create">Faire une mise</a></button>          
+                    <div class="space-between">                
+                            </div>
                         </div>
-                    </div>
-                    <br />
-                    <hr />
-                    <div class="space-between">
-                        <p>Mise courante: $129.00</p>
+                        <br />
+                        <hr />
+                        
+                        {% for auction in auctions %}
+                        {% for bid in bids %}
+                         {% if(auction.id == bid.idEnchere) %}
+                        <p>Mise courante: {{auction.prixPlancher + bid.mise}} $</p>
                         <p>Nombre de mises : 1</p>
+                        {% endif %}                       
+                        {% endfor %}                       
+                        {% endfor %} 
                     </div>
-                    <br>
-                    <h3 class="align-left">Historique des mises pour cette enchère</h3>
-                    <br>
-                    <button class="bouton-simple bouton-thin thin">Cliquer</button>                    
+                    
                     <div class="paiement">
                     <p>Paiements sécurisés</p>
                     <img
@@ -197,67 +186,15 @@
                         alt="Moyens de paiement"
                     />
                     </div>
+                    <br>
+                    <h3 class="align-left">Historique des mises pour cette enchère</h3>                    
+                    <br>
+                    <button class="bouton-simple bouton-thin thin historique"><a href="./../bid/show?id={{auction.id}}">Cliquer</a></button>          
+                    
                     </div>
                 </div>          
-            </article>
-            
-            
-       </div>
-       <hr />
-    {% for stamp in stamps %}
-        {% if(stamp.id == auction.idTimbre) %}
-            {% for member in members %}
-                {% if(member.id == stamp.idMembre) %}
-        <h2>Plus de timbres de {{member.prenom}} {{member.nom}}</h2>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
-        {% endfor %}
-            
-            
-        <div class="grille-galerie-fiche">
-            <img
-            src="https://s2.svgbox.net/hero-solid.svg?ic=arrow-left&color=000"
-            width="32"
-            height="32"
-            alt="flèche droite"
-            />
-            <figure>
-            <img
-                class="petite-image"
-                src="./Assets/image/timbres/timbre-12.PNG"
-                alt="timbre1"
-            />
-            </figure>
-            <figure>
-            <img
-                class="petite-image"
-                src="./Assets/image/timbres/timbre-16.PNG"
-                alt="timbre2"
-            />
-            </figure>
-            <figure>
-            <img
-                class="petite-image"
-                src="./Assets/image/timbres/timbre-14.PNG"
-                alt="timbre3"
-            />
-            </figure>
-            <figure>
-            <img
-                class="petite-image"
-                src="./Assets/image/timbres/timbre-9.PNG"
-                alt="timbre4"
-            />
-            </figure>
-
-            <img
-            src="https://s2.svgbox.net/hero-solid.svg?ic=arrow-right&color=000"
-            width="32"
-            height="32"
-            alt="flèche gauche"
-            />
-        </div>
+            </article>    
+       </div>      
 </div>
 
 {{ include('layouts/footer.php')}}

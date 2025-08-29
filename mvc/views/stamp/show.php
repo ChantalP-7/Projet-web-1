@@ -36,6 +36,7 @@
         {% endfor %}
             </article>
         </div>
+        <a href="{{base}}/stamp/edit?id={{ member.id }}" class="bouton-simple bouton-padding bleu">Modifier mon timbre</a>
         
     </div>
 </main>

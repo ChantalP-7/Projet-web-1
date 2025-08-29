@@ -17,19 +17,7 @@
             <form class="formulaire" action="" method="post" enctype="multipart/form-data">
                 Choisi le nombre d'images à télécharger
                 <input type="number" min="1" max="5"  class="nbImages"  name="nbImages" value="1">       
-                <div class="imageUpload"> 
-                    <label for="image0"><span class="nomImage"></span></label>    
-                    <div>
-                        <label for="image">Nom du fichier</label>
-                        <input type="file" name="file" class="input" accept="image/*"  value="{{ image.file }}">            
-                        {% if errors.file is defined %}
-                            <span class="error">{{errors.file}}</span>
-                        {% endif %}
-                        {% if message is defined %}
-                            <p>{{ message }}</p>
-                        {% endif %}
-                    </div> 
-                    <div class="space">              
+                <div class="space">              
                         <div>
                             <label for="legende">Légende (Caption)</label>                
                                 <input type="text" id="" name="legende" class="input"  value="{{ image.legende }}">            
@@ -45,8 +33,6 @@
                             {% endif %} 
                         </div> 
                     </div>
-                </div>        
-                <div class="conteneurImageUpload"></div>
                 <input type="hidden" name="idTimbre" value="{{ image.idTimbre }}">
                 <input type="submit" class="bouton input" value="Soumettre">
             </form>

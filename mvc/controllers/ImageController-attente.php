@@ -4,8 +4,10 @@ use App\Models\Image;
 use App\Models\Member;
 use App\Models\Stamp;
 use App\Providers\View;
+use App\Providers\ImageUpload;
 use App\Providers\Auth;
 use App\Providers\Validator;
+use App\Providers\Timbre;
 
 class ImageController { 
     
@@ -21,7 +23,8 @@ class ImageController {
             $image = new Image;
              //$idTimbre = $_SESSION['idTimbre'];
             $selectId = $image->selectId($data['id']);
-            //$file = $image->select();
+            //$images = $image->select();
+
         if($selectId) {
             //$image = new Image;
             $legende = $selectId['legende'];
@@ -53,47 +56,66 @@ class ImageController {
     
     public function store($data) {
         /* Références : https://www.youtube.com/watch?v=JxgulzYe5W0&t=448s */
-        
+
+        //$timbre = new Timbre;
+        //$t = $timbre->
         $data['idTimbre'] = $_SESSION['idTimbre']; 
+        if(isset($_FILES["images"]) ) {
+            $uploadedFiles = $_FILES['images'];
+            //for ($i = 0; $i < count($uploadedFiles['name']); $i++) {
+            $name = $uploadedFiles['name']/*[$i]*/;
+            $tmpName = $uploadedFiles['tmp_name']/*[$i]*/;
+            ///$fileType = $uploadedFiles['type'][$i];
+             /*foreach ($_FILES['file']['name'] as $key => $name) {
+                $tmpName = $_FILES['file']['tmp_name'][$key];
+                //$fileName = basename($name); // Nom du fichier*/
+            $data['images'] = $name;
 
-        //$uploadDir = './upload/uploads/'; 
-        if (isset($_FILES['files'])/* && !empty($_FILES['file']['name'][0])*/) {
+            //$file = $_FILES['file'];
+            //if ($file['error'] === UPLOAD_ERR_OK) {            
+            
+            //$name = $file['name'];
+            //$size = $fileName['size'];
+            //$error = $fileName['error'];
+            //$type = $fileName['type'];
 
-       /* foreach ($_FILES as $image) {
-            echo $tmp_name = $image['tmp_name'][0];
-            print_r($image);
-            die();
-            $name = $image['name'];
-            $type = $image['type'];
-            $size = $image['size'];
-            $error = $image['error'];*/
-
-        foreach($_FILES['files']['name'] as $key => $name) {
-
-            $tmpName = $_FILES['files']['tmp_name'][$key];
-            $size = $_FILES['files']['size'][$key];
-            $error = $_FILES['files']['error'][$key];
-            $type = $_FILES['files']['type'][$key];
-
-            move_uploaded_file($tmpName, './upload/uploads/'.$name);
-
-        if ($error == UPLOAD_ERR_OK) {
+            $tabExtensions = explode('.', $name);
+            $extensions = strtolower(end($tabExtensions));
+            $extensionsValides = ['jpg', 'jpeg', 'png', 'svg', 'gif', 'webp'];
+            $tailleMax = "40000";
+            //var_dump($size);
+           // die();
+            //if(in_array($extensions, $extensionsValides) && $size <= $tailleMax && !$error ) {                
+            move_uploaded_file($tmpName, './upload/uploads/'.$name);                 
+            /*} else {
+                echo 'Mauvaise extension de fichier ou taille trop lourde de fichier.';
+            }*/        
+            //$data = file_get_contents($_FILES['file']['tmp_name']);                    
+            //$fileString = get_
+            //$image = new Image; 
             $validator = new Validator;
             //$imageUpload = new ImageUpload;            
             $validator->field('legende', $data['legende'])->min(5)->max(45)->required();
             $validator->field('ordre', $data['ordre'])->min(1)->max(5)->required();
+            //$validator->field('idTimbre', $data['idTimbre']);
+            
             //$data['idTimbre'] = $_SESSION['idTimbre'];
-            $data['file'] = $name;
+            //$data['idTimbre'] = $_SESSION['idTimbre'];
+
            // $idTimbre = $data['idTimbre'];
             if($validator->isSuccess() && $data['file']) {
                 
+                /*$timbre = new Stamp;
+                $idTimbre = $timbre -> selectId('id');
+                $insertTimbre = $idTimbre -> insert('id');*/
+                //$selectedTimbre = $timbre->selectId("idTimbre");
                 $image = new Image;
-                $images = $image->select();
+                //$data['idTimbre'] = $insertTimbre;
                 $insertImage = $image->insert($data);            
                 if($insertImage) { 
                     echo "Oui, image insérée!";
-                    //return View::redirect('image/show?id='.$insertImage/*, ['idTimbre'=>$idTimbre]*/);
-                    return View::redirect('image/index', ['images'=> $images/*, 'insertIdTimbre'=> $insertIdTimbre*/]);
+                    return View::redirect('image/show?id='.$insertImage/*, ['idTimbre'=>$idTimbre]*/);
+                    //return View::redirect('image/index', ['images'=> $images/*, 'insertIdTimbre'=> $insertIdTimbre*/]);
                 }
                 else {
                     return View::render('error', ['message'=>'404 page pas trouvée!']);
@@ -106,15 +128,11 @@ class ImageController {
                 return View::render('image/create', ['errors'=>$errors,'idStamp' => $idStamp]);
                 $errors = $validator->getErrors();
                 print_r($errors);
-             } 
-              echo "Le fichier \"{$name}\" a été uploadé et enregistré avec succès.<br>";
-              }
-        
-            else {
-                echo "Erreur lors du téléchargement du fichier '$name'. Code d'erreur : $error<br>";
             }
         }
-    }
+
+    //}
+
         else {
             echo "Non, il n'y a pas d'image téléchargée!";
         }
@@ -164,15 +182,17 @@ class ImageController {
 
     public function delete($data){
         if(Auth::session()) {
-            $image = new Image;
-            $delete = $image->delete($data['id']);
-            if($delete){
-                return View::redirect('file');
-            }else{
-                return View::render('error', ['message'=>'404 non trouvé !']);
-            }
+        $image = new Image;
+        $delete = $image->delete($data['id']);
+        if($delete){
+            return View::redirect('images');
+        }else{
+            return View::render('error', ['message'=>'404 non trouvé !']);
         }
     }
+
+
+}
 
 }
     

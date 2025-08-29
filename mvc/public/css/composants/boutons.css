@@ -68,6 +68,11 @@
     padding: 8px 15px;
     font-size: 18px;
     border-radius: 3px;
+    border-color: transparent;
+}
+
+.bouton-carre:hover {
+    cursor:pointer;
 }
 
 .bouton-carre:hover {
@@ -101,5 +106,10 @@
     color: black;
     cursor: pointer;
     }
+}
+
+.bleu {
+    background-color: var(--bleuPale) !important; 
+    border-color: transparent;   
 }
 

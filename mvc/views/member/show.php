@@ -18,15 +18,13 @@
                 </div>
             </article>
             <article>
-                <h1>Tes enchères</h1>
+                <h1>Tes timbres</h1>
                 <article class="article-principal">  
                     <div class="grille-cartes">
-                        
                          {% for stamp in stamps %}
                         {% if member.id == stamp.idMembre%}
                         {% for auction in auctions %} 
-                            {% if auction.idTimbre == stamp.id %}                                   
-                                     
+                            {% if auction.idTimbre == stamp.id %}  
                                         {% for image in images %}
                                             {% if image.idTimbre == stamp.id %}
                                                 {% if image.ordre == 1 %}
@@ -42,7 +40,7 @@
                                 <p>{{ stamp.nom}}</p>
                                 <p>Mises (0)</p>
                             </div>                            
-                            <p><a href="{{base}}/auction/show?id={{auction.id}}">Voir l'enchère</a></p>
+                            <p><a href="{{base}}/auction/show?id={{auction.id}}">Voir le timbre</a></p>
                             
                         </div>   
                         {% endif %}
@@ -57,11 +55,12 @@
                 </article>
                 <h3>Ajoute un timbre</h3>
                 <div class="deux-boutons">
-                    <a href="{{base}}/stamp/create" class="bouton-simple bouton-padding">Ajoute un timbre</a> 
-                    <a href="{{base}}/stamp/edit?id={{ member.id }}" class="bouton-simple bouton-padding">Modifier voir mes enchères</a> 
+                    <a href="{{base}}/stamp/create" class="bouton-simple bouton-padding">Ajoute un timbre</a>                      
                 </div>
             </article>
         </div>
+        <h1>Enchères en cours</h1>
+        <button class="bouton-simple bouton-padding bleu"><a href="{{base}}/bids">Voir l'historique</a></button>
         
     </div>
 </main>

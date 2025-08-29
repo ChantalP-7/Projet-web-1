@@ -55,5 +55,9 @@
         <p class="lien">info@lord.stampee.com</p>
       </div>
     </footer>
+    <figure id="galleryContainer">
+        <img src="" alt="">
+        <figcaption class="caption"></figcaption>
+    </figure>
   </body>
 </html>

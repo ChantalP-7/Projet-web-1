@@ -8,6 +8,7 @@ use App\Models\Format;
 use App\Models\Color;
 use App\Models\Country;
 use App\Models\Etat;
+use App\Models\Bid;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
@@ -27,10 +28,12 @@ class AuctionController {
         return View::render('auction/index', ['auctions'=>$auctions, 'stamps'=>$stamps, 'images'=>$images]);
     }
 
-    public function show($data){        
-        if(isset($data['id']) && $data['id']!=null){
+    public function show($data){ 
+        if(isset($data['id']) && $data['id']!=null){;
+            
             $auction = new Auction;
             $selectId = $auction->selectId($data['id']);
+            $_SESSION['idEnchere'] = $selectId;
             if($selectId){  
                 $stamp = new Stamp; 
                 $stamps = $stamp->select(); 
@@ -46,10 +49,10 @@ class AuctionController {
                 $etats = $etat->select();
                 $color = new Color;   
                 $colors = $color->select();
+                $bid = new Bid;   
+                $bids = $bid->select();
 
-
-                // Sélection pour les enchères                
-                
+                // Sélection pour les enchères
                 $idTimbre = $selectId['idTimbre'];
                 $id = $selectId['id'];
                 
@@ -66,7 +69,7 @@ class AuctionController {
                 $prixPlancher = $selectId['prixPlancher'];
                 $CoupDeCoeurLord = $selectId['CoupDeCoeurLord'];
 
-                return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, /*'idImage'=>$idImage,*/ 'lot' => $lot, 'members'=>$members, 'formats'=>$formats , 'etats'=>$etats, 'countries'=> $countries, 'colors'=>$colors, 'selectedIdTimbre'=> $selectedIdTimbre, 'images' =>$images, 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'CoupDeCoeurLord' =>$CoupDeCoeurLord, /*'prenom'=> $prenom, 'nom'=>$nom,*/ 'stamps'=>$stamps, 'images'=>$images, 'members'=>$members ]);
+                return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, /*'idImage'=>$idImage,*/ 'lot' => $lot, 'members'=>$members, 'formats'=>$formats , 'etats'=>$etats, 'countries'=> $countries, 'colors'=>$colors, 'selectedIdTimbre'=> $selectedIdTimbre, 'images' =>$images, 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'CoupDeCoeurLord' =>$CoupDeCoeurLord, /*'prenom'=> $prenom, 'nom'=>$nom,*/ 'stamps'=>$stamps, 'images'=>$images, 'members'=>$members, 'bids'=>$bids ]);
             }else{
                 return View::render('error', ['message'=>'Timbre pas trouvé!']);
             }
@@ -76,52 +79,14 @@ class AuctionController {
     }
 
 
-    /*public function store($data) {        
-        $validator = new Validator;
-        $member = new Member;
-        $format = new Format;
-        $etat = new Etat;
-        $color = new Color;
-        $country = new Country;
+    
 
-        $validator->field('lot', $data['lot'])->min(5)->max(45)->required();        
-        $validator->field('dateDebut', $data['dateDebut'])->required();
-        $validator->field('dateFin', $data['dateFin'])->required();
-        $validator->field('prixPlancher', $data['prixPlancher'])->required(); 
-        $validator->field('CoupDeCoeurLord', $data['CoupDeCoeurLord'])->required(); 
-        $validator->field('actif', $data['actif'])->required(); 
-        $validator->field('idTimbre', $data['idTimbre'])->required();
-        if($validator->isSuccess()) {
-            
-            $stamp = new Stamp;      
-            $insertStamp = $stamp->insert($data);
-            if($insertStamp) {                
-                return View::redirect('image/create', ['idTimbre='.$insertStamp] );
-                //return View::redirect('stamp/show?id='.$insertStamp);
-            /*} else {
-                return View::render('error', ['message'=>'404 page pas trouvée!']);
-            }
-        }else {
-            
-            // Retour avec erreurs
-            $errors = $validator->getErrors();
-            $member = new Member;
-            $idMember = $member->selectId("idMembre");
-            $format = new Format;
-            $formats = $format->select(); 
-            $color = new Color;
-            $colors = $color->select(); 
-            $etat = new Etat;
-            $etats = $etat->select(); 
-            $country = new country;
-            $countries = $country->select();
-                
-            return View::render('stamp/create', ['errors'=>$errors,'idMembre' => $idMember,'formats' => $formats, 'colors'=> $colors, 'etats' => $etats, 'countries' => $countries]);
-            $errors = $validator->getErrors();
-            print_r($errors);
-            
-        }
-    }*/
+    
+
+    
+
+
+    
     
    
 

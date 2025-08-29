@@ -8,6 +8,7 @@ use App\Models\Format;
 use App\Models\Color;
 use App\Models\Country;
 use App\Models\Etat;
+use App\Models\Bid;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
@@ -28,10 +29,12 @@ class MemberController{
             $stamps = $stamp->select();
             $auction = new Auction;
             $auctions = $auction->select();
+            $bid = new Bid;
+            $bids = $bid->select();
             $member = new Member;
             $selectId = $member->selectId($data['id']);
             if($selectId){
-                return View::render('member/show', ['member'=>$selectId, 'images'=> $images, 'stamps'=> $stamps, 'auctions' => $auctions ]);
+                return View::render('member/show', ['member'=>$selectId, 'images'=> $images, 'stamps'=> $stamps, 'auctions' => $auctions, 'bids'=>$bids ]);
             }else{
                 return View::render('error', ['message'=>'Membre pas trouvé!']);
             }

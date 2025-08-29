@@ -38,6 +38,11 @@ Route::post('/image/create', 'ImageController@store');
 Route::get('/auctions', 'AuctionController@index');
 Route::get('/auction/show', 'AuctionController@show');
 
+Route::get('/bids', 'BidController@index');
+Route::get('/bid/show', 'BidController@show');
+Route::get('/bid/create', 'BidController@create');
+Route::post('/bid/create', 'BidController@store');
+
 
 /* Autres route stamp à venir */ 
 

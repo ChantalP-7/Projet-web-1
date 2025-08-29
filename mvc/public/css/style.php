@@ -34,6 +34,7 @@
 @import './composants/composants-grille/grille-cols.css';
 @import './composants/composants-grille/grille-galerie.css';
 @import './composants/composants-grille/grille-table.css';
+@import './composants/composants-grille/grille-timbres.css';
 
 @import './composants/composants-enchere/enchere.css';
 @import './composants/composants-enchere/timbre.css';

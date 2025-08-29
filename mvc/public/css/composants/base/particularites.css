@@ -216,3 +216,29 @@ input[name="etoiles"]:checked  {
 .top {
     margin-top: 20px;
 }
+
+.historique {
+    max-width: 500px !important;
+    
+}
+.historique th {   
+    font-size: 12px;
+    padding: 10px;
+}
+.historique td {   
+    font-size: 10px;
+    padding: 10px;
+}
+
+.centre-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.retour {
+    font-size: 22px;
+    color: blue;
+}

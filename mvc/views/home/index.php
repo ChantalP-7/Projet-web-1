@@ -17,11 +17,12 @@
             <div class="grille-galerie-fiche ">
                 {% for auction in auctions %}
                     {% for stamp in stamps %}
-                        {% for image in images %}  
-                            {% if (auction.idTimbre == stamp.id and (image.idTimbre == stamp.id)) %}
+                    {% for image in images %}  
+                    {% if (auction.idTimbre == stamp.id %)}
+                            {% if (image.idTimbre == stamp.id ) %}
                             {% if (auction.CoupDeCoeurLord == 1) %}                                                
                             <figure class="galerie-mini">
-                                <img class="miniature" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                                <img class="grid-images miniature" id="grid-images" src="{{upload}}/{{image.file}}" alt="{{upload}}">
                             </figure>                    
                             {% endif %}                        
                             {% endif %}                        
@@ -35,14 +36,14 @@
         <h2 class="sous-titre">Nos enchères vedettes</h2>        
         <div class="grille-cartes">
         {% for auction in auctions %}                
-        <div class="carte grille-cartes-330px">
+        <div class="carte grille-cartes-330px" class="" id="">
     {% for stamp in stamps %}  
         {% if auction.idTimbre == stamp.id %} 
             {% for image in images %}
                 {% if image.idTimbre == stamp.id %}
                     {% if image.ordre == 1 %}
-                <figure>             
-                <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                <figure >             
+                <img class="grid-images timbre" id="grid-images" src="{{upload}}/{{image.file}}" alt="{{upload}}">
             </figure> 
                 {% endif %}
             {% endif %}
@@ -82,9 +83,12 @@
         {% endfor %}
     </div>
     <h2 class="sous-titre">Enchères en cours</h2>
-    
+        <div>
+            <button class="bouton-carre ">Voir les mises<a href="{{ base }}/bids"></a></button>
+        </div>
+            
         </article>
-        <div class="accueil-div">
+        <div class="accueil-div">            
             <h2 class="sous-titre">Qui est Lord Stampee ?</h2>
             <p>Lord Stampee est un philatéliste passionné depuis son plus jeune âge, une passion qu’il a cultivée avec une dévotion sans faille au fil des années. Dès son enfance, il s’est fasciné par l’histoire et les histoires cachées derrière chaque timbre, explorant avec émerveillement les images, les dates, et les empreintes qui racontent l’évolution des pays et des civilisations. <br><br> Sa collection, aujourd’hui parmi les plus prestigieuses, témoigne de son expertise et de sa persévérance. Lord Stampee ne se contente pas d’acheter des timbres, il les étudie, les restaure et les archive avec une précision presque scientifique, cherchant toujours à approfondir sa connaissance de cet art singulier. Pour lui, la philatélie est bien plus qu'un simple hobby; c'est une véritable quête de l'histoire et un moyen d’immortaliser des fragments du monde entier à travers de petits morceaux de papier.</p>
         </div>
