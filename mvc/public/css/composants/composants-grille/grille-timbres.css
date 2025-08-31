@@ -52,6 +52,7 @@ body {
 	max-height: 80%;
 	width: auto;
 }
+
 #galleryContainer.visible {
 	opacity: 1;
 	visibility: visible;

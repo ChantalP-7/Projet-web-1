@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\Etat;
 use App\Models\Image;
 use App\Models\Auction;
+use App\Models\Bid;
 use App\Providers\View;
 use App\Providers\Validator;
 use App\Providers\Auth;
@@ -19,6 +20,8 @@ class HomeController {
     public function index(){
         $auction = new Auction;
         $auctions = $auction->select();
+        $bid = new Bid;
+        $bids = $bid->select();
         $country = new Country; 
         $stamp = new Stamp;
         $stamps = $stamp->select();
@@ -35,7 +38,7 @@ class HomeController {
         $members = $member->select();
         //$idMembre = $selectId['idMembre'];
         //$selectedMember = $member->selectId($idMembre);
-    return View::render('home/index', ['stamps'=>$stamps, 'members'=>$members, 'images'=>$images, 'countries'=>$countries, 'etats'=>$etats, 'auctions'=>$auctions]);
+    return View::render('home/index', ['stamps'=>$stamps, 'bids'=>$bids, 'members'=>$members, 'images'=>$images, 'countries'=>$countries, 'etats'=>$etats, 'auctions'=>$auctions]);
     }
     
 }

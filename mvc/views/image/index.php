@@ -14,7 +14,7 @@
             {% for image in images %}                      
                 <tr>                        
                     <td>{{ image.legende}}</td>              
-                    <td><img src="{{upload}}/{{image.file}}"> </td>              
+                    <td><img class="timbre" src="{{upload}}/{{image.file}}" alt="{{ image.legende}}"> </td>              
                     <td>{{ image.ordre}}</td> 
                     <td>{{ image.idTimbre}}</td>
                     <td><a href="image/show?id={{image.id}}">Voir l'image'</a></td>                

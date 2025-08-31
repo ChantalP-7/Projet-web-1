@@ -2,7 +2,7 @@ let mesImages = document.querySelectorAll("#grid-images img");
 
 for (let i = 0; i < mesImages.length; i++) {
 	mesImages[i].addEventListener("click", showImage, false);
-	mesImages[i].addEventListener("click", ecritInfo, false);
+	mesImages[i].addEventListener("click", ecritInfo, false);	
 }
 
 function ecritInfo(e) {
@@ -27,7 +27,7 @@ function showImage(e) {
 	let bigImage = imageContainer.querySelector("img");
 	bigImage.src = image.src;
 	imageContainer.classList.toggle("visible");
-	imageContainer.addEventListener("click", closeImage, false);
+	imageContainer.addEventListener("click", closeImage, false);	
 }
 
 function closeImage(e) {

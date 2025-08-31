@@ -16,10 +16,10 @@
             <h1 class="sous-titre center">Enregistre une image</h1>
             <form class="formulaire" action="" method="post" enctype="multipart/form-data">
                 <div class="imageUpload"> 
-                    <label for="image1"><span class="nomImage"></span></label>    
+                    <label for="image"><span class="nomImage"></span></label>    
                     <div>
                         <label for="image">Images</label>
-                        <input type="file" name="files[]" class="input" accept="image/*"  value="{{ image.file }}" multiple>            
+                        <input type="file" name="files[]" class="input" accept="image/*"   value="{{ image.file }}" multiple>            
                         {% if errors.file is defined %}
                             <span class="error">{{errors.file}}</span>
                         {% endif %}

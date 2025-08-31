@@ -33,5 +33,6 @@
         <input type="submit" class="bouton-carre" value="Ajouter">
         </form>          
     </div>
+</div>
 </main>
 {{ include('layouts/footer.php')}}

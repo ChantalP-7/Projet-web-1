@@ -47,7 +47,7 @@ class ImageController {
         //$idTimbre = $timbre->selectId("IdTimbre");
         //$idStamp = $stamp->selectId($idTimbre);
         //$idTimbre = $stamp->selectId('id');        
-        return View::render('image/create'/*, ['idTimbre' => $idTimbre'stamps' => $stamps, 'members'=>$members]*/);
+        return View::render('image/store'/*, ['idTimbre' => $idTimbre'stamps' => $stamps, 'members'=>$members]*/);
     }
 
     
@@ -88,12 +88,12 @@ class ImageController {
             if($validator->isSuccess() && $data['file']) {
                 
                 $image = new Image;
-                $images = $image->select();
+                //$images = $image->select();
                 $insertImage = $image->insert($data);            
                 if($insertImage) { 
                     echo "Oui, image insérée!";
-                    //return View::redirect('image/show?id='.$insertImage/*, ['idTimbre'=>$idTimbre]*/);
-                    return View::redirect('image/index', ['images'=> $images/*, 'insertIdTimbre'=> $insertIdTimbre*/]);
+                    return View::redirect('image/show?id='.$insertImage/*, ['idTimbre'=>$idTimbre]*/);
+                    //return View::redirect('image/index', ['images'=> $images/*, 'insertIdTimbre'=> $insertIdTimbre*/]);
                 }
                 else {
                     return View::render('error', ['message'=>'404 page pas trouvée!']);

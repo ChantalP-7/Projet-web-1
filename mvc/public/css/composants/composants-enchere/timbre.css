@@ -1,27 +1,30 @@
 .timbre {
     max-width: 300px;
+    object-fit: cover;
+    aspect-ratio: 7/5;
 }
 
 .timbre-fiche {
     min-width: 100%;
-    object-fit: cover;
 }
 
 .galerie-mini  {
     display: flex;    
     flex: row;
-    justify-content: space-around;
+    gap: 10px;
     align-items: center;
 }
 
 .galerie-mini img {
     max-width: 150px;
-
+    aspect-ratio: 7/5;
+    object-fit: cover;
 }
+
+
 .galerie-mini img:hover {
     cursor: pointer;    
 }
-
 
 .grid-images {
     display: grid;
