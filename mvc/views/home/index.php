@@ -17,16 +17,15 @@
             <div class="grille-galerie-fiche ">
                 {% for auction in auctions %}
                     {% for stamp in stamps %}
-                    {% for image in images %}  
-                    {% if (auction.idTimbre == stamp.id %)}
-                            {% if (image.idTimbre == stamp.id ) %}
-                            {% if (auction.CoupDeCoeurLord == 1) %}                                                
+                        {% if (auction.idTimbre == stamp.id) %}
+                            {% for image in images %} 
+                            {% if (image.idTimbre == stamp.id and (auction.CoupDeCoeurLord == 1)) %}               
                             <figure class="galerie-mini">
-                                <img class="grid-images miniature" id="grid-images" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                                <img class="miniature" id="" src="{{upload}}/{{image.file}}" alt="{{upload}}">
                             </figure>                    
                             {% endif %}                        
-                            {% endif %}                        
-                        {% endfor %}
+                            {% endfor %}                        
+                        {% endif %}
                     {% endfor %}
                 {% endfor %}
             </div>
@@ -43,7 +42,7 @@
                 {% if image.idTimbre == stamp.id %}
                     {% if image.ordre == 1 %}
                 <figure >             
-                <img class="grid-images timbre" id="grid-images" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                <img class="timbre" id="" src="{{upload}}/{{image.file}}" alt="{{ image.legende}}">
             </figure> 
                 {% endif %}
             {% endif %}
@@ -81,11 +80,46 @@
         {% endfor %}
         </div>    
         {% endfor %}
-    </div>
-    <h2 class="sous-titre">Enchères en cours</h2>
-        <div>
-            <button class="bouton-carre ">Voir les mises<a href="{{ base }}/bids"></a></button>
+    </div> 
+    <br>   
+    <div>
+        <h1 class="sous-titre">Nos enchères en cours</h1>
+        <div class="grille-table">
+            <table class="table-enchere">        
+                <tr>
+                    <th>Nom</th> 
+                    <th>lot</th> 
+                    <th>montant</th>           
+                    <th>Date</th>         
+                    <th>Miseure</th> 
+                    <th>Enchère</th> 
+                                
+                </tr>
+                {% for bid in bids %}                      
+                {% for auction in auctions %} 
+                {% if bid.idEnchere == auction.id %}    
+                {% for stamp in stamps %}
+                {% if auction.idTimbre == stamp.id %} 
+                {% for member in members %} 
+                {% if bid.idMembre == member.id %}                 
+                <tr>                        
+                    <td>{{ stamp.nom}}</td>              
+                    <td>{{ auction.lot}}</td>              
+                    <td>{{ bid.mise }} $</td>              
+                    <td>{{ bid.date }}</td>              
+                    <td> {{ member.prenom}} {{ member.nom}}</td> 
+                    <td><a href="auction/show?id={{auction.id}}">Voir l'enchère'</a></td>                
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                </table>
         </div>
+    </div> 
             
         </article>
         <div class="accueil-div">            

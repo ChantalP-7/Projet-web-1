@@ -5,7 +5,7 @@
             <article>                
                 <h2 class="sous-titre">Voici les images téléchargées</h2> 
                  {% for image in images %}             
-                <img class="timbre img" src="{{upload}} /{{file}}"></img>
+                <img class="timbre img" src="{{upload}} /{{file}}" alt="{{ legende}}"></img>
                 <p><strong>Légende: </strong>{{ legende }}</p>
                 <p><strong>Ordre: </strong>{{ ordre }}</p>                      
                 <p><strong>idTimbre: </strong>{{ idTimbre }}</p>

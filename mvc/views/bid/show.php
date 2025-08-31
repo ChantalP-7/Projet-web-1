@@ -1,7 +1,13 @@
 {{ include('layouts/header.php', {title: 'images du timbres'})}}
 
-<div>
-     <h1 class="sous-titre center">Enchères en cours</h1>
+<div>{% for member in members %} 
+        {% if bid.idMembre == member.id %}
+     <h1 class="sous-titre center">Bonjour {{ member.prenom}}</h1>
+     <br>
+     {% endif %}
+                {% endfor %}
+
+     <h2 class="center">Voici ta mise</h2>
      <div class="grille-table">
         <table class="table-enchere">        
             <tr>

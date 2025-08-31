@@ -72,35 +72,33 @@ class BidController {
     public function create(){
         Auth::session();
         $idMember = $_SESSION['id'];        
-        $idAuction = $_SESSION['idEnchere'];
+        
         $auction = new Auction;
-        $auctions = $auction->select();
+        $auctions = $auction->select();        
         $member = new Member;
         $members = $member->select(); 
         $stamp = new Stamp;
         $stamps = $stamp->select();
         
-        return View::render('bid/create', ['idMember' => $idMember, 'idAuction' => $idAuction, 'members'=> $members, 'auctions' => $auctions, 'stamps'=>$stamps]);
+        return View::render('auction/show', ['idMember' => $idMember, 'members'=> $members, 'auctions' => $auctions, 'stamps'=>$stamps]);
     }
 
     public function store($data) {              
-        $data['idMembre'] = $_SESSION['id'];       
-        $data['idEnchere'] = $_SESSION['idEnchere'];       
+        $data['idMembre'] = $_SESSION['id']; 
         $validator = new Validator;
         $member = new Member;
         $auction = new Auction;
-         
-        $validator->field('mise', $data['mise'])->max(500)->required(); 
-        $validator->field('date', $data['date'])->required(); 
+        $data['date'] = date("Y/m/d");
+        $validator->field('mise', $data['mise'])->max(500)->required();         
        // $validator->field('idMembre', $data['idMembre'])->required(); 
         //$validator->field('idTimbre', $data['idTimbre'])->required();
-        if($validator->isSuccess() && $data['idEnchere'] && $data['idMembre']) {
+        if($validator->isSuccess() && $data['idEnchere'] && $data['idMembre']&& $data['date']) {
             $bid = new Bid;
             $insertBid = $bid->insert($data);
             $bids = $bid->select();
             if($insertBid) {                
-                return View::redirect('bid/index', ['bids'=>$bids] );
-                //return View::redirect('stamp/show?id='.$insertStamp);
+                //return View::redirect('bid/index', ['bids'=>$bids] );
+                return View::redirect('bid/show?id='.$insertBid);
             } else {
                 return View::render('error', ['message'=>'404 page pas trouvée!']);
             }
@@ -111,9 +109,8 @@ class BidController {
             $member = new Member;
             $idMember = $member->selectId("idMembre");
             $auction = new Auction;
-            $idAuction = $auction->selectId("idEnchere");
-                            
-            return View::render('bid/create', ['errors'=>$errors,'idMember' => $idMember, 'idAuction'=>$idAuction]);
+            $idAuction = $auction->selectId("idEnchere");                            
+            return View::render('auction/show', ['errors'=>$errors,'idMember' => $idMember, 'idAuction'=>$idAuction]);
             $errors = $validator->getErrors();
             print_r($errors);            
         }

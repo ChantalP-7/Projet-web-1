@@ -170,7 +170,11 @@
                         {% endif %}    
                         <div>                
                             <label for="mise">Place une mise</label>                     
+<<<<<<< HEAD
                             <form class="align-left" action="././bid/store" method="post">
+=======
+                            <form class="align-left" action="./../bid/store" method="post">
+>>>>>>> main
                                 <input 
                                 class="input"
                                 type="number"
