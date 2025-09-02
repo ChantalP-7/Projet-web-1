@@ -20,8 +20,8 @@
                         {% if (auction.idTimbre == stamp.id) %}
                             {% for image in images %} 
                             {% if (image.idTimbre == stamp.id and (auction.CoupDeCoeurLord == 1)) %}               
-                            <figure class="galerie-mini">
-                                <img class="miniature" id="" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                            <figure class="galerie-mini grid-images" id="grid-images">
+                                <img class="miniature" id="" src="{{upload}}/{{image.file}}" alt="{{image.legende}}">
                             </figure>                    
                             {% endif %}                        
                             {% endfor %}                        
@@ -41,9 +41,9 @@
             {% for image in images %}
                 {% if image.idTimbre == stamp.id %}
                     {% if image.ordre == 1 %}
-                <figure >             
-                <img class="timbre" id="" src="{{upload}}/{{image.file}}" alt="{{ image.legende}}">
-            </figure> 
+                <figure class="grid-images" id="grid-images">             
+                    <img class="timbre" id="" src="{{upload}}/{{image.file}}" alt="{{ image.legende}}">
+                </figure> 
                 {% endif %}
             {% endif %}
         {% endfor %}
@@ -59,23 +59,23 @@
             </p>
             </div>
             <div class="space-between">
-            <p>Pays</p>  
-            {% for country in countries %} 
-            {% if stamp.idPays == country.id %}              
-            <p>{{ country.pays }}</p>
-            {% endif %}
-            {% endfor %}
+                <p>Pays</p>  
+                {% for country in countries %} 
+                {% if stamp.idPays == country.id %}              
+                <p>{{ country.pays }}</p>
+                {% endif %}
+                {% endfor %}
             </div>
             <div class="space-between">
-            <p>Prix départ</p>
-            <p>30.00 $</p>
-            </div>
-            <div class="space-between">
-            <p>An :                    
-            {{stamp.date}}</p>
-            <p>Mises (0)</p>            
-            </div>
-            <p><a href="{{base}}/auction/show?id={{auction.id}}">Voir l'enchère</a></p>
+                <p>Prix départ</p>
+                {% for auction in auctions %} 
+                {% if auction.idTimbre == stamp.id %} 
+                <p>{{ auction.prixPlancher }} $</p>
+                {% endif %}
+                {% endfor %}
+            </div>            
+            <br>
+            <a href="{{base}}/auction/show?id={{auction.id}}" class="bouton-carte">Miser</a>
             {% endif %}
         {% endfor %}
         </div>    

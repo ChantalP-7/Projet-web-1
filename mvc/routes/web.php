@@ -41,7 +41,7 @@ Route::get('/auction/create', 'AuctionController@create');
 
 Route::get('/bids', 'BidController@index');
 Route::get('/bid/show', 'BidController@show');
-//Route::get('/bid/create', 'BidController@create');
+Route::get('/bid/create', 'BidController@create');
 Route::post('/bid/store', 'BidController@store');
 
 

@@ -130,19 +130,19 @@
                 {% for image in images %}      
                     {% if image.idTimbre == stamp.id %} 
                     {% if image.ordre == 1 %} 
-                    <img class="timbre" src="{{ upload }}/{{ image.file }}" alt="{{stamp.nom}}">
+                    <img class="timbre" src="{{ upload }}/{{ image.file }}" alt="{{image.legende}}">
                     {% endif %}
                     {% endif %}
                 {% endfor %} 
             <div class="info-carte">              
-                <p> {{stamp.nom}} </p>
+                <p><strong>{{stamp.nom}}</strong></p>
                 {% for country in countries %}
                      {% if stamp.idPays == country.id %} 
                     <p>Pays : {{country.pays}}</p> 
                     {% endif %}
                 {% endfor %}
                 <em><p>Date: {{stamp.date}}</p></em>                
-                <p><a href="{{base}}/auction/show?id={{auction.id}}">Voir l'enchère</a></p>                              
+                <button class="bouton-carte "><a href="{{base}}/auction/show?id={{auction.id}}">Miser</a></button>                              
             </div> 
             {% endif %}
             {% endfor %} 

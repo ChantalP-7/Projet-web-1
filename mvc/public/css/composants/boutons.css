@@ -63,6 +63,18 @@
     color: var(--blanc) !important;    
 }
 
+.bouton-carte {
+    background-color: rgb(255, 225, 52);
+    padding: 4px 10px;
+    font-size: 18px;
+    border-radius: 3px;
+    border-color: transparent;
+}
+
+.bouton-carte:hover {
+    background-color: var(--bleuPale);
+}
+
 .bouton-carre {
     background-color: rgb(255, 225, 52);
     padding: 8px 15px;

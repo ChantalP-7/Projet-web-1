@@ -3,16 +3,26 @@
 namespace App\Models;
 
 abstract class CRUD extends \PDO {
+
+    protected $table; // Table à utiliser
+    protected $fillable; // Table à utiliser
+    protected $primaryKey = 'id'; // Clé primaire par défaut
+
     
     final public function __construct() {
         parent::__construct('mysql:host=localhost;dbname=lordstampee;port=3306;charset=utf8', 'root', '');
     }
 
-    final public function select($field = null, $order='asc'){
+    final public function select($field = null, $order='asc', $limit = 0){
         if($field == null){
             $field = $this->primaryKey;
         }
         $sql = "SELECT * FROM $this->table ORDER BY $field $order";
+
+        if ($limit > 0) {
+            $sql .= " LIMIT $limit";
+        }
+
         if($stmt = $this->query($sql)){
             return $stmt->fetchAll();
         }else{

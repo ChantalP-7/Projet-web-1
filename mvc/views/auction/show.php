@@ -6,214 +6,242 @@
         <div class="grille-fiche"> 
             <div>             
             <div class="carte">                                
+                {% for stamp in stamps %}
+                {% if(stamp.id == auction.idTimbre) %}
+                {% for image in images %}
+                {% if(stamp.id == image.idTimbre) %}
+                {% if(image.ordre == 1) %}
+                <figure  class="grid-images" id="grid-images">
+                <img class="timbre-fiche timbre" src="{{upload}}/{{image.file}}" alt="{{ image.legende}}">
+                <figcaption>
+                    {% for member in members %}
+                {% if(member.id == stamp.idMembre) %}
+                    {{stamp.nom}} - {{member.prenom}} {{member.nom}}
+                    {% endif %}
+                {% endfor %}
+                </figcaption>
+                </figure>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="flex-left">            
+                <div class="grille-galerie-fiche ">
                     {% for stamp in stamps %}
                     {% if(stamp.id == auction.idTimbre) %}
                     {% for image in images %}
                     {% if(stamp.id == image.idTimbre) %}
-                    {% if(image.ordre == 1) %}
-                    <figure  class="grid-images" id="grid-images">
-                    <img class="timbre-fiche" src="{{upload}}/{{image.file}}" alt="{{ image.legende}}">
-                    <figcaption>
-                        {% for member in members %}
-                    {% if(member.id == stamp.idMembre) %}
-                        {{stamp.nom}} - {{member.prenom}} {{member.nom}}
-                        {% endif %}
-                    {% endfor %}
-                    </figcaption>
+                    {% if(image.ordre > 1) %}
+                    <figure class="galerie-mini grid-images" id="grid-images">
+                    <img class="miniature" src="{{upload}}/{{image.file}}" alt="{{image.legende}}">
                     </figure>
                     {% endif %}
                     {% endif %}
-                    {% endfor %}
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="flex-left">            
-                    <div class="grille-galerie-fiche ">
-        {% for stamp in stamps %}
-            {% if(stamp.id == auction.idTimbre) %}
-                {% for image in images %}
-                    {% if(stamp.id == image.idTimbre) %}
-                        {% if(image.ordre > 1) %}
-                        <figure class="galerie-mini grid-images" id="grid-images">
-                        <img class="miniature" src="{{upload}}/{{image.file}}" alt="{{upload}}">
-                        </figure>
+                    {% endfor %} 
+                    {% endif %}  
+                    {% endfor %}  
+                </div>      
+                <div class="infos">
+                    <h3>Détails sur l'enchère en cours</h3>
+                    <div class="space-between">                
+                        <p>Pays</p>
+                        {% for stamp in stamps %}
+                        {% if(stamp.id == auction.idTimbre) %}
+                            {% for country in countries %}
+                        {% if(country.id == stamp.idPays) %}
+                        <p>{{country.pays}}</p>
                         {% endif %}
-                    {% endif %}
-                {% endfor %} 
-            {% endif %}  
-        {% endfor %}  
-                    </div> 
-                        
-                    <div class="infos">
-                        <h3>Détails sur l'enchère en cours</h3>
-                        <div class="space-between">                
-                            <p>Pays</p>
-                            {% for stamp in stamps %}
-                            {% if(stamp.id == auction.idTimbre) %}
-                                {% for country in countries %}
-                            {% if(country.id == stamp.idPays) %}
-                            <p>{{country.pays}}</p>
-                            {% endif %}
-                        {% endfor %} 
-                        {% endif %} 
-                        {% endfor %} 
-                        </div>
-                        <div class="space-between">
-                        {% for stamp in stamps %}
-                            {% if(stamp.id == auction.idTimbre) %}
-                            <p>Année</p>
-                            <p>{{stamp.date}}</p>
-                            {% endif %} 
-                        {% endfor %}
-                        </div>
-                        <div class="space-between">
-                            {% for stamp in stamps %}
-                            {% if(stamp.id == auction.idTimbre) %}
-                            {% for format in formats %}
-                        {% if(format.id == stamp.idFormat) %}
-                            <p>Type (format)</p>
-                            <p>{{format.format}}</p>
-                            {% endif %}
-                        {% endfor %} 
-                        {% endif %} 
-                        {% endfor %}
-                        </div>
-                        <div class="space-between">
-                        {% for stamp in stamps %}
-                            {% if(stamp.id == auction.idTimbre) %}
-                            {% for etat in etats %}
-                        {% if(etat.id == stamp.idEtat) %}
-                            <p>Condition</p>
-                            <p>{{etat.etat}}</p>
-                            {% endif %}
-                        {% endfor %} 
-                        {% endif %} 
-                        {% endfor %}
-                        </div>
-                        <div class="space-between">
-                        {% for stamp in stamps %}
-                            {% if(stamp.id == auction.idTimbre) %}
-                            {% for color in colors %}
-                        {% if(color.id == stamp.idCouleur) %}
-                            <p>Couleur</p>
-                            <p>{{color.couleur}}</p>
-                            {% endif %}
-                        {% endfor %} 
-                        {% endif %} 
-                        {% endfor %}
-                        </div>
+                    {% endfor %} 
+                    {% endif %} 
+                    {% endfor %} 
                     </div>
-                        
-                    </div> 
-                </div>
-            {% for stamp in stamps %}
-                {% if(stamp.id == auction.idTimbre) %}
-                    {% for member in members %}
-                        {% if(member.id == stamp.idMembre) %}
-                    <article class="article-fiche">                
-                    <h3>{{lot}} - {{member.prenom}} {{member.nom}}</h3>
-                        {% endif %}
+                    <div class="space-between">
+                    {% for stamp in stamps %}
+                        {% if(stamp.id == auction.idTimbre) %}
+                        <p>Année</p>
+                        <p>{{stamp.date}}</p>
+                        {% endif %} 
                     {% endfor %}
-                {% endif %}   
-            {% endfor %} 
-                <p>{{auction.prixPlancher}} $ - Ouverture : {{auction.dateDebut}}</p> 
-                <hr>
-                <div class="grille-2-cols-fiche">
-                    <div> 
-                            {% for stamp in stamps %}
-                                {% if(stamp.id == auction.idTimbre) %}
-                                    {% for member in members %}
-                                        {% if(member.id == stamp.idMembre) %}
-                                    <br>
-                                    <p>Vendeur : {{member.prenom}} {{member.nom}}</p>
-                                    {% endif %}
-                                    {% endfor %}
-                                {% endif %}   
-                            {% endfor %}
-                                    <p>Temps restant : 7 jour, 2h 00m 37s</p>
-                                    <br />
+                    </div>
+                    <div class="space-between">
                         {% for stamp in stamps %}
-                            {% if(stamp.id == auction.idTimbre) %}
-                                {% for member in members %}
-                                    {% if(member.id == stamp.idMembre) %}            
-                                    <p>Lot : {{lot}} - {{member.prenom}} {{member.nom}}</p>
-                                    {% endif %}
-                                {% endfor %}
+                        {% if(stamp.id == auction.idTimbre) %}
+                        {% for format in formats %}
+                    {% if(format.id == stamp.idFormat) %}
+                        <p>Type (format)</p>
+                        <p>{{format.format}}</p>
+                        {% endif %}
+                    {% endfor %} 
+                    {% endif %} 
+                    {% endfor %}
+                    </div>
+                    <div class="space-between">
+                    {% for stamp in stamps %}
+                        {% if(stamp.id == auction.idTimbre) %}
+                        {% for etat in etats %}
+                    {% if(etat.id == stamp.idEtat) %}
+                        <p>Condition</p>
+                        <p>{{etat.etat}}</p>
+                        {% endif %}
+                    {% endfor %} 
+                    {% endif %} 
+                    {% endfor %}
+                    </div>
+                    <div class="space-between">
+                    {% for stamp in stamps %}
+                        {% if(stamp.id == auction.idTimbre) %}
+                        {% for color in colors %}
+                    {% if(color.id == stamp.idCouleur) %}
+                        <p>Couleur</p>
+                        <p>{{color.couleur}}</p>
+                        {% endif %}
+                    {% endfor %} 
+                    {% endif %} 
+                    {% endfor %}
+                    </div>
+                </div> 
+            </div> 
+                </div>
+                <article class="article-fiche">
+                <div>
+                    {% for stamp in stamps %}
+                    {% if(stamp.id == auction.idTimbre) %}
+                    {% for member in members %}
+                    {% if(member.id == stamp.idMembre) %}
+                                    
+                    <h3>{{lot}} - {{member.prenom}} {{member.nom}}</h3>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}   
+                    {% endfor %} 
+                    <p>{{auction.prixPlancher}} $ - Ouverture : {{auction.dateDebut}}</p>
+                    
+                    <hr>
+                </div>
+                
+                    <div class="grille-2-cols-fiche">
+                        <div> 
+                        {% for stamp in stamps %}
+                        {% if(stamp.id == auction.idTimbre) %}
+                        {% for member in members %}
+                        {% if(member.id == stamp.idMembre) %}
+                            <p>Vendeur : {{member.prenom}} {{member.nom}}</p>
+                            {% endif %}
+                            {% endfor %}
                             {% endif %}   
-                        {% endfor %} 
-                        <br>
-                        <button class="favori-clic bouton-simple bouton-padding">
+                            {% endfor %}
+                            <p>Temps restant : 7 jour, 2h 00m 37s</p>
+                            <br />
+                            {% for stamp in stamps %}
+                            {% if(stamp.id == auction.idTimbre) %}
+                            {% for member in members %}
+                            {% if(member.id == stamp.idMembre) %}            
+                            <p>Lot : {{lot}} - {{member.prenom}} {{member.nom}}</p>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}   
+                            {% endfor %} 
+                            <br>
+                            <button class="favori-clic bouton-simple bouton-padding">
                                 <a class="coeur" href="#">Suivre</a> 
                                 <img
-                            src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
-                            width="18"
-                            height="18"
-                            alt="coeur1"
-                            class=""
-                            />
-                    </button> 
+                                src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                                width="18"
+                                height="18"
+                                alt="coeur1"
+                                class=""
+                                />
+                            </button> 
+                        </div>
+                            <div>
+                                <p>Prix départ : {{prixPlancher}}$</p>
+                                <!--{% set tabMises = bids %}-->
+                                
+                                {% set nbMises = nbMises %}
+
+                                <!--{% set mise = prixPlancher %}
+                                {% set derniereMise = prixPlancher %}
+
+                                {% for bid in bids %}
+
+                                {% if nbMises == 0 %}
+                                    {% set mise =  prixPlancher %}
+                                {% endif %}
+                                    
+                                {% if nbMises == 1 %}                                 
+                                    {%  set mise = derniereMise.mise + prixPlancher %} 
+                                {% endif %}
+                                    
+                                {% if nbMises > 1  %}    
+                                    {% set mise =  derniereMise.mise %} 
+                                
+                                {% endif %}
+                                {% endfor %}-->
+                                <p>Dernière mise : {{ derniereMise }}$</p>                                                        
+                                <p>Nombre de mise : {{nbMises}}</p> 
+                            
+                            {% if errors is defined %}
+                            <div class="error">
+                                <ul>
+                                    {% for error in errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            
+                            {% endif %}    
+                                        
+                                <label for="mise" aria-label="Placez une mise"></label>                    
+
+                                <form class="align-left" action="./../bid/store" method="post">
+                                    <input 
+                                    class="input mise"
+                                    type="number"
+                                    name="mise"
+                                    id="mise"
+                                    min="{{ derniereMise }}"
+                                    step="50.00"
+                                    placeholder="{{ derniereMise }}$"
+                                    value="{{ bid.mise }}"                               
+                                /> 
+                                <input type="hidden" name="idMembre" value="{{ member.id }}">
+                                <input type="hidden" name="idEnchere" value="{{ auction.id }}">
+                                <br>
+                                <input type="submit" class=" bouton-carte" id="ajouteMise" value="Confirme ta mise">
+                                </form>          
+                            </div>
+                            <br />
+                            <hr />
+                        <div>
+                            
+                            
+                            <p>Mise courante: {{derniereMise}} $</p>
+                            <p>Nombre de mises : {{nbMises}}</p>
+                        </div>
                     </div>
-                    <div >
-                        <div class="top">
-                            <p>Prix départ : {{auction.prixPlancher}}</p>
-                            <p>Mise minimum  50.00$</p>
-                        </div>
-                        
-                        {% if errors is defined %}
-                        <div class="error">
-                            <ul>
-                                {% for error in errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        {% endif %}    
-                        <div>                
-                            <label for="mise">Place une mise</label>                     
-<<<<<<< HEAD
-                            <form class="align-left" action="././bid/store" method="post">
-=======
-                            <form class="align-left" action="./../bid/store" method="post">
->>>>>>> main
-                                <input 
-                                class="input"
-                                type="number"
-                                name="mise"
-                                id="mise"
-                                min="50.00"
-                                step="50.00"
-                                placeholder="USD"
-                                value="{{ bid.mise }}"
-                                aria-label="Placez une mise"
-                            /> 
-                            <input type="hidden" name="idMembre" value="{{ member.id }}">
-                            <input type="hidden" name="idEnchere" value="{{ auction.id }}">
-                            <br>
-                            <input type="submit" class="bouton-carre" value="Confirme ta mise">
-                            </form>          
-                        </div>
-                        <br />
-                        <hr />
-                    <div>
-                        
-                        {% for auction in auctions %}
-                        {% for bid in bids %}
-                         {% if(auction.id == bid.idEnchere) %}
-                        <p>Mise courante: {{auction.prixPlancher + bid.mise}} $</p>
-                        <p>Nombre de mises : 1</p>
-                        {% endif %}                       
-                        {% endfor %}                       
-                        {% endfor %} 
+                    <div class="enchere historique">
+                        <h3 class="">Historique des mises pour cette enchère</h3>                    
+                        <br>                    
+                        <button class="bouton-carte" id="mises"><a href="./../bid/show?id={{auction.id}}">Mises</a></button>
+                        <button class=" bouton-carte" id="miseCroissante">Mises croissantes</button>
+                        <button class=" bouton-carte" id="archives">Archives</button>
+                        <br><br>
+                        <section class="onglet">
+                            <section class="affiche-onglet ">                                
+                            </section>
+                            <section class="affiche-image"></section>
+                        </section>
                     </div>
-                    <h3 class="align-left">Historique des mises pour cette enchère</h3>                    
-                    <br>
-                    <button class="bouton-simple bouton-thin thin historique"><a href="./../bid/show?id={{auction.id}}">Cliquer</a></button>          
+                </div>
+                <hr>
+                <div class=" article-fiche enchere">
                     
-                    </div>
-            </div>          
-            </article>    
-       </div>      
+                </div> 
+            </article> 
+        </div>
 </div>
+    
  <footer>
       <div class="piedPage-haut">
         <h1>Abonnez-vous à notre infolettre</h1>

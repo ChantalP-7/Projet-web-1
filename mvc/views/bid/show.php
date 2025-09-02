@@ -44,7 +44,7 @@
             </table>         
         <br><br>
         <div class="centre-vertical">
-            <img src="https://s2.svgbox.net/octicons.svg?ic=arrow-left&color=blue" width="26" height="26g"><a href="../auction/show?id={{auction.id}}" class="retour ">Retour </a>  
+            <img src="https://s2.svgbox.net/octicons.svg?ic=arrow-left&color=blue" width="26" height="26g"><a href="../member/show?id={{member.id}}" class="retour ">Retour </a>  
         </div>
     </div>
     
