@@ -1,6 +1,7 @@
 .principale{
     z-index: 2;
     position: relative;
+    margin-bottom: 50px;
 } 
 
 @media (max-width: 1000px) { 

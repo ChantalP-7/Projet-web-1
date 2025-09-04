@@ -82,8 +82,7 @@ class BidController {
 
     public function create(){
         Auth::session();
-        $idMember = $_SESSION['id'];        
-        
+        $idMember = $_SESSION['id'];   
         $auction = new Auction;
         $auctions = $auction->select();        
         $member = new Member;
@@ -96,36 +95,53 @@ class BidController {
 
     public function store($data) {              
         $data['idMembre'] = $_SESSION['id'];
-        $validator = new Validator;
-        $member = new Member;
-        $auction = new Auction;
-        $data['date'] = date("Y-m-d H:i:s");
-        $validator->field('mise', $data['mise'])->required();         
-       // $validator->field('idMembre', $data['idMembre'])->required(); 
-        //$validator->field('idTimbre', $data['idTimbre'])->required();
-        if($validator->isSuccess() && $data['idEnchere'] && $data['idMembre']&& $data['date']) {
-            
-            $bid = new Bid;
-            $insertBid = $bid->insert($data);
-            $bids = $bid->select();
-            if($insertBid) {                
-                //return View::redirect('bid/index', ['bids'=>$bids] );
-                return View::redirect('bid/show?id='.$insertBid);
+        if(!$data['idMembre']) {               
+                return  View::redirect('login');                
             } else {
-                return View::render('error', ['message'=>'404 page pas trouvée!']);
-            }
-        }else {
+                $validator = new Validator;
+                $member = new Member;
+                $idMember = $member->selectId('id');
+                $auction = new Auction;
+                $idAuction = $auction->selectId('id');
+                $stamp = new Stamp;
+                $idStamp = $stamp->selectId('idMembre');                
+                $data['date'] = date("Y-m-d H:i:s");
+                $validator->field('mise', $data['mise'])->required();         
+            // $validator->field('idMembre', $data['idMembre'])->required(); 
+                //$validator->field('idTimbre', $data['idTimbre'])->required();
+               /* if($idMember == $data['idMembre'] && $idMember == $idStamp ) {
+                    return View::render('error', ['message'=>'Vous ne pouvez pas miser sur votre timbre!']);
             
-            // Retour avec erreurs
-            $errors = $validator->getErrors();
-            $member = new Member;
-            $idMember = $member->selectId("idMembre");
-            $auction = new Auction;
-            $idAuction = $auction->selectId("idEnchere");                            
-            return View::render('auction/show', ['errors'=>$errors,'idMember' => $idMember, 'idAuction'=>$idAuction]);
-            $errors = $validator->getErrors();
-            print_r($errors);            
-        }
+        } else {*/
+
+             if($validator->isSuccess() && $data['idEnchere'] && $data['idMembre']&& $data['date']) {
+                    $bid = new Bid;
+                    $insertBid = $bid->insert($data);
+                    $bids = $bid->select();
+                    if($insertBid) {                
+                        return View::redirect('bid/index', ['bids'=>$bids] );
+                        //return View::redirect('auction/show?id='.$insertBid);
+                        //return View::redirect('auction/show?id='.$insertBid, ['idMember' => $idMember, 'idAuction'=>$idAuction]);
+                    } else {
+                        return View::render('error', ['message'=>'404 page pas trouvée!']);
+                    }
+                }else {
+            
+                // Retour avec erreurs
+                $errors = $validator->getErrors();
+                $member = new Member;
+                $idMember = $member->selectId("idMembre");
+                $auction = new Auction;
+                $idAuction = $auction->selectId("idEnchere");                            
+                return View::render('auction/show', ['errors'=>$errors,'idMember' => $idMember, 'idAuction'=>$idAuction]);
+                $errors = $validator->getErrors();
+                print_r($errors);            
+            }
+
+       // }
+
+                 
+        }       
     }
 
 

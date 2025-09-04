@@ -43,6 +43,28 @@
     align-items: center;
 }
 
+.flex-right {
+    display: flex;    
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.flex-left {
+    display: flex;    
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.flex-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .evenly {
     display: flex;
     flex-wrap: wrap;
@@ -152,7 +174,6 @@ input[name="etoiles"]:checked  {
 }
 
 
-
 .delete {
     border: none;
 }
@@ -202,7 +223,18 @@ input[name="etoiles"]:checked  {
     flex-direction: row;
     align-items: center;
     font-size: 14px;
-    border: 1px solid red !important;
+    background-color:red !important;
+    border: none !important;
+}
+
+
+.favori-clic:hover {
+    background-color: var(--bleuPale) !important;
+}
+
+
+.favori-clic a {
+    color: var(--blanc);
 }
 
 .invisible {

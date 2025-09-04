@@ -90,8 +90,7 @@ class ImageController {
                 $image = new Image;
                 //$images = $image->select();
                 $insertImage = $image->insert($data);            
-                if($insertImage) { 
-                    echo "Oui, image insérée!";
+                if($insertImage) {                     
                     return View::redirect('image/show?id='.$insertImage/*, ['idTimbre'=>$idTimbre]*/);
                     //return View::redirect('image/index', ['images'=> $images/*, 'insertIdTimbre'=> $insertIdTimbre*/]);
                 }

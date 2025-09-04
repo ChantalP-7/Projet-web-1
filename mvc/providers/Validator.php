@@ -7,8 +7,6 @@ class Validator {
     private $key;
     private $value;
     private $name;
-    private $imageSize;
-    private $imageExtension;
 
     public function field($key, $value, $name = null){
         $this->key = $key;

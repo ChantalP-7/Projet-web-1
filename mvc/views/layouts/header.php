@@ -12,8 +12,8 @@
     {% block javascripts %}
     <script src="{{ asset }}../script/currentUrl.js" defer></script>
     <script src="{{ asset }}../script/boiteModale.js" defer></script>
-    <script src="{{ asset }}../script/main.js" defer></script>
-    
+    <script src="{{ asset }}../script/afficherLesMises.js" defer></script>
+    <script type="module" src="{{ asset }}../script/main.js"></script>    
     {% endblock %}  
   </head>
   <body>

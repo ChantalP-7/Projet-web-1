@@ -31,12 +31,13 @@ class AuctionController {
     }
 
     public function show($data){ 
-        if(isset($data['id']) && $data['id']!=null) {;
-            
+        if(isset($data['id']) && $data['id']!=null) {;            
             $auction = new Auction;
             $selectId = $auction->selectId($data['id']);
-            $_SESSION['idEnchere'] = $selectId;
+            $idEnchere = $selectId ?? null;
             if($selectId){  
+
+
                 $stamp = new Stamp; 
                 $stamps = $stamp->select(); 
                 $image = new Image;
@@ -48,42 +49,36 @@ class AuctionController {
                 $etat = new Etat;   
                 $etats = $etat->select();
                 $color = new Color;   
-                $colors = $color->select();           
-                
+                $colors = $color->select();
                 $member = new Member;
                 $members = $member->select();
-
-                //$idAuction = $selectId($data['idEnchere']);
                 $bid = new Bid; 
                 $idEnchere = $selectId['id'];
-                
-                $stamp = new Stamp;
-                $stamps = $stamp->select();  
 
-                // Sélection pour les enchères
-                $idTimbre = $selectId['idTimbre'];
-                //$id = $selectId['id'];
-                
+                $idTimbre = $selectId['idTimbre'];                
                 $selectedTimbre = $stamp->selectId($idTimbre);
-                //$selectedIdTimbre = $stamp->selectId($id);
                 $nomTimbre = $selectedTimbre['nom'];
-
-                $bid = new Bid;   
+                
                 $bids = $bid->select();
-                $idEnchere = $selectId['id'];
 
                 $nbMises = $bid->nbMises($idEnchere);
 
-                $derniereMise = $bid->derniereMise($idEnchere);
+                $coeurs = $auction->coupCoeurLord();
+
+                if($idEnchere) {
+
+                    $derniereMise = $bid->derniereMise($idEnchere);
+
+                }
                 
                 $lot = $selectId['lot'];
                 $dateDebut = $selectId['dateDebut'];
                 $dateFin = $selectId['dateFin'];
                 $prixPlancher = $selectId['prixPlancher'];
-                $CoupDeCoeurLord = $selectId['CoupDeCoeurLord'];
+                //$CoupDeCoeurLord = $selectId['CoupDeCoeurLord'];
                
 
-                return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, 'lot' => $lot, 'formats'=>$formats , 'etats'=>$etats, 'countries'=> $countries, 'colors'=>$colors, 'images' =>$images, 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'CoupDeCoeurLord' =>$CoupDeCoeurLord, 'stamps'=>$stamps, 'images'=>$images, 'members'=>$members, 'bids'=>$bids, 'nbMises'=>$nbMises, 'derniereMise'=> $derniereMise]);
+                return View::render('auction/show', ['auction'=>$selectId, 'nomTimbre'=>$nomTimbre, 'lot' => $lot, 'formats'=>$formats , 'etats'=>$etats, 'countries'=> $countries, 'colors'=>$colors, 'images' =>$images, 'dateDebut'=>$dateDebut, 'dateFin'=>$dateFin, 'prixPlancher'=> $prixPlancher, 'stamps'=>$stamps, 'images'=>$images, 'members'=>$members, 'bids'=>$bids, 'nbMises'=>$nbMises, 'derniereMise'=> $derniereMise, 'coeurs', $coeurs]);
             }else{
                 return View::render('error', ['message'=>'Enchère pas trouvée!']);
             }

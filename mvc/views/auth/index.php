@@ -10,7 +10,7 @@
         </ul>
     </div>
     {% endif %}
-    <h1 class="sous-titre center">Rebonjour !</h1>
+    <h1 class="sous-titre center">Connectez-vous pour miser</h1>
     <form class="formulaire" method="post">
         <h2 class="sous-titre">Je me connecte</h2>
         <div class="space">

@@ -1,8 +1,11 @@
 .enchere  {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    gap: 20px;
 }
 
-.enchere .historique {
-    margin: 50px auto;
-
+#mises:hover  {
+    cursor: pointer;
 }

@@ -120,6 +120,7 @@
                     
                     <hr>
                 </div>
+                <div>
                 
                     <div class="grille-2-cols-fiche">
                         <div> 
@@ -147,7 +148,7 @@
                             <button class="favori-clic bouton-simple bouton-padding">
                                 <a class="coeur" href="#">Suivre</a> 
                                 <img
-                                src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=red"
+                                src="https://s2.svgbox.net/octicons.svg?ic=heart-fill&color=white"
                                 width="18"
                                 height="18"
                                 alt="coeur1"
@@ -156,30 +157,13 @@
                             </button> 
                         </div>
                             <div>
-                                <p>Prix départ : {{prixPlancher}}$</p>
-                                <!--{% set tabMises = bids %}-->
-                                
-                                {% set nbMises = nbMises %}
+                                <p>Prix départ : {{prixPlancher}} $</p>                                
+                                {% if derniereMise %}
+                                <p>Dernière mise : <span class="derniereMise.mise">{{ derniereMise }}</span> $</p> 
+                                {% else %}
+                             <p>Aucune mise pour le moment.</p>
+                            {% endif %}
 
-                                <!--{% set mise = prixPlancher %}
-                                {% set derniereMise = prixPlancher %}
-
-                                {% for bid in bids %}
-
-                                {% if nbMises == 0 %}
-                                    {% set mise =  prixPlancher %}
-                                {% endif %}
-                                    
-                                {% if nbMises == 1 %}                                 
-                                    {%  set mise = derniereMise.mise + prixPlancher %} 
-                                {% endif %}
-                                    
-                                {% if nbMises > 1  %}    
-                                    {% set mise =  derniereMise.mise %} 
-                                
-                                {% endif %}
-                                {% endfor %}-->
-                                <p>Dernière mise : {{ derniereMise }}$</p>                                                        
                                 <p>Nombre de mise : {{nbMises}}</p> 
                             
                             {% if errors is defined %}
@@ -192,56 +176,80 @@
                             
                             {% endif %}    
                                         
-                                <label for="mise" aria-label="Placez une mise"></label>                    
-
+                                <label for="mise" aria-label="Placez une mise"></label> 
                                 <form class="align-left" action="./../bid/store" method="post">
                                     <input 
                                     class="input mise"
                                     type="number"
                                     name="mise"
                                     id="mise"
-                                    min="{{ derniereMise }}"
+                                    {% if derniereMise %}
+                                    min="{{derniereMise}}"
+                                    {% endif %}
                                     step="50.00"
-                                    placeholder="{{ derniereMise }}$"
+                                    {% if derniereMise %}
+                                    placeholder="{{derniereMise}}"
+                                    {% endif %}
                                     value="{{ bid.mise }}"                               
                                 /> 
+                                   
+                                             
                                 <input type="hidden" name="idMembre" value="{{ member.id }}">
                                 <input type="hidden" name="idEnchere" value="{{ auction.id }}">
                                 <br>
-                                <input type="submit" class=" bouton-carte" id="ajouteMise" value="Confirme ta mise">
+                                <input type="submit" class=" bouton-carte bleu" id="ajouteMise" value="Confirme ta mise">
                                 </form>          
                             </div>
-                            <br />
                             <hr />
-                        <div>
-                            
-                            
-                            <p>Mise courante: {{derniereMise}} $</p>
-                            <p>Nombre de mises : {{nbMises}}</p>
                         </div>
                     </div>
-                    <div class="enchere historique">
-                        <h3 class="">Historique des mises pour cette enchère</h3>                    
-                        <br>                    
-                        <button class="bouton-carte" id="mises"><a href="./../bid/show?id={{auction.id}}">Mises</a></button>
-                        <button class=" bouton-carte" id="miseCroissante">Mises croissantes</button>
-                        <button class=" bouton-carte" id="archives">Archives</button>
-                        <br><br>
-                        <section class="onglet">
-                            <section class="affiche-onglet ">                                
-                            </section>
-                            <section class="affiche-image"></section>
-                        </section>
+                    <hr>
+                    <div class="flex-right">
+                        <div class="flex"> 
+                            {% if derniereMise %}
+                            <p >Mise courante : <span class="derniereMise">{{derniereMise}}</span> $</p>
+                            {% else %}
+                             <p>Aucune mise pour le moment.</p>
+                            {% endif %}
+
+                            <p>Nombre de mises : {{nbMises}}</p>
+                        </div>
+                        <div class="">
+                            <ul class="boutonOnglet">
+                                <li class="bouton-carre" id="btnMises">Mises</li> 
+                                <li class="bouton-carre">Mises</li> 
+                                <li class="bouton-carre">Mises</li>                                 
+                            </ul>                            
+                            <div class="affiche-onglet mise historique invisible" id="ongletMises">
+                                <table class="table-enchere">        
+                                    <tr>                                            
+                                        <th>Lot</th> 
+                                        <th>Mise</th>           
+                                        <th>Date</th>         
+                                        <th>Miseure</th>                                           
+                                    </tr>
+                                    {% for bid in bids %}  
+                                    {% if auction.id == bid.idEnchere %}                                  
+                                    {% for member in members %}
+                                    {% if member.id == bid.idMembre %} 
+                                    <tr>            
+                                        <td>{{ auction.lot }}</td>              
+                                        <td>{{ bid.mise }} $</td>              
+                                        <td>{{ bid.date }} </td>                                                      
+                                        <td>{{ member.prenom }} {{ member.nom }}  </td>                                                        
+                                    </tr>                                    
+                                    {% endif %}   
+                                    {% endfor %} 
+                                    {% endif %} 
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <hr>
-                <div class=" article-fiche enchere">
-                    
-                </div> 
-            </article> 
+                </article>
+            </div>               
         </div>
-</div>
-    
  <footer>
       <div class="piedPage-haut">
         <h1>Abonnez-vous à notre infolettre</h1>

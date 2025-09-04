@@ -30,18 +30,14 @@
                                                 {% if image.ordre == 1 %}
 
                         <div class="carte grille-cartes-330px">
-                    
-                       
-                                    <figure>             
-                                    <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
-                                </figure> 
-                                    
+                            <figure>             
+                                <img class="timbre" src="{{upload}}/{{image.file}}" alt="{{upload}}">
+                            </figure>                                    
                             <div class="space-between">              
                                 <p>{{ stamp.nom}}</p>
                                 <p>Mises (0)</p>
                             </div>                            
-                            <p><a href="{{base}}/auction/show?id={{auction.id}}">Voir le timbre</a></p>
-                            
+                            <a class="bouton-simple bouton-padding bleu" href="{{base}}/stamp/edit?id={{stamp.id}}">Modifie ton timbre</a>                            
                         </div>   
                         {% endif %}
                                 {% endif %}
@@ -59,8 +55,12 @@
                 </div>
             </article>
         </div>
-        <h1>Enchères en cours</h1>
-        <button class="bouton-simple bouton-padding bleu"><a href="{{base}}/bids">Voir l'historique</a></button>
+        <div>
+            <h1>Tes enchères</h1>
+            <button class="bouton-carte" id="mises"><a href="./../bid/show?id={{auction.id}}">Mises</a></button>
+            <h1>Enchères en cours</h1>
+            <button class="bouton-simple bouton-padding bleu"><a href="{{base}}/bids">Voir l'historique</a></button>
+        </div>
         
     </div>
 </main>

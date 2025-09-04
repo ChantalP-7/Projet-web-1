@@ -1,4 +1,5 @@
 {{ include('layouts/header.php', {title: 'images du timbres'})}}
+<main>
 
 <div>{% for member in members %} 
         {% if bid.idMembre == member.id %}
@@ -44,10 +45,11 @@
             </table>         
         <br><br>
         <div class="centre-vertical">
-            <img src="https://s2.svgbox.net/octicons.svg?ic=arrow-left&color=blue" width="26" height="26g"><a href="../member/show?id={{member.id}}" class="retour ">Retour </a>  
+            <img src="https://s2.svgbox.net/octicons.svg?ic=arrow-left&color=blue" width="26" height="26"><a href="../member/show?id={{session.id}}" class="retour ">Retour </a>  
         </div>
     </div>
     
-</div> 
+</div>
+</main> 
 
     {{ include('layouts/footer.php')}}

@@ -29,9 +29,16 @@
 
 
 .coeur {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 3px 12px !important;
     color: red;
     font-size: 16px;
-    font-weight: 600;    
+    font-weight: 600; 
+    text-align: center;   
+    border-color: red;
 }
 
 .bouton-simple:hover {
@@ -123,5 +130,13 @@
 .bleu {
     background-color: var(--bleuPale) !important; 
     border-color: transparent;   
+}
+
+
+.boutonOnglet {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
 }
 

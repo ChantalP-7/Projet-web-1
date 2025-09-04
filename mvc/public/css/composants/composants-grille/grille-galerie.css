@@ -1,6 +1,6 @@
 .grille-galerie-fiche {
     display: flex;    
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
     align-items: center;
     margin-top: 20px;
